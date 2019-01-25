@@ -9,18 +9,17 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-    }, {
-      test: /\.s?css$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        'sass-loader',
-      ],
-    }],
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
