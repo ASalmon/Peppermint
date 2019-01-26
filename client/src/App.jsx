@@ -7,7 +7,6 @@ import './App.css';
 
 const App = () => (
   <React.Fragment>
-    <NavBar />
     <Router>
       <div>
         <Switch>

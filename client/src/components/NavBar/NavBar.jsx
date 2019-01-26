@@ -19,9 +19,6 @@ import { mainListItems, secondaryListItems } from './listItems';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
@@ -77,22 +74,6 @@ const styles = theme => ({
       width: theme.spacing.unit * 9,
     },
   },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-    height: '100vh',
-    overflow: 'auto',
-  },
-  chartContainer: {
-    marginLeft: -22,
-  },
-  tableContainer: {
-    height: 320,
-  },
-  h5: {
-    marginBottom: theme.spacing.unit * 2,
-  },
 });
 
 class NavBar extends React.Component {
@@ -112,7 +93,7 @@ class NavBar extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <React.Fragment>
         <CssBaseline />
         <AppBar
           position="absolute"
@@ -172,18 +153,7 @@ class NavBar extends React.Component {
           <Divider />
           <List>{secondaryListItems}</List>
         </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Orders
-          </Typography>
-          <Typography component="div" className={classes.chartContainer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Products
-          </Typography>
-          <div className={classes.tableContainer} />
-        </main>
-      </div>
+      </React.Fragment>
     );
   }
 }
