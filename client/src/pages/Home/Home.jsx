@@ -24,8 +24,8 @@ const Home = props => {
       <NavBar />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Grid2Col />
         <Grid3Col />
+        <Grid2Col />
       </main>
     </div>
   );
