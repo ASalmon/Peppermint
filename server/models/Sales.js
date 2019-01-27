@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose.Schema;
+const { Schema } = mongoose;
 
-const SalesSchema = new Schema({
+const salesSchema = new Schema({
   itemId: {
     type: String,
     required: true,
@@ -28,6 +28,4 @@ const SalesSchema = new Schema({
   },
 });
 
-const Sales = mongoose.model('Sales', SalesSchema);
-
-module.exports = Sales;
+module.exports = mongoose.model('Sales', salesSchema);

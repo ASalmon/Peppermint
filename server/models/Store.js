@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose.Schema;
+const { Schema } = mongoose;
 
-const StoreSchema = new Schema({
+const storeSchema = new Schema({
   location: {
     type: String,
     required: true,
@@ -15,6 +15,4 @@ const StoreSchema = new Schema({
   ],
 });
 
-const Store = mongoose.model('Store', StoreSchema);
-
-module.exports = Store;
+module.exports = mongoose.model('Store', storeSchema);
