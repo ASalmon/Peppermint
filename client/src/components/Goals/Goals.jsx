@@ -17,13 +17,13 @@ const styles = {
   },
 };
 
-function SmallCard(props) {
+function Goals(props) {
   const { classes } = props;
 
   return (
     <React.Fragment>
       <Card className={classes.card}>
-        <CardHeader title="Company Sales" subheader="Last 6 Months" />
+        <CardHeader title="Goals" subheader="Last 6 Months" />
         <CardContent>
           <LineChart className={classes.center} />
         </CardContent>
@@ -32,8 +32,12 @@ function SmallCard(props) {
   );
 }
 
-SmallCard.propTypes = {
-  classes: PropTypes.object.isRequired,
+Goals.propTypes = {
+  classes: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default withStyles(styles)(SmallCard);
+Goals.defaultProps = {
+  classes: {},
+};
+
+export default withStyles(styles)(Goals);

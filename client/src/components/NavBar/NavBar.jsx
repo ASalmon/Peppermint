@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import { DirectionsBike } from '@material-ui/icons';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -91,28 +92,23 @@ class NavBar extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { open } = this.state;
 
     return (
       <React.Fragment>
         <CssBaseline />
         <AppBar
           position="absolute"
-          className={classNames(
-            classes.appBar,
-            this.state.open && classes.appBarShift
-          )}
+          className={classNames(classes.appBar, open && classes.appBarShift)}
         >
-          <Toolbar
-            disableGutters={!this.state.open}
-            className={classes.toolbar}
-          >
+          <Toolbar disableGutters={!open} className={classes.toolbar}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerOpen}
               className={classNames(
                 classes.menuButton,
-                this.state.open && classes.menuButtonHidden
+                open && classes.menuButtonHidden
               )}
             >
               <MenuIcon />
@@ -124,7 +120,8 @@ class NavBar extends React.Component {
               noWrap
               className={classes.title}
             >
-              Handlebars
+              <DirectionsBike className={classes.icon} />
+              Handlebars Express
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -138,10 +135,10 @@ class NavBar extends React.Component {
           classes={{
             paper: classNames(
               classes.drawerPaper,
-              !this.state.open && classes.drawerPaperClose
+              !open && classes.drawerPaperClose
             ),
           }}
-          open={this.state.open}
+          open={open}
         >
           <div className={classes.toolbarIcon}>
             <IconButton onClick={this.handleDrawerClose}>

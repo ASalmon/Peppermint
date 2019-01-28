@@ -1,32 +1,40 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import PropTypes from 'prop-types';
 
 class PieChart extends React.Component {
-  state = {
-    options: {
-      series: [],
-      labels: [],
-    },
-  };
-
-  componentDidMount() {
-    this.setState({
-      options: this.props.myOptions,
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: {
+        series: props.pieData.series,
+        labels: props.pieData.labels,
+        legend: { position: 'right' },
+      },
+    };
   }
 
   render() {
+    const { options } = this.state;
     return (
       <Chart
-        options={this.state.options}
-        series={this.state.options.series}
-        labels={this.state.options.labels}
-        type="pie"
+        options={options}
+        series={options.series}
+        labels={options.labels}
+        type="donut"
         width="100%"
-        height={320}
+        height={350}
       />
     );
   }
 }
+
+PieChart.propTypes = {
+  pieData: PropTypes.objectOf(PropTypes.array),
+};
+
+PieChart.defaultProps = {
+  pieData: {},
+};
 
 export default PieChart;
