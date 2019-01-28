@@ -52,6 +52,7 @@
     "react": "^16.7.0",
     "react-apexcharts": "^1.2.1",
     "react-dom": "^16.7.0",
+    "react-gravatar": "^2.6.3",
     "react-router-dom": "^4.3.1"
   }
 }

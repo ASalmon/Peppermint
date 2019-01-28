@@ -17,13 +17,13 @@ function Grid3Col(props) {
     <div className={classes.root}>
       <Grid container spacing={24}>
         <Grid item xs={4}>
-          <Top5Table />
+          <Top5Table title="Top 5 Performing Stores" />
         </Grid>
         <Grid item xs={4}>
-          <Top5Table />
+          <Top5Table title="Top 5 Sale Items By Amount" />
         </Grid>
         <Grid item xs={4}>
-          <Top5Table />
+          <Top5Table title="Top 5 Sale Items By Quantity" />
         </Grid>
       </Grid>
     </div>

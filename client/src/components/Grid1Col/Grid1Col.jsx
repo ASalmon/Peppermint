@@ -16,7 +16,10 @@ function Grid1Col(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
+          <Table5Table />
+        </Grid>
+        <Grid item xs={6}>
           <Table5Table />
         </Grid>
       </Grid>

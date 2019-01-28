@@ -9,7 +9,7 @@ class PieChart extends React.Component {
       options: {
         series: props.pieData.series,
         labels: props.pieData.labels,
-        legend: { position: 'right' },
+        legend: { position: 'bottom' },
       },
     };
   }

@@ -7,7 +7,7 @@ class BarChart extends React.Component {
     this.state = {
       options: {
         chart: {
-          id: 'apexchart-example',
+          id: 'apexchart-barchart',
         },
         xaxis: {
           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun'],
