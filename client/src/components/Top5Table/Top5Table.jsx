@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -78,5 +79,13 @@ function Top5Table(props) {
     </React.Fragment>
   );
 }
+
+Top5Table.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string),
+};
+
+Top5Table.defaultProps = {
+  classes: {},
+};
 
 export default withStyles(styles)(Top5Table);

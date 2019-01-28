@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Top5Table from '../Top5Table';
@@ -9,7 +10,7 @@ const styles = () => ({
   },
 });
 
-function CenteredGrid(props) {
+function Grid3Col(props) {
   const { classes } = props;
 
   return (
@@ -29,4 +30,12 @@ function CenteredGrid(props) {
   );
 }
 
-export default withStyles(styles)(CenteredGrid);
+Grid3Col.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string),
+};
+
+Grid3Col.defaultProps = {
+  classes: {},
+};
+
+export default withStyles(styles)(Grid3Col);
