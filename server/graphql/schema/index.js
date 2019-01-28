@@ -1,23 +1,55 @@
 const graphql = require('graphql');
 
-const { GraphQLObjectType, GraphQLString } = graphql;
-const { UserType } = require('../types');
-const { userQuery } = require('../query');
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+  GraphQLID,
+} = graphql;
+
+const {
+  CompanyType,
+  StoreType,
+} = require('../types');
+
+const {
+  companyQuery,
+  storeQuery,
+} = require('../query');
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
-    login: {
-      type: UserType,
+    companyInfo: {
+      type: CompanyType,
       args: {
-        username: {
-          type: GraphQLString,
-        },
-        password: {
+        name: {
           type: GraphQLString,
         },
       },
-      resolve: userQuery.login,
+      resolve: companyQuery.companyInfo,
+    },
+    stores: {
+      type: new GraphQLList(StoreType),
+      resolve: storeQuery.stores,
+    },
+    storeByName: {
+      type: StoreType,
+      args: {
+        name: {
+          type: GraphQLString,
+        },
+      },
+      resolve: storeQuery.storeByName,
+    },
+    storeById: {
+      type: StoreType,
+      args: {
+        id: {
+          type: GraphQLID,
+        },
+      },
+      resolve: storeQuery.storeById,
     },
   }),
 });

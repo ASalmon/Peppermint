@@ -1,5 +1,7 @@
-const userQuery = require('./user.query');
+const companyQuery = require('./company');
+const storeQuery = require('./store');
 
 module.exports = {
-  userQuery,
+  companyQuery,
+  storeQuery,
 };

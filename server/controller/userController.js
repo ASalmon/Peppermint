@@ -12,7 +12,7 @@ module.exports = {
       .then((user) => {
         // Check if user exists
         if (!user) {
-          res.status(404).json({ username: 'User not found'});
+          res.status(404).json({ username: 'User not found' });
         }
         // Check password
         bcrypt.compare(password, user.password)

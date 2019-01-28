@@ -2,16 +2,12 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const salesSchema = new Schema({
-  itemId: {
+const saleSchema = new Schema({
+  name: {
     type: String,
     required: true,
   },
-  itemName: {
-    type: String,
-    required: true,
-  },
-  itemPrice: {
+  price: {
     type: Number,
     required: true,
   },
@@ -19,13 +15,10 @@ const salesSchema = new Schema({
     type: Number,
     required: true,
   },
-  department: {
+  departmentId: {
     type: String,
     required: true,
   },
-  storeLocation: {
-    type: String,
-  },
 });
 
-module.exports = mongoose.model('Sales', salesSchema);
+module.exports = mongoose.model('Sale', saleSchema);
