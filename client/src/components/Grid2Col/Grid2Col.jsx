@@ -105,4 +105,12 @@ function Grid2Col(props) {
   );
 }
 
+Grid2Col.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string),
+};
+
+Grid2Col.defaultProps = {
+  classes: {},
+};
+
 export default withStyles(styles)(Grid2Col);

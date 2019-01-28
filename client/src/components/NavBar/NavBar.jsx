@@ -15,11 +15,17 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import mainListItems from './listItems';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
+  icon: {
+    margin: theme.spacing.unit,
+    fontSize: 36,
+    marginRight: 10,
+    marginTop: 0,
+  },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
@@ -79,7 +85,7 @@ const styles = theme => ({
 
 class NavBar extends React.Component {
   state = {
-    open: true,
+    open: false,
   };
 
   handleDrawerOpen = () => {
@@ -113,6 +119,7 @@ class NavBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+            <DirectionsBike className={classes.icon} />
             <Typography
               component="h1"
               variant="h6"
@@ -120,7 +127,6 @@ class NavBar extends React.Component {
               noWrap
               className={classes.title}
             >
-              <DirectionsBike className={classes.icon} />
               Handlebars Express
             </Typography>
             <IconButton color="inherit">
@@ -147,8 +153,6 @@ class NavBar extends React.Component {
           </div>
           <Divider />
           <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
         </Drawer>
       </React.Fragment>
     );
@@ -156,7 +160,11 @@ class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf(PropTypes.string),
+};
+
+NavBar.defaultProps = {
+  classes: {},
 };
 
 export default withStyles(styles)(NavBar);
