@@ -7,9 +7,6 @@ const companySchema = new Schema({
     type: String,
     required: true,
   },
-  stores: {
-    type: String,
-  },
 });
 
 module.exports = mongoose.model('Company', companySchema);
