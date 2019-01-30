@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import Home from './pages/Home';
+import { Provider } from 'react-redux';
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
+
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import './App.css';

@@ -1,42 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Top5Table from '../Top5Table';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
 });
 
-function CenteredGrid(props) {
+function Grid3Col(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>xs=4</Paper>
+        <Grid item xs={12} md={4}>
+          <Top5Table title="Top Performing Stores" />
         </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>xs=4</Paper>
+        <Grid item xs={12} md={4}>
+          <Top5Table title="Top Sale Item By Amount" />
         </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>xs=4</Paper>
+        <Grid item xs={12} md={4}>
+          <Top5Table title="Top Sale Item By Quantity" />
         </Grid>
       </Grid>
     </div>
   );
 }
 
-CenteredGrid.propTypes = {
-  classes: PropTypes.object.isRequired,
+Grid3Col.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string),
 };
 
-export default withStyles(styles)(CenteredGrid);
+Grid3Col.defaultProps = {
+  classes: {},
+};
+
+export default withStyles(styles)(Grid3Col);

@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import NavBar from '../../components/NavBar';
 import Grid2Col from '../../components/Grid2Col';
 import Grid3Col from '../../components/Grid3Col';
+import Grid1Col from '../../components/Grid1Col';
 
 const styles = theme => ({
   root: {
@@ -24,8 +25,9 @@ const Home = props => {
       <NavBar />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Grid2Col />
         <Grid3Col />
+        <Grid2Col />
+        <Grid1Col />
       </main>
     </div>
   );

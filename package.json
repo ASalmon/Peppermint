@@ -6,9 +6,10 @@
   "scripts": {
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
-    "start:dev": "concurrently \"nodemon ./server/index.js --ignore 'client/*'\" \"webpack-dev-server --hot --mode development --watch\"",
+    "start:dev": "concurrently \"nodemon --inspect=9229 ./server/index.js --ignore 'client/*'\" \"webpack-dev-server --hot --mode development --watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-server": "webpack-dev-server --hot --mode development --watch"
+    "dev-server": "webpack-dev-server --hot --mode development --watch",
+    "debug": "nodemon --inspect=9229 server.js"
   },
   "author": "Alton Salmon",
   "license": "MIT",
@@ -42,6 +43,7 @@
     "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.8",
+    "apexcharts": "^3.2.1",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.2.6",
@@ -55,8 +57,15 @@
     "mongoose": "^5.4.5",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-apexcharts": "^1.2.1",
     "react-dom": "^16.7.0",
+    "react-gravatar": "^2.6.3",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.5.3"
   }
