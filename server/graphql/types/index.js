@@ -10,6 +10,7 @@ module.exports = `
     name: String!
     location: String!
     company: Company
+    departments: [Department]
   }
 
   type Department {

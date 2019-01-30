@@ -1,8 +1,8 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
-const { secret } = require('../config');
 
 module.exports = {
   login: (req, res) => {
@@ -27,7 +27,7 @@ module.exports = {
               // Create JWT token
               jwt.sign(
                 payload,
-                secret,
+                process.env.secret,
                 { expiresIn: 18000 },
                 (authErr, token) => {
                   res.send({
