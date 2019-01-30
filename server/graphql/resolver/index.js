@@ -1,3 +1,6 @@
+const { GraphQLScalarType } = require('graphql');
+const { Kind } = require('graphql/language');
+
 const {
   Company,
   Store,
@@ -46,6 +49,10 @@ module.exports = {
     },
   },
   Mutation: {
+    test(parent, args) {
+      console.log(args.date)
+      return args.date;
+    },
     addCompany(parent, args) {
       const newCompany = new Company({
         name: args.name,
@@ -95,12 +102,14 @@ module.exports = {
       return Department.findByIdAndDelete(args.ID);
     },
     async addSale(parent, args) {
-      const department = await Department.findOne({ name: args.department });
+      const store = await Store.findOne({ name: args.store });
+      const department = await Department.findOne({ name: args.department, storeId: store._id });
       const sale = new Sale({
         name: args.name,
         price: args.price,
         quantity: args.quantity,
         departmentId: department._id,
+        transactionDate: args.transactiondate,
       });
       return sale.save();
     },
@@ -126,7 +135,7 @@ module.exports = {
       return Store.findById(parent.storeId);
     },
     sales(parent) {
-      return Sale.find({ departmentId: parent.ID });
+      return Sale.find({ departmentId: parent._id });
     },
   },
   Sale: {
@@ -134,4 +143,20 @@ module.exports = {
       return Department.findById(parent.departmentId);
     },
   },
+  Date: new GraphQLScalarType({
+    name: 'Date',
+    description: 'Date custom scalar type',
+    parseValue(value) {
+      return new Date(value); // value from the client
+    },
+    serialize(value) {
+      return value.getTime(); // value sent to the client
+    },
+    parseLiteral(ast) {
+      if (ast.kind === Kind.STRING) {
+        return new Date(ast.value); // ast value is always in string format
+      }
+      return null;
+    },
+  }),
 };

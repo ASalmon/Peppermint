@@ -1,4 +1,6 @@
 module.exports = `
+  scalar Date
+
   type Company {
     name: String
     id: ID
@@ -25,8 +27,10 @@ module.exports = `
     name: String!
     price: Float!
     quantity: Int!
+    transactiondate: Date!
     department: Department!
   }
+
 
   type Query {
     company: [Company!]!
@@ -44,6 +48,7 @@ module.exports = `
   }
 
   type Mutation {
+    test(date: Date): Date
     addCompany(name: String!): Company!
     editCompanyName(name: String!, newname: String!): Company!
     removeCompany(name: String!): Company!
@@ -54,7 +59,13 @@ module.exports = `
     addDepartment(name: String!, storename: String!): Department!
     editDepartment(name: String!, newname: String!): Department!
     removeDepartment(id: ID!): Department!
-    addSale(name: String!, price: Float!, quantity: Int!, department: String!): Sale!
+    addSale(
+      name: String!,
+      price: Float!,
+      quantity: Int!,
+      department: String!,
+      store: String!,
+      transactiondate: Date!): Sale!
     deleteSale(id: ID!): Sale!
   }
 
