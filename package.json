@@ -54,13 +54,16 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.5",
-    "prop-types": "^15.6.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-apexcharts": "^1.2.1",
     "react-dom": "^16.7.0",
     "react-gravatar": "^2.6.3",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }
