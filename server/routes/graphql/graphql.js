@@ -5,10 +5,10 @@ const schema = require('../../graphql');
 
 router.route('/')
   .all(
-    passport.authenticate(
-      'jwt',
-      { session: false },
-    ),
+    // passport.authenticate(
+    //   'jwt',
+    //   { session: false },
+    // ),
     graphqlHTTP({
       schema,
       graphiql: true,

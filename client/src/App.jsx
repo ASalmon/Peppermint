@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
+
 import NoMatch from './pages/NoMatch';
+import Login from './pages/Login';
 import './App.css';
 
 const App = () => (
@@ -11,7 +13,8 @@ const App = () => (
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Login} />
+          {/* <Route exact path="/" component={Home} /> */}
           <Route component={NoMatch} />
         </Switch>
       </div>

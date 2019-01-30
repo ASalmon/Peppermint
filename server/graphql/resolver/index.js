@@ -60,7 +60,7 @@ module.exports = {
       return Company.findOneAndDelete({ name: args.name });
     },
     async addStore(parent, args) {
-      const company = await Company.findOne({ name: args.companyname });
+      const company = await Company.findOne({ name: args.company });
       const store = new Store({
         name: args.name,
         location: args.location,
@@ -80,7 +80,7 @@ module.exports = {
       return Store.findByIdAndDelete(args.ID);
     },
     async addDepartment(parent, args) {
-      const store = await Store.findOne({ name: args.departmentname });
+      const store = await Store.findOne({ name: args.storename });
       const department = new Department({
         name: args.name,
         storeId: store._id,
@@ -95,7 +95,7 @@ module.exports = {
       return Department.findByIdAndDelete(args.ID);
     },
     async addSale(parent, args) {
-      const department = await Department.findOne({ name: args.departmentname });
+      const department = await Department.findOne({ name: args.department });
       const sale = new Sale({
         name: args.name,
         price: args.price,
@@ -116,6 +116,9 @@ module.exports = {
   Store: {
     company(parent) {
       return Company.findById(parent.companyId);
+    },
+    departments(parent) {
+      return Department.find({ storeId: parent._id });
     },
   },
   Department: {
