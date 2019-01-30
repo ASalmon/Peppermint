@@ -24,7 +24,7 @@ const styles = theme => ({
   },
   icon: {
     margin: theme.spacing.unit,
-    fontSize: 36,
+    fontSize: 40,
     marginRight: 10,
     marginTop: 0,
   },
@@ -116,7 +116,7 @@ class NavBar extends React.Component {
               onClick={this.handleDrawerOpen}
               className={classNames(
                 classes.menuButton,
-                open && classes.menuButtonHidden
+                open && classes.menuButtonHidden,
               )}
             >
               <MenuIcon />
@@ -124,7 +124,7 @@ class NavBar extends React.Component {
             <DirectionsBike className={classes.icon} />
             <Typography
               component="h1"
-              variant="h6"
+              variant="h4"
               color="inherit"
               noWrap
               className={classes.title}
@@ -145,7 +145,7 @@ class NavBar extends React.Component {
           classes={{
             paper: classNames(
               classes.drawerPaper,
-              !open && classes.drawerPaperClose
+              !open && classes.drawerPaperClose,
             ),
           }}
           open={open}

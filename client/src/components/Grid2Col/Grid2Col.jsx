@@ -78,7 +78,7 @@ function Grid2Col(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={5}>
           <Card className={classes.card}>
             <CardHeader
               title="Sales Distrubtion By Store"
@@ -89,7 +89,7 @@ function Grid2Col(props) {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={7}>
           <Card className={classes.card}>
             <CardHeader title="Company Sales Goal" subheader="Last 6 Months" />
             <CardContent>

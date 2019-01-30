@@ -9,6 +9,11 @@ class BarChart extends React.Component {
         chart: {
           id: 'apexchart-barchart',
         },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
         xaxis: {
           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun'],
         },
@@ -31,7 +36,7 @@ class BarChart extends React.Component {
         series={series}
         type="bar"
         width="100%"
-        height={320}
+        height={350}
       />
     );
   }

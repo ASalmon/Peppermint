@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
-import Table5Table from '../Top5Table';
 import LineChart from '../LineChart';
+import BarChart from '../BarChart';
 
 const styles = () => ({
   root: {
@@ -32,7 +32,7 @@ const lineOptions = {
       },
     },
     xaxis: {
-      categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
+      categories: ['July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
     },
     yaxis: [
       {
@@ -77,11 +77,11 @@ const lineOptions = {
 
 const lineSeries = [
   {
-    name: 'Team A',
+    name: '2018',
     data: [23, 12, 54, 61, 32, 56, 81, 19],
   },
   {
-    name: 'Team B',
+    name: '2019',
     data: [25, 13, 55, 58, 30, 54, 89, 24],
   },
 ];
@@ -92,9 +92,13 @@ function Grid1Col(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Card className={classes.card}>
-            <CardHeader title="Projection" subheader="Next 6 Months" />
+            <CardHeader
+              title="Yearly Performance"
+              subheader="By Month"
+              className={classes.cardheader}
+            />
             <CardContent>
               <LineChart
                 lineOptions={lineOptions.options}
@@ -103,8 +107,17 @@ function Grid1Col(props) {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={6}>
-          <Table5Table title="Placeholder" />
+        <Grid item xs={12} md={6}>
+          <Card className={classes.card}>
+            <CardHeader
+              title="Projection"
+              subheader="Next 6 Months"
+              className={classes.cardheader}
+            />
+            <CardContent>
+              <BarChart />
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </div>
