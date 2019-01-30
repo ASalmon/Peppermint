@@ -1,0 +1,240 @@
+import React from 'react';
+import axios from 'axios';
+import './style.css';
+import '../../pages/Login/style.css';
+
+const apiBaseUrl = 'http://localhost:3000/api/';
+
+class RegisterBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      errors: [],
+      pwdState: null,
+    };
+  }
+
+  onUsernameChange(e) {
+    this.setState({ username: e.target.value });
+    this.clearValidationErr('username');
+  }
+
+  onEmailChange(e) {
+    this.setState({ email: e.target.value });
+    this.clearValidationErr('email');
+  }
+
+  onPasswordChange(e) {
+    this.setState({ password: e.target.value });
+    this.clearValidationErr('password');
+
+    this.setState({ pwdState: 'weak' });
+    if (e.target.value.length > 8) {
+      this.setState({ pwdState: 'medium' });
+    } if (e.target.value.length > 12) {
+      this.setState({ pwdState: 'strong' });
+    }
+  }
+
+  showValidationErr(elm, msg) {
+    this.setState((prevState) => ({
+      errors: [
+        ...prevState.errors, {
+          elm,
+          msg
+        }
+      ]
+    }));
+  }
+
+  // ??? is it really correct to use const instead of let for newArr and err?
+  // push prevState errors to newArr
+  clearValidationErr(elm) {
+    this.setState((prevState) => {
+      let newArr = [];
+      for (let err of prevState.errors) {
+        if (elm != err.elm) {
+          newArr.push(err);
+        }
+      }
+      return { errors: newArr };
+    });
+  }
+
+
+  submitRegister(e) {
+    console.log(this.state);
+
+    if (this.state.username === '') {
+      this.showValidationErr('username', 'Username Cannot be blank!');
+    }
+    if (this.state.email === '') {
+      this.showValidationErr('email', 'Email Cannot be blank!');
+    }
+    if (this.state.password === '') {
+      this.showValidationErr('password', 'Password Cannot be blank!');
+    }
+    if (this.state.username !== '' && this.state.email !== '' && this.state.password !== '') {
+      console.log('user/password/email not blank, add new user to DB');
+      //
+      //    const userData = {
+      //      username: this.state.username,
+      //      email: this.state.email,
+      //      password: this.state.password,
+      //    };
+      //  ALTON/KEVIN? which way?
+      // 1.
+      // API.saveUser(userData)
+      //   .then(res => {
+      //     if (res.data.status === 'error') {
+      //       throw new Error(res.data.message);
+      //     }
+      //   }
+      // if save to DB successful
+      // ??? Do we return to login or
+      // ??? send on to Dashboard?
+      // end 1.
+
+    // 2. OR this way?
+    //    axios.post(apiBaseUrl + 'register', userData)
+    //      .then(function (response) {
+    //        console.log(response);
+    //        if (response.data.code === 200) {
+    //          console.log("New User Registered Successfully");
+    //        } else {
+    //          console.log('some error ocurred', response.data.code);
+    //        }
+    //      })
+    //      .catch(function (error) {
+    //        console.log(error);
+    //      });
+    //
+    }
+  } // end submitRegister
+
+  render() {
+    let usernameErr = null;
+    let passwordErr = null;
+    let emailErr = null;
+
+    for (let err of this.state.errors) {
+      if (err.elm === 'username') {
+        usernameErr = err.msg;
+      }
+      if (err.elm === 'password') {
+        passwordErr = err.msg;
+      }
+      if (err.elm === 'email') {
+        emailErr = err.msg;
+      }
+    }
+
+    // password strength indicator - begin in off position
+    let pwdWeak = false;
+    let pwdMedium = false;
+    let pwdStrong = false;
+
+    if (this.state.pwdState === 'weak') {
+      pwdWeak = true;
+    } else if (this.state.pwdState === 'medium') {
+      pwdWeak = true;
+      pwdMedium = true;
+    } else if (this.state.pwdState === 'strong') {
+      pwdWeak = true;
+      pwdMedium = true;
+      pwdStrong = true;
+    }
+
+    return (
+      <div className="inner-container">
+        <div className="header">
+          Register
+        </div>
+        <div className="box">
+
+          <div className="input-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              className="login-input"
+              placeholder="Username"
+              onChange={this
+                .onUsernameChange
+                .bind(this)
+              }
+            />
+            <small className="danger-error">
+              {usernameErr
+                ? usernameErr
+                : ''}
+            </small>
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              className="login-input"
+              placeholder="Email"
+              onChange={this
+                .onEmailChange
+                .bind(this)
+              }
+            />
+            <small className="danger-error">
+              {emailErr
+                ? emailErr
+                : ''}
+            </small>
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              className="login-input"
+              placeholder="Password"
+              onChange={this
+                .onPasswordChange
+                .bind(this)}
+            />
+            <small className="danger-error">
+              {passwordErr
+                ? passwordErr
+                : ''}
+            </small>
+
+            {this.state.password &&
+              <div className="password-state">
+                <div className={'pwd pwd-weak ' + (pwdWeak ? 'show': '')}></div>
+                <div className={'pwd pwd-medium ' + (pwdMedium ? 'show': '')}></div>
+                <div className={'pwd pwd-strong ' + (pwdStrong ? 'show': '')}></div>
+              </div>
+            }
+
+          </div>
+
+          <button
+            type="button"
+            className="login-btn"
+            onClick={this
+              .submitRegister
+              .bind(this)}
+          >
+            Register
+          </button>
+
+        </div>
+      </div>
+
+    );
+  }
+}
+
+export default RegisterBox;
