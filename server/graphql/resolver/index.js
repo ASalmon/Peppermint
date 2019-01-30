@@ -118,7 +118,7 @@ module.exports = {
       return Company.findById(parent.companyId);
     },
     departments(parent) {
-      return Department.find({ storeId: parent.ID });
+      return Department.find({ storeId: parent._id });
     },
   },
   Department: {
