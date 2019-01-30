@@ -1,9 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+import API from '../../utils/API';
 import './style.css';
 import '../../pages/Login/style.css';
-
-const apiBaseUrl = 'http://localhost:3000/api/';
 
 class RegisterBox extends React.Component {
   constructor(props) {
@@ -66,6 +64,7 @@ class RegisterBox extends React.Component {
 
 
   submitRegister(e) {
+    e.preventDefault();
     console.log(this.state);
 
     if (this.state.username === '') {
@@ -79,39 +78,20 @@ class RegisterBox extends React.Component {
     }
     if (this.state.username !== '' && this.state.email !== '' && this.state.password !== '') {
       console.log('user/password/email not blank, add new user to DB');
-      //
-      //    const userData = {
-      //      username: this.state.username,
-      //      email: this.state.email,
-      //      password: this.state.password,
-      //    };
-      //  ALTON/KEVIN? which way?
-      // 1.
-      // API.saveUser(userData)
-      //   .then(res => {
-      //     if (res.data.status === 'error') {
-      //       throw new Error(res.data.message);
-      //     }
-      //   }
-      // if save to DB successful
-      // ??? Do we return to login or
-      // ??? send on to Dashboard?
-      // end 1.
 
-    // 2. OR this way?
-    //    axios.post(apiBaseUrl + 'register', userData)
-    //      .then(function (response) {
-    //        console.log(response);
-    //        if (response.data.code === 200) {
-    //          console.log("New User Registered Successfully");
-    //        } else {
-    //          console.log('some error ocurred', response.data.code);
-    //        }
-    //      })
-    //      .catch(function (error) {
-    //        console.log(error);
-    //      });
-    //
+      const userData = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+      };
+
+      API.register(userData)
+        .then((res) => {
+          if (res.data.status === 'error') {
+            throw new Error(res.data.message);
+          }
+          // window.location.href = '/login';
+        });
     }
   } // end submitRegister
 

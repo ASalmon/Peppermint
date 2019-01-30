@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import API from '../../utils/API';
 import './style.css';
 import '../../pages/Login/style.css';
-const apiBaseUrl = 'http://localhost:3000/api/';
 
 class LoginBox extends Component {
   constructor(props) {
@@ -50,6 +48,7 @@ class LoginBox extends Component {
   }
 
   submitLogin(e) {
+    e.preventDefault();
     console.log(this.state);
 
     if (this.state.username === '') {
@@ -60,45 +59,22 @@ class LoginBox extends Component {
     }
     if (this.state.username !== '' && this.state.password !== '') {
       console.log('user/password not blank, check DB');
-      // const userData = {
-      //   username: this.state.username,
-      //   password: this.state.password,
-      // };
-      // ALTON/KEVIN? which way?
-      // 1.
-      // API.getUser(userData)
-      //   .then(res => {
-      //     if (res.data.status === 'error') {
-      //       throw new Error(res.data.message);
-      //     }
-      //   }
-      // if user/password exist in DB - go to Dashboard
+      const userData = {
+        username: this.state.username,
+        password: this.state.password,
+      };
+
+      API.login(userData)
+        .then((res) => {
+          if (res.data.status === 'error') {
+            throw new Error(res.data.message);
+          }
+          console.log(res.data);
+          // redirect to Home - Dashboard
+          // window.location.href = '/dashboard';
+        });
       // if user/password do not exist - return to Login
       //  send error message Username/Password do not exist, Please Register
-      // end 1.
-      //
-      // 2. OR this way?
-      // axios.get(apiBaseUrl + 'login', userData)
-      //   .then(function (response) {
-      //     console.log(response);
-      //     if (response.data.code == 200) {
-      //       console.log('Login successfull');
-      //       // I think this is where we should go to our Home - Dashboard page
-
-      //     } else if (response.data.code == 204) {
-      //       console.log('Username and password do not match');
-      //       //  alert(response.data.success)}
-      //     } else {
-      //       console.log('Username does not exist');
-      //       //  alert('Username does not exist');
-      //     }
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-      // }
-      //
-
     }
   }
 
@@ -119,7 +95,6 @@ class LoginBox extends Component {
 
     return (
       <div className="inner-container">
-        {/* <Icon>star</Icon> */}
         <div className="header">
           Login
         </div>
