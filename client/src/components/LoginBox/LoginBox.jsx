@@ -48,6 +48,7 @@ class LoginBox extends Component {
   }
 
   submitLogin(e) {
+    e.preventDefault();
     console.log(this.state);
 
     if (this.state.username === '') {
@@ -68,8 +69,9 @@ class LoginBox extends Component {
           if (res.data.status === 'error') {
             throw new Error(res.data.message);
           }
+          console.log(res.data);
           // redirect to Home - Dashboard
-          window.location.href = '/dashboard';
+          // window.location.href = '/dashboard';
         });
       // if user/password do not exist - return to Login
       //  send error message Username/Password do not exist, Please Register

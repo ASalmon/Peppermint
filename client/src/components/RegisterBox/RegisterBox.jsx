@@ -64,6 +64,7 @@ class RegisterBox extends React.Component {
 
 
   submitRegister(e) {
+    e.preventDefault();
     console.log(this.state);
 
     if (this.state.username === '') {
@@ -89,7 +90,7 @@ class RegisterBox extends React.Component {
           if (res.data.status === 'error') {
             throw new Error(res.data.message);
           }
-          window.location.href = '/login';
+          // window.location.href = '/login';
         });
     }
   } // end submitRegister
