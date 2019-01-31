@@ -138,6 +138,9 @@ module.exports = {
     department(parent) {
       return Department.findById(parent.departmentId);
     },
+    transactiondate(parent) {
+      return parent.transactionDate;
+    },
   },
   Date: new GraphQLScalarType({
     name: 'Date',
@@ -146,7 +149,7 @@ module.exports = {
       return new Date(value); // value from the client
     },
     serialize(value) {
-      return value.getTime(); // value sent to the client
+      return value; //.getTime(); // value sent to the client
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.STRING) {
