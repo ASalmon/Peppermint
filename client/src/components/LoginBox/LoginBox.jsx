@@ -71,13 +71,10 @@ class LoginBox extends Component {
           }
           console.log(res.data);
           // redirect to Home - Dashboard
-          // window.location.href = '/dashboard';
+          window.location.href = '/home';
         });
-      // if user/password do not exist - return to Login
-      //  send error message Username/Password do not exist, Please Register
     }
   }
-
 
   render() {
     let usernameErr = null;
