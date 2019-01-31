@@ -4,6 +4,16 @@ body,
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    background-color: lightgrey;
+}
+
+#background {
+  position:fixed;
+  top:0;
+  left:50%;
+  width: 50%;
+  height: 100%;
+  background-color: white;
 }
 
 /* $blue_theme: #70a1ff; */
@@ -15,8 +25,10 @@ body,
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 75px;
 }
+
 
 .box-controller {
     visibility: visible;
@@ -70,8 +82,6 @@ body,
     text-align: center;
     padding: 5px;
     margin-bottom: 17px;
-    /* margin-left: 35px; */
-    /* margin-right: 35px; */
     font-family: Ozxgen, sans-serif;
     font-size: 22px;
     border-bottom: 2px solid blue;
@@ -104,7 +114,7 @@ body,
     border-radius: 3px;
     border: 1px solid blue;
     transition: border 0.4s ease-out;
-    padding: 13px;
+    padding: 10px;
     font-family: Oxygen, sans-serif;
     font-size: 19px;
     color: #3e3e42;
@@ -130,7 +140,6 @@ body,
 
 .login-btn {
     padding: 2px 30px;
-    /* background-color: #417cef; */
     border: 0;
     font-size: 18px;
     border-radius: 3px;
@@ -181,3 +190,75 @@ body,
 .show {
     visibility: visible;
 }
+
+
+/* Header and Footer Elements here */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  /* padding-top: 20px; */
+}
+
+.left {
+  left: 0;
+  background-color: #777;
+  color: white;
+  font-family: arial;
+  font-weight: light;
+}
+
+.right {
+right: 0;
+background-color: white;
+}
+
+#right-subtext {
+    font-style: italic;
+    font-family: arial;
+    font-size: 16px;
+}
+
+/* centers content vert and horiz */
+.centered {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+
+/* style image inside the centered container */
+.centered, #left-image {
+    width: 450px;
+    border-radius: 50%;
+  }
+
+.centered #right-image {
+  width: 400px;
+  border-radius: 25%;
+  margin-right: 50px;
+}
+
+#footer-area {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#logo, #footer-text {
+    display: inline-block;
+    color: black;
+    font-family: arial;
+    font-size: 12px;
+}
+
+#logo {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.material-icons.md-48 { font-size: 48px; }
+
