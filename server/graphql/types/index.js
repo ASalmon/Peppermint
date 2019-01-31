@@ -43,7 +43,7 @@ module.exports = `
     storeByName(name: String!): Store!
     storeByID(id: ID!): Store!
     sales: [Sale!]!
-    salesByName(name: String!): [Sale!]!
+    salesByName(name: String!): [Sale]!
     saleByID(id: ID!): Sale!
   }
 

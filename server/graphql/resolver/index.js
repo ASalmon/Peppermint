@@ -49,10 +49,6 @@ module.exports = {
     },
   },
   Mutation: {
-    test(parent, args) {
-      console.log(args.date)
-      return args.date;
-    },
     addCompany(parent, args) {
       const newCompany = new Company({
         name: args.name,
@@ -154,6 +150,9 @@ module.exports = {
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.STRING) {
+        return new Date(ast.value); // ast value is always in string format
+      }
+      if (ast.kind === Kind.INT) {
         return new Date(ast.value); // ast value is always in string format
       }
       return null;
