@@ -19,6 +19,10 @@ const saleSchema = new Schema({
     type: String,
     required: true,
   },
+  transactionDate: {
+    type: Date,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('Sale', saleSchema);
