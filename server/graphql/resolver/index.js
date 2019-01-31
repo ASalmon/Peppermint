@@ -149,7 +149,7 @@ module.exports = {
       return new Date(value); // value from the client
     },
     serialize(value) {
-      return value; //.getTime(); // value sent to the client
+      return value.getTime(); // value sent to the client
     },
     parseLiteral(ast) {
       if (ast.kind === Kind.STRING) {
