@@ -9,7 +9,7 @@
     "start:dev": "concurrently \"nodemon --inspect=9229 ./server/index.js --ignore 'client/*'\" \"webpack-dev-server --hot --mode development --watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-server": "webpack-dev-server --hot --mode development --watch",
-    "debug": "nodemon --inspect=9229 server.js"
+    "debug": "nodemon --inspect=9229 ./server/index.js"
   },
   "author": "Alton Salmon",
   "license": "MIT",
