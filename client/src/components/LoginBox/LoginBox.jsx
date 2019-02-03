@@ -1,7 +1,45 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import './style.css';
-import '../../pages/Login/style.css';
+
+// const styleForInnerContainer = {
+//   transition: 'visibility 0.2s ease-out',
+// };
+
+// const styleForHeader = {
+//   textAlign: 'center',
+//   padding: 5,
+//   marginBottom: 17,
+//   fontFamily: 'Oxygen, sansSerif',
+//   fontSize: 22,
+//   borderBottom: '2px solid #008ffb',
+// };
+
+// const styleForBox = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   justifyContent: 'center',
+// };
+
+// const styleForInputGroup = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   marginTop: 5,
+//   marginBottom: 5,
+// };
+
+// const styleForLoginInput = {
+//   height: '2.1em',
+//   borderRadius: 3,
+//   border: '1px solid #008ffb',
+//   WebkitTransition: 'border 0.4s ease-out',
+//   padding: 10,
+//   fontFamily: 'Oxygen, sansSerif',
+//   fontSize: 19,
+//   color: '#3e3e42',
+//   background: 'rgba(15, 15, 15, 0.01)',
+// };
+
 
 class LoginBox extends Component {
   constructor(props) {
@@ -91,17 +129,21 @@ class LoginBox extends Component {
     }
 
     return (
+      // <div style={styleForInnerContainer}>
       <div className="inner-container">
+        {/* <div style={styleForHeader}> */}
         <div className="header">
           Login
         </div>
+        {/* <div style={styleForBox}> */}
         <div className="box">
-
+          {/* <div style={styleForInputGroup}> */}
           <div className="input-group">
             <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
+              // style={styleForLoginInput}
               className="login-input"
               placeholder="Username"
               onChange={this
@@ -116,11 +158,13 @@ class LoginBox extends Component {
             </small>
           </div>
 
+          {/* <div style={styleForInputGroup}> */}
           <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
+              // style={styleForLoginInput}
               className="login-input"
               placeholder="Password"
               onChange={this

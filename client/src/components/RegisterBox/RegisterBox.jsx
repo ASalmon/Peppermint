@@ -1,7 +1,6 @@
 import React from 'react';
 import API from '../../utils/API';
 import './style.css';
-import '../../pages/Login/style.css';
 
 class RegisterBox extends React.Component {
   constructor(props) {
