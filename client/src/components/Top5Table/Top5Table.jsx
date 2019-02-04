@@ -38,22 +38,8 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-
-function createData(city, sales) {
-  id += 1;
-  return { id, city, sales };
-}
-
-const rows = [
-  createData('New York', 68000),
-  createData('Atlanta', 54000),
-  createData('Austin', 38000),
-  createData('Denver', 31000),
-];
-
 function Top5Table(props) {
-  const { classes, title } = props;
+  const { classes, title, data } = props;
 
   return (
     <React.Fragment>
@@ -66,7 +52,7 @@ function Top5Table(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {data.map(row => (
               <TableRow className={classes.row} key={row.id}>
                 <CustomTableCell component="th" scope="row">
                   {row.city}
@@ -84,11 +70,13 @@ function Top5Table(props) {
 Top5Table.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   title: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.object),
 };
 
 Top5Table.defaultProps = {
   classes: {},
   title: '',
+  data: [],
 };
 
 export default withStyles(styles)(Top5Table);

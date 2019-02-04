@@ -1,71 +1,38 @@
 module.exports = `
   scalar Date
 
-  type Company {
-    name: String
-    id: ID
-    stores: [Store!]
-  }
+  scalar TopSellingItems
 
-  type Store {
+  type Transaction {
     id: ID
-    name: String!
-    location: String!
-    company: Company
-    departments: [Department]
-  }
-
-  type Department {
-    id: ID
-    name: String!
-    store: Store!
-    sales: [Sale]
-  }
-
-  type Sale {
-    id: ID
-    name: String!
+    itemName: String!
     price: Float!
     quantity: Int!
-    transactiondate: Date
-    department: Department!
+    departmentName: String!
+    storeName: String!
+    transactionDate: Date!
   }
 
-
   type Query {
-    company: [Company]!
-    companyByName(name: String!): Company
-    companyByID(id: ID!): Company
-    departments: [Department]!
-    departmentByName(name: String!): Department
-    departmentByID(id: ID!): Department
-    stores: [Store]!
-    storeByName(name: String!): Store
-    storeByID(id: ID!): Store
-    sales: [Sale!]
-    salesByName(name: String!): [Sale]!
-    saleByID(id: ID!): Sale
+    transactions: [Transaction!]
+    transactionsByName(name: String!): [Transaction]!
+    transactionByID(id: ID!): Transaction
+    topSellingItems(
+      by: String!
+      departmentName: String,
+      storeName: String
+    ): [TopSellingItems]
   }
 
   type Mutation {
-    addCompany(name: String!): Company
-    editCompanyName(name: String!, newname: String!): Company
-    removeCompany(name: String!): Company
-    addStore(name: String!, company: String!, location: String!): Store
-    editStoreName(name: String!, newname: String): Store
-    editStoreLocation(location: String!, newlocation: String!): Store
-    removeStore(id: ID!): Store
-    addDepartment(name: String!, storename: String!): Department
-    editDepartment(name: String!, newname: String!): Department
-    removeDepartment(id: ID!): Department
-    addSale(
+    addTransaction(
       name: String!,
       price: Float!,
       quantity: Int!,
       department: String!,
       store: String!,
-      transactiondate: Date): Sale
-    deleteSale(id: ID!): Sale
+      transactiondate: Date!
+    ): Transaction
   }
 
   schema {
