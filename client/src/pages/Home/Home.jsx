@@ -5,6 +5,7 @@ import Grid2Col from '../../components/Grid2Col';
 import Grid3Col from '../../components/Grid3Col';
 import Grid1Col from '../../components/Grid1Col';
 
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -18,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-const Home = props => {
+const Home = (props) => {
   const { classes } = props;
   return (
     <div className={classes.root}>

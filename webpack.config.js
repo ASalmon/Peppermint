@@ -31,7 +31,10 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 },
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+    },
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
@@ -41,9 +44,9 @@ module.exports = {
     compress: true,
     port: 3001,
     proxy: {
-      '/api': 'http://localhost:3000',
-      '/graphql': 'http://localhost:3000',
-      '/login': 'http://localhost:3000',
+      '/graphql': 'http://localhost:3000/',
+      '/api': 'http://localhost:3000/',
+      changeOrigin: true,
     },
   },
 };

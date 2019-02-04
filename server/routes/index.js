@@ -1,11 +1,12 @@
 const path = require('path');
 const router = require('express').Router();
+const api = require('./api');
 const graphqlRoute = require('./graphql');
-const login = require('./api');
 
-// Login Route
-router.use('/api', login);
-// GraphQl Route
+
+// Api Route
+router.use('/api', api);
+// Graphql Route
 router.use('/graphql', graphqlRoute);
 // HTML Route
 router.use((req, res) => {
