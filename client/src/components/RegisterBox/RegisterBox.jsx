@@ -1,7 +1,6 @@
 import React from 'react';
 import API from '../../utils/API';
 import './style.css';
-import '../../pages/Login/style.css';
 
 class RegisterBox extends React.Component {
   constructor(props) {
@@ -38,23 +37,22 @@ class RegisterBox extends React.Component {
   }
 
   showValidationErr(elm, msg) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       errors: [
         ...prevState.errors, {
           elm,
-          msg
-        }
-      ]
+          msg,
+        },
+      ],
     }));
   }
 
-  // ??? is it really correct to use const instead of let for newArr and err?
   // push prevState errors to newArr
   clearValidationErr(elm) {
     this.setState((prevState) => {
-      let newArr = [];
+      const newArr = [];
       for (let err of prevState.errors) {
-        if (elm != err.elm) {
+        if (elm !== err.elm) {
           newArr.push(err);
         }
       }
@@ -62,19 +60,18 @@ class RegisterBox extends React.Component {
     });
   }
 
-
   submitRegister(e) {
     e.preventDefault();
     console.log(this.state);
 
     if (this.state.username === '') {
-      this.showValidationErr('username', 'Username Cannot be blank!');
+      this.showValidationErr('username', 'Username cannot be blank!');
     }
     if (this.state.email === '') {
-      this.showValidationErr('email', 'Email Cannot be blank!');
+      this.showValidationErr('email', 'Email cannot be blank!');
     }
     if (this.state.password === '') {
-      this.showValidationErr('password', 'Password Cannot be blank!');
+      this.showValidationErr('password', 'Password cannot be blank!');
     }
     if (this.state.username !== '' && this.state.email !== '' && this.state.password !== '') {
       console.log('user/password/email not blank, add new user to DB');
@@ -134,7 +131,6 @@ class RegisterBox extends React.Component {
           Register
         </div>
         <div className="box">
-
           <div className="input-group">
             <label htmlFor="username">Username</label>
             <input
@@ -148,9 +144,7 @@ class RegisterBox extends React.Component {
               }
             />
             <small className="danger-error">
-              {usernameErr
-                ? usernameErr
-                : ''}
+              {usernameErr ? usernameErr : ''}
             </small>
           </div>
 
@@ -167,9 +161,7 @@ class RegisterBox extends React.Component {
               }
             />
             <small className="danger-error">
-              {emailErr
-                ? emailErr
-                : ''}
+              {emailErr ? emailErr : ''}
             </small>
           </div>
 
@@ -185,9 +177,7 @@ class RegisterBox extends React.Component {
                 .bind(this)}
             />
             <small className="danger-error">
-              {passwordErr
-                ? passwordErr
-                : ''}
+              {passwordErr ? passwordErr : ''}
             </small>
 
             {this.state.password &&
