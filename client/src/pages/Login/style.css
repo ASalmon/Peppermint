@@ -4,21 +4,32 @@ body,
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
+    background-color: #008ffb;
+    margin: 0;
 }
 
-#background {
+.wrapper {
+  margin: 0 auto;
+}
+
+#left-side {
+  margin-left: 0;
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+#right-side {
   position:fixed;
   top:0;
   left:50%;
   width: 50%;
   height: 100%;
   background-color: white;
-}
-
-.right {
-right: 0;
-background-color: white;
 }
 
 .centered {

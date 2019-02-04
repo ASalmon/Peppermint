@@ -1,13 +1,18 @@
 import React from 'react';
 import './style.css';
+import LoginLeft from '../../components/LoginLeft';
 import LoginHeader from '../../components/LoginHeader';
-import LoginFooter from '../../components/LoginFooter';
 import LoginController from '../../components/LoginController';
+import LoginFooter from '../../components/LoginFooter';
 
-function Login(props) {
+
+function Login() {
   return (
-    <div id="background">
-      <div className="right">
+    <div className="wrapper">
+      <div id="left-side">
+        <LoginLeft />
+      </div>
+      <div id="right-side">
         <div className="centered">
           <LoginHeader />
           <LoginController />

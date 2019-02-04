@@ -4,10 +4,6 @@ import LoginBox from '../LoginBox';
 import RegisterBox from '../RegisterBox';
 import FadeTransition from '../FadeTransition';
 
-// const LoginController = () => {
-
-// this is the main controlling file for Simple Login attempt
-// start out with LoginBox open, not RegisterBox
 class LoginController extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +27,25 @@ class LoginController extends React.Component {
         <div className="root-container">
           <div className="box-controller">
             <div
+              className={`controller ${(this.state.isLoginOpen ? 'selected-controller' : '')}`}
+              onClick={this.showLoginBox.bind(this)}
+              onKeyPress={this.showLoginBox.bind(this)}
+              role="button"
+              tabIndex="0"
+            >
+              Login
+            </div>
+            <div
+              className={`controller ${(this.state.isRegisterOpen ? 'selected-controller' : '')}`}
+              onClick={this.showRegisterBox.bind(this)}
+              onKeyPress={this.showRegisterBox.bind(this)}
+              role="button"
+              tabIndex="0"
+            >
+              Register
+            </div>
+
+            {/* <div
               className={"controller " + (this.state.isLoginOpen
               ? "selected-controller"
               : "")}
@@ -47,7 +62,7 @@ class LoginController extends React.Component {
                 .showRegisterBox
                 .bind(this)}>
               Register
-            </div>
+            </div> */}
           </div>
           <FadeTransition isOpen={this.state.isLoginOpen} duration={25}>
             <div className="box-container">

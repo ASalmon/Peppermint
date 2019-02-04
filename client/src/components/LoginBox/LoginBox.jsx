@@ -90,10 +90,10 @@ class LoginBox extends Component {
     console.log(this.state);
 
     if (this.state.username === '') {
-      this.showValidationErr('username', 'Username Cannot be blank!');
+      this.showValidationErr('username', 'Username cannot be blank!');
     }
     if (this.state.password === '') {
-      this.showValidationErr('password', 'Password Cannot be blank!');
+      this.showValidationErr('password', 'Password cannot be blank!');
     }
     if (this.state.username !== '' && this.state.password !== '') {
       console.log('user/password not blank, check DB');

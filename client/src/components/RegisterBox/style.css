@@ -1,4 +1,3 @@
-
 .inner-container {
   transition: visibility 0.2s ease-out;
 }
@@ -25,8 +24,6 @@
   margin-bottom: 5px;
 }
 
-
-/* Input */
 .login-input {
   height: 2.1em;
   border-radius: 3px;
@@ -64,7 +61,7 @@
   background-color: #2ecc71;
 }
 
-/* this shows the password strength bar */
+/* shows password strength bar */
 .show {
   visibility: visible;
 }
