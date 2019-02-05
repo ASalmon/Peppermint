@@ -86,7 +86,7 @@ const lineSeries = [
   },
 ];
 
-function Grid1Col(props) {
+function GridBottom(props) {
   const { classes } = props;
 
   return (
@@ -124,12 +124,12 @@ function Grid1Col(props) {
   );
 }
 
-Grid1Col.propTypes = {
+GridBottom.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
 };
 
-Grid1Col.defaultProps = {
+GridBottom.defaultProps = {
   classes: {},
 };
 
-export default withStyles(styles)(Grid1Col);
+export default withStyles(styles)(GridBottom);

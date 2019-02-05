@@ -72,7 +72,7 @@ const lineSeries = [
   },
 ];
 
-function Grid2Col(props) {
+function GridMiddle(props) {
   const { classes } = props;
 
   return (
@@ -105,12 +105,12 @@ function Grid2Col(props) {
   );
 }
 
-Grid2Col.propTypes = {
+GridMiddle.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
 };
 
-Grid2Col.defaultProps = {
+GridMiddle.defaultProps = {
   classes: {},
 };
 
-export default withStyles(styles)(Grid2Col);
+export default withStyles(styles)(GridMiddle);
