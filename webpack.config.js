@@ -1,8 +1,9 @@
 const path = require('path');
+require('@babel/polyfill');
 
 module.exports = {
   mode: 'development',
-  entry: './client/src/index.jsx',
+  entry: ['babel-polyfill', './client/src/index.jsx'],
   output: {
     path: path.join(__dirname, 'client/dist'),
     // publicPath: './client/dist',
@@ -44,8 +45,8 @@ module.exports = {
     compress: true,
     port: 3001,
     proxy: {
-      '/graphql': 'http://localhost:3000/',
       '/api': 'http://localhost:3000/',
+      '/graphql': 'http://localhost:3000/',
       changeOrigin: true,
     },
   },

@@ -35,23 +35,42 @@ module.exports = {
               },
             },
           ]);
-        default:
+        case 'price':
           return Transaction.aggregate([
             {
               $group: {
                 _id: { itemname: '$itemName', storename: '$storeName' },
-                totalQuantity: {
-                  $sum: '$quantity',
+                totalPrice: {
+                  $sum: '$price',
                 },
               },
             },
             {
               $sort: {
-                totalQuantity: -1,
+                totalPrice: -1,
               },
             },
           ]);
+        default:
+          return [];
       }
+    },
+    topPerformingStores() {
+      return Transaction.aggregate([
+        {
+          $group: {
+            _id: '$storeName',
+            totalAmount: {
+              $sum: '$price',
+            },
+          },
+        },
+        {
+          $sort: {
+            totalAmount: -1,
+          },
+        },
+      ]);
     },
   },
   Mutation: {
