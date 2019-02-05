@@ -31,13 +31,13 @@ class GridTop extends Component {
           </Grid>
           <Grid item xs={12} md={4}>
             <Top5Table
-              title="Top Sale Item By Amount"
+              title="Top Item By Sales Amount"
               data={topSellingItemsByAmount}
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <Top5Table
-              title="Top Sale Item By Quantity"
+              title="Top Item By Sales Quantity"
               data={topSellingItemsByAmount}
             />
           </Grid>
