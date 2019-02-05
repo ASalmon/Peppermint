@@ -109,7 +109,7 @@ class LoginBox extends Component {
           }
           console.log(res.data);
           // redirect to Home - Dashboard
-          window.location.href = '/home';
+          window.location.href = '/dashboard';
         });
     }
   }
