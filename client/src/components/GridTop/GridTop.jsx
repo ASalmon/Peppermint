@@ -14,8 +14,7 @@ const styles = () => ({
   },
 });
 
-class Grid3Col extends Component {
-
+class GridTop extends Component {
   componentDidMount() {
     this.props.getTopSellingItemsByPrice();
     this.props.getTopPerformingStores();
@@ -55,7 +54,7 @@ class Grid3Col extends Component {
   }
 }
 
-Grid3Col.propTypes = {
+GridTop.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   topSellingItemsByPrice: PropTypes.arrayOf(PropTypes.object),
   topPerformingStores: PropTypes.arrayOf(PropTypes.object),
@@ -63,7 +62,7 @@ Grid3Col.propTypes = {
   getTopPerformingStores: PropTypes.func.isRequired,
 };
 
-Grid3Col.defaultProps = {
+GridTop.defaultProps = {
   classes: {},
   topSellingItemsByPrice: [],
   topPerformingStores: [],
@@ -77,10 +76,10 @@ const mapStateToProps = state => ({
 export default compose(
   withStyles(styles,
     {
-      name: 'Grid3Col',
+      name: 'GridTop',
     }),
   connect(mapStateToProps, {
     getTopSellingItemsByPrice,
     getTopPerformingStores,
   }),
-)(Grid3Col);
+)(GridTop);

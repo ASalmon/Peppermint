@@ -1,10 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import NavBar from '../../components/NavBar';
-import Grid2Col from '../../components/Grid2Col';
-import Grid3Col from '../../components/Grid3Col';
-import Grid1Col from '../../components/Grid1Col';
-
+import GridMiddle from '../../components/GridMiddle';
+import GridTop from '../../components/GridTop';
+import GridBottom from '../../components/GridBottom';
 
 const styles = theme => ({
   root: {
@@ -19,19 +18,19 @@ const styles = theme => ({
   },
 });
 
-const Home = (props) => {
+const Dashboard = (props) => {
   const { classes } = props;
   return (
     <div className={classes.root}>
       <NavBar />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Grid3Col />
-        <Grid2Col />
-        <Grid1Col />
+        <GridTop />
+        <GridMiddle />
+        <GridBottom />
       </main>
     </div>
   );
 };
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(Dashboard);
