@@ -55,9 +55,9 @@ function Top5Table(props) {
             {data.map(row => (
               <TableRow className={classes.row} key={row.id}>
                 <CustomTableCell component="th" scope="row">
-                  {row.city}
+                  {row.name}
                 </CustomTableCell>
-                <CustomTableCell align="right">{row.sales}</CustomTableCell>
+                <CustomTableCell align="right">{row.value}</CustomTableCell>
               </TableRow>
             ))}
           </TableBody>

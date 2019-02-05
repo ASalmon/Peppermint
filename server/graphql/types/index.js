@@ -1,7 +1,7 @@
 module.exports = `
   scalar Date
-
   scalar TopSellingItems
+  scalar TopPerformingStores
 
   type Transaction {
     id: ID
@@ -22,6 +22,7 @@ module.exports = `
       departmentName: String,
       storeName: String
     ): [TopSellingItems]
+    topPerformingStores: TopPerformingStores
   }
 
   type Mutation {

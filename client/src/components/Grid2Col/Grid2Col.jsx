@@ -19,7 +19,7 @@ const styles = () => ({
 });
 
 const pieData = {
-  series: [44, 55, 13, 33],
+  series: [38091.63, 31141.64, 21586.64, 19117.64],
   labels: ['New York', 'Chicago', 'Atlanta', 'Austin'],
 };
 

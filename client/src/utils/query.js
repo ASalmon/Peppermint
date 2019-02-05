@@ -1,9 +1,11 @@
 export const getTopSellingItemsQuery = `
   {
-    topSellingItems
+    topSellingItems(by: "price")
   }
 `;
 
-export const getDepartmentsQuery = `
-
+export const getTopPerformingStoresQuery = `
+  {
+    topPerformingStores
+  }
 `;
