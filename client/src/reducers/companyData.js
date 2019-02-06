@@ -2,13 +2,14 @@ import {
   GET_TOPSELLINGITEMSBYPRICE,
   GET_TOPSELLINGITEMSBYQUANTITY,
   GET_TOPPERFORMINGSTORES,
+  GET_SALESDISTRIBUTIONBYSTORE,
 } from '../actions/types';
 
 const initialState = {
   topPerformingStores: [],
   topSellingItemsByPrice: [],
   topSellingItemsByQuantity: [],
-  salesDistribution: [],
+  salesDistribution: {},
 };
 
 export default function (state = initialState, action) {
@@ -28,6 +29,11 @@ export default function (state = initialState, action) {
         ...state,
         topPerformingStores: action.payload,
       };
+    case GET_SALESDISTRIBUTIONBYSTORE:
+      return {
+        ...state,
+        salesDistribution: action.payload,
+      }
     default:
       return state;
   }

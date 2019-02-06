@@ -84,7 +84,7 @@ export default {
     })
     .catch(error => console.log(error)),
 
-  getPieChartData: () => axios({
+  getSalesDistributionByStore: () => axios({
     url: 'http://localhost:3000/graphql',
     method: 'post',
     headers: {
@@ -95,13 +95,10 @@ export default {
   })
     .then((response) => {
       const stores = response.data.data.topPerformingStores;
-      const formatedData = [];
+      const formatedData = {};
       for (let i = 0; i < stores.length; i += 1) {
-        const store = {};
-        store.id = i;
-        store.name = stores[i]._id;
-        store.value = stores[i].totalAmount;
-        formatedData.push(store);
+        formatedData.labels.push(stores[i]._id);
+        formatedData.series.push(stores[i].totalAmount);
       }
       return formatedData;
     })
