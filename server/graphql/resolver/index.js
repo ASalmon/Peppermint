@@ -23,7 +23,7 @@ module.exports = {
           return Transaction.aggregate([
             {
               $group: {
-                _id: { itemname: '$itemName', storename: '$storeName' },
+                _id: '$itemName',
                 totalQuantity: {
                   $sum: '$quantity',
                 },
@@ -39,7 +39,7 @@ module.exports = {
           return Transaction.aggregate([
             {
               $group: {
-                _id: { itemname: '$itemName', storename: '$storeName' },
+                _id: '$itemName',
                 totalPrice: {
                   $sum: '$price',
                 },
