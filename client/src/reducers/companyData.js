@@ -1,5 +1,6 @@
 import {
   GET_TOPSELLINGITEMSBYPRICE,
+  GET_TOPSELLINGITEMSBYQUANTITY,
   GET_TOPPERFORMINGSTORES,
 } from '../actions/types';
 
@@ -17,6 +18,11 @@ export default function (state = initialState, action) {
         ...state,
         topSellingItemsByPrice: action.payload,
       };
+    case GET_TOPSELLINGITEMSBYQUANTITY:
+      return {
+        ...state,
+        topSellingItemsByQuantity: action.payload,
+      }
     case GET_TOPPERFORMINGSTORES:
       return {
         ...state,
