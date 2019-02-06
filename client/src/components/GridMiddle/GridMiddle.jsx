@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
+import { renderComponent, compose } from 'recompose';
 import PieChart from '../PieChart';
 import LineChart from '../LineChart';
+import getTopPerformingStores from '../../actions/getTopPerformingStores';
 
 const styles = () => ({
   root: {
@@ -17,11 +20,6 @@ const styles = () => ({
     height: 500,
   },
 });
-
-const pieData = {
-  series: [38091.63, 31141.64, 21586.64, 19117.64],
-  labels: ['New York', 'Chicago', 'Atlanta', 'Austin'],
-};
 
 const lineOptions = {
   options: {
@@ -73,7 +71,12 @@ const lineSeries = [
 ];
 
 function GridMiddle(props) {
-  const { classes } = props;
+  const { classes } = this.props;
+
+  const pieData = {
+    series: [],
+    labels: [],
+  };
 
   return (
     <div className={classes.root}>
@@ -113,4 +116,13 @@ GridMiddle.defaultProps = {
   classes: {},
 };
 
-export default withStyles(styles)(GridMiddle);
+const mapStateToProps = state => ({
+  topPerformingStores: state.companyData.topPerformingStores,
+});
+
+export default compose(
+  withStyles(styles, {
+    name: 'GridMiddle',
+  }),
+  connect(mapStateToProps),
+)(GridMiddle);
