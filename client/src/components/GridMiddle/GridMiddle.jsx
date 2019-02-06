@@ -3,13 +3,19 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
+import { renderComponent, compose } from 'recompose';
 import PieChart from '../PieChart';
 import LineChart from '../LineChart';
+<<<<<<< HEAD
 import getSalesDistributionByStore from '../../actions/getSalesDistributionByStore';
+=======
+import getTopPerformingStores from '../../actions/getTopPerformingStores';
+>>>>>>> 10d3baa70aeb00d05965723d6cf7c35645c34ba0
 
 const styles = () => ({
   root: {
@@ -70,11 +76,21 @@ const lineSeries = [
   },
 ];
 
+<<<<<<< HEAD
 class GridMiddle extends Component {
   componentDidMount() {
     const {
       getSalesDistributionByStore: _getSalesDistributionByStore,
     } = this.props;
+=======
+function GridMiddle(props) {
+  const { classes } = this.props;
+
+  const pieData = {
+    series: [],
+    labels: [],
+  };
+>>>>>>> 10d3baa70aeb00d05965723d6cf7c35645c34ba0
 
     _getSalesDistributionByStore();
   }
@@ -140,15 +156,25 @@ GridMiddle.defaultProps = {
 };
 
 const mapStateToProps = state => ({
+<<<<<<< HEAD
   salesDistribution: state.companyData.salesDistribution,
 });
 
 
+=======
+  topPerformingStores: state.companyData.topPerformingStores,
+});
+
+>>>>>>> 10d3baa70aeb00d05965723d6cf7c35645c34ba0
 export default compose(
   withStyles(styles, {
     name: 'GridMiddle',
   }),
+<<<<<<< HEAD
   connect(mapStateToProps, {
     getSalesDistributionByStore,
   }),
+=======
+  connect(mapStateToProps),
+>>>>>>> 10d3baa70aeb00d05965723d6cf7c35645c34ba0
 )(GridMiddle);
