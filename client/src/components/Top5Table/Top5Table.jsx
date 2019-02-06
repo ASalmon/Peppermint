@@ -39,7 +39,9 @@ const styles = theme => ({
 });
 
 function Top5Table(props) {
-  const { classes, title, data } = props;
+  const {
+    classes, title, data, column,
+  } = props;
 
   return (
     <React.Fragment>
@@ -48,7 +50,7 @@ function Top5Table(props) {
           <TableHead>
             <TableRow>
               <CustomTableCell>{title}</CustomTableCell>
-              <CustomTableCell align="right">Sales Amount</CustomTableCell>
+              <CustomTableCell align="right">{column}</CustomTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -70,12 +72,14 @@ function Top5Table(props) {
 Top5Table.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   title: PropTypes.string,
+  column: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.object),
 };
 
 Top5Table.defaultProps = {
   classes: {},
   title: '',
+  column: '',
   data: [],
 };
 

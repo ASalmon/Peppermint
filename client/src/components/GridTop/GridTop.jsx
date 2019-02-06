@@ -42,18 +42,21 @@ class GridTop extends Component {
           <Grid item xs={12} md={4}>
             <Top5Table
               title="Top Performing Stores"
+              column="Sales Amount"
               data={topPerformingStores}
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <Top5Table
               title="Top Sale Item By Amount"
+              column="Sales Amount"
               data={topSellingItemsByPrice}
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <Top5Table
               title="Top Sale Item By Quantity"
+              column="Quantity"
               data={topSellingItemsByQuantity}
             />
           </Grid>
@@ -90,9 +93,12 @@ export default compose(
   withStyles(styles, {
     name: 'GridTop',
   }),
-  connect(mapStateToProps, {
-    getTopSellingItemsByPrice,
-    getTopPerformingStores,
-    getTopSellingItemsByQuantity,
-  }),
+  connect(
+    mapStateToProps,
+    {
+      getTopSellingItemsByPrice,
+      getTopPerformingStores,
+      getTopSellingItemsByQuantity,
+    },
+  ),
 )(GridTop);
