@@ -1,5 +1,11 @@
 import React from 'react';
 import DirectionsBike from '@material-ui/icons/DirectionsBike';
+// import './style.css';
+
+const styleForHeader = {
+  marginTop: 50,
+  marginBottom: 50,
+};
 
 const styleForBikeIcon = {
   fontSize: 120,
@@ -26,9 +32,11 @@ const styleForSubtext = {
 const LoginHeader = () => {
   return (
     <React.Fragment>
-      <DirectionsBike style={styleForBikeIcon} />
-      <h1 style={styleForHeading}>Handlebars Express</h1>
-      <p style={styleForSubtext}>sales dashboard</p>
+      <div style={styleForHeader}>
+        <DirectionsBike style={styleForBikeIcon} />
+        <h1 style={styleForHeading}>Handlebars Express</h1>
+        <p style={styleForSubtext}>sales dashboard</p>
+      </div>
     </React.Fragment>
   );
 };
