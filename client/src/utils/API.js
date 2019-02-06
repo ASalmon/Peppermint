@@ -95,7 +95,10 @@ export default {
   })
     .then((response) => {
       const stores = response.data.data.topPerformingStores;
-      const formatedData = {};
+      const formatedData = {
+        labels: [],
+        series: [],
+      };
       for (let i = 0; i < stores.length; i += 1) {
         formatedData.labels.push(stores[i]._id);
         formatedData.series.push(stores[i].totalAmount);

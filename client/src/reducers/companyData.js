@@ -9,7 +9,10 @@ const initialState = {
   topPerformingStores: [],
   topSellingItemsByPrice: [],
   topSellingItemsByQuantity: [],
-  salesDistribution: {},
+  salesDistribution: {
+    labels: [],
+    series: [],
+  },
 };
 
 export default function (state = initialState, action) {
@@ -33,7 +36,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         salesDistribution: action.payload,
-      }
+      };
     default:
       return state;
   }

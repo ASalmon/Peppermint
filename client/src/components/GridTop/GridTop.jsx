@@ -17,9 +17,15 @@ const styles = () => ({
 
 class GridTop extends Component {
   componentDidMount() {
-    this.props.getTopSellingItemsByPrice();
-    this.props.getTopPerformingStores();
-    this.props.getTopSellingItemsByQuantity();
+    const {
+      getTopSellingItemsByPrice: _getTopSellingItemsByPrice,
+      getTopPerformingStores: _getTopPerformingStores,
+      getTopSellingItemsByQuantity: _getTopSellingItemsByQuantity,
+    } = this.props;
+
+    _getTopSellingItemsByPrice();
+    _getTopPerformingStores();
+    _getTopSellingItemsByQuantity();
   }
 
   render() {
@@ -81,10 +87,9 @@ const mapStateToProps = state => ({
 });
 
 export default compose(
-  withStyles(styles,
-    {
-      name: 'GridTop',
-    }),
+  withStyles(styles, {
+    name: 'GridTop',
+  }),
   connect(mapStateToProps, {
     getTopSellingItemsByPrice,
     getTopPerformingStores,
