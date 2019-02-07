@@ -124,10 +124,12 @@ export default {
       xaxis: {
         categories: [],
       },
-      lineSeries: {
-        name: '',
-        data: [],
-      },
+      lineSeries: [
+        {
+          name: '',
+          data: [],
+        },
+      ],
     };
     yearlyData.forEach((item) => {
       const { month } = item.date;
@@ -135,9 +137,9 @@ export default {
         .month(month - 1)
         .format('MMM');
       formatedData.xaxis.categories.push(monthStr);
-      formatedData.lineSeries.data.push(item.total);
+      formatedData.lineSeries[0].data.push(item.total);
     });
-    formatedData.lineSeries.name = year;
+    formatedData.lineSeries[0].name = year;
     return formatedData;
   }),
 };

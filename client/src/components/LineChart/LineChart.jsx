@@ -58,7 +58,6 @@ let Options = {
   },
 };
 
-
 const LineChart = (props) => {
   const { series, xaxis } = props;
 

@@ -16,7 +16,7 @@ const initialState = {
   },
   yearlyPerformance: {
     xaxis: [],
-    lineSeries: {},
+    lineSeries: [],
   },
 };
 

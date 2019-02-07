@@ -17,22 +17,9 @@ const styles = () => ({
   },
 });
 
-const lineSeries = [
-  {
-    name: '2018',
-    data: [23, 12, 54, 61, 32, 56, 81, 19],
-  },
-  {
-    name: '2019',
-    data: [25, 13, 55, 58, 30, 54, 89, 24],
-  },
-];
-
 class GridBottom extends Component {
   componentDidMount() {
-    const {
-      getYearlyPerformance: _getYearlyPerformance,
-    } = this.props;
+    const { getYearlyPerformance: _getYearlyPerformance } = this.props;
     _getYearlyPerformance();
   }
 
@@ -54,10 +41,17 @@ class GridBottom extends Component {
                 className={classes.cardheader}
               />
               <CardContent>
-                <LineChart
-                  xaxis={{}}
-                  series={lineSeries}
-                />
+                {yearlyPerformancexAxis
+                && yearlyPerformanceLineSeries
+                && yearlyPerformancexAxis.categories
+                && yearlyPerformancexAxis.categories.length ? (
+                  <LineChart
+                    xaxis={yearlyPerformancexAxis}
+                    series={yearlyPerformanceLineSeries}
+                  />
+                  ) : (
+                    undefined
+                  )}
               </CardContent>
             </Card>
           </Grid>
@@ -89,7 +83,7 @@ GridBottom.propTypes = {
 GridBottom.defaultProps = {
   classes: {},
   yearlyPerformancexAxis: [],
-  yearlyPerformanceLineSeries: {},
+  yearlyPerformanceLineSeries: [],
 };
 
 const mapStateToProps = state => ({
