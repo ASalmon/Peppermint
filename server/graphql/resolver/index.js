@@ -17,6 +17,43 @@ module.exports = {
     transactionByID(parent, args) {
       return Transaction.findById(args.id);
     },
+    performancebyDates(parent, args) {
+      return Transaction.aggregate([
+        {
+          $match: {
+            transactionDate: {
+              $gte: new Date(args.from),
+              $lt: new Date(args.to),
+            },
+          },
+        },
+        {
+          $project: {
+            month: { $month: '$transactionDate' },
+            year: { $year: '$transactionDate' },
+            price: 1,
+          },
+        },
+        {
+          $group: {
+            _id: { month: '$month', year: '$year' },
+            total: { $sum: '$price' },
+          },
+        },
+        {
+          $sort: {
+            _id: 1,
+          },
+        },
+        {
+          $project: {
+            total: 1,
+            date: '$_id',
+            _id: 0,
+          },
+        },
+      ]);
+    },
     topSellingItems(parent, args) {
       switch (args.by) {
         case 'quantity':

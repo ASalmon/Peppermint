@@ -3,6 +3,7 @@ import {
   getTopSellingItemsByPriceQuery,
   getTopSellingItemsByQuantityQuery,
   getTopPerformingStoresQuery,
+  getYearlyPerformance,
 } from './query';
 
 export default {
@@ -106,4 +107,15 @@ export default {
       return formatedData;
     })
     .catch(error => console.log(error)),
+
+  getYearlyPerformance: () => axios({
+    url: 'http://localhost:3000/graphql',
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    data: { query: getYearlyPerformance },
+  }),
+
 };
