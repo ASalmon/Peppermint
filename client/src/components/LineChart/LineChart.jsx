@@ -66,6 +66,7 @@ const LineChart = (props) => {
     ...Options,
     xaxis,
   };
+
   return (
     <Chart
       options={Options}

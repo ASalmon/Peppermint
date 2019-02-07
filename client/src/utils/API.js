@@ -78,7 +78,7 @@ export default {
         const store = {};
         store.id = i;
         store.name = stores[i]._id;
-        store.value = stores[i].totalAmount;
+        store.value = stores[i].totalAmount.toFixed(2);
         formatedData.push(store);
       }
       return formatedData;

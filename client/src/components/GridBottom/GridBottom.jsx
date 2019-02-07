@@ -16,6 +16,9 @@ const styles = () => ({
     flexGrow: 1,
   },
 });
+const xaxis = {
+  categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+};
 
 const lineSeries = [
   {
@@ -55,7 +58,7 @@ class GridBottom extends Component {
               />
               <CardContent>
                 <LineChart
-                  xaxis={{}}
+                  xaxis={xaxis}
                   series={lineSeries}
                 />
               </CardContent>

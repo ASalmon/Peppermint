@@ -1202,6 +1202,14 @@ const transactionSeed = [
     storeName: 'New York',
     transactionDate: new Date('2017-01-08'),
   },
+  {
+    itemName: 'Trek X-Caliber 8',
+    price: 1199.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'New York',
+    transactionDate: new Date('2017-02-15'),
+  },
 ];
 
 Transaction
