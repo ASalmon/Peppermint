@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import {
   getTopSellingItemsByPriceQuery,
   getTopSellingItemsByQuantityQuery,
@@ -116,6 +117,27 @@ export default {
       'Content-Type': 'application/json',
     },
     data: { query: getYearlyPerformance },
+  }).then((response) => {
+    const yearlyData = response.data.data.performancebyDates;
+    const { year } = yearlyData[0].date;
+    const formatedData = {
+      xaxis: {
+        categories: [],
+      },
+      lineSeries: {
+        name: '',
+        data: [],
+      },
+    };
+    yearlyData.forEach((item) => {
+      const { month } = item.date;
+      const monthStr = moment()
+        .month(month - 1)
+        .format('MMM');
+      formatedData.xaxis.categories.push(monthStr);
+      formatedData.lineSeries.data.push(item.total);
+    });
+    formatedData.lineSeries.name = year;
+    return formatedData;
   }),
-
 };
