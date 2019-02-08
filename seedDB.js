@@ -16,7 +16,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-01-02',
+    transactionDate: new Date('2018-01-02'),
   },
   {
     itemName: 'Trek 1120',
@@ -24,7 +24,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-02-05',
+    transactionDate: new Date('2018-02-05'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -32,7 +32,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-03-08',
+    transactionDate: new Date('2018-03-08'),
   },
   {
     itemName: 'Trek 920',
@@ -40,7 +40,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-04-03',
+    transactionDate: new Date('2018-04-03'),
   },
   {
     itemName: 'Cannondale Synapse',
@@ -48,7 +48,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-05-15',
+    transactionDate: new Date('2018-05-15'),
   },
   {
     itemName: 'Trek 920',
@@ -56,7 +56,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-06-22',
+    transactionDate: new Date('2018-06-22'),
   },
   {
     itemName: 'Giant Contend',
@@ -64,7 +64,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-07-28',
+    transactionDate: new Date('2018-07-28'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -72,7 +72,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-08-05',
+    transactionDate: new Date('2018-08-05'),
   },
   {
     itemName: 'Trek 920',
@@ -80,7 +80,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-09-08',
+    transactionDate: new Date('2018-09-08'),
   },
   {
     itemName: 'Trek 920',
@@ -88,7 +88,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-10-02',
+    transactionDate: new Date('2018-10-02'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -96,7 +96,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-11-05',
+    transactionDate: new Date('2018-11-05'),
   },
   {
     itemName: 'Trek 1120',
@@ -104,7 +104,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Trek 1120',
@@ -112,7 +112,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-12-02',
+    transactionDate: new Date('2018-12-02'),
   },
   {
     itemName: 'Giant Defy',
@@ -120,7 +120,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-12-05',
+    transactionDate: new Date('2018-12-05'),
   },
   {
     itemName: 'Trek 1120',
@@ -128,7 +128,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Gloves',
@@ -136,7 +136,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Atlanta',
-    transactionDate: '2018-01-02',
+    transactionDate: new Date('2018-01-02'),
   },
   {
     itemName: 'Shoes',
@@ -144,7 +144,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Atlanta',
-    transactionDate: '2018-01-05',
+    transactionDate: new Date('2018-01-05'),
   },
   {
     itemName: 'T-shirts',
@@ -152,7 +152,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Atlanta',
-    transactionDate: '2018-02-08',
+    transactionDate: new Date('2018-02-08'),
   },
   {
     itemName: 'T-shirts',
@@ -160,7 +160,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Atlanta',
-    transactionDate: '2018-05-02',
+    transactionDate: new Date('2018-05-02'),
   },
   {
     itemName: 'Shorts',
@@ -168,7 +168,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Atlanta',
-    transactionDate: '2018-06-05',
+    transactionDate: new Date('2018-06-05'),
   },
   {
     itemName: 'Helmet',
@@ -176,7 +176,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Atlanta',
-    transactionDate: '2018-07-08',
+    transactionDate: new Date('2018-07-08'),
   },
   {
     itemName: 'Brakes',
@@ -184,7 +184,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-01-01',
+    transactionDate: new Date('2018-01-01'),
   },
   {
     itemName: 'Pedals',
@@ -192,7 +192,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-02-07',
+    transactionDate: new Date('2018-02-07'),
   },
   {
     itemName: 'Saddle',
@@ -200,7 +200,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-03-08',
+    transactionDate: new Date('2018-03-08'),
   },
   {
     itemName: 'Handlebars',
@@ -208,7 +208,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-04-01',
+    transactionDate: new Date('2018-04-01'),
   },
   {
     itemName: 'Chains',
@@ -216,7 +216,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-05-05',
+    transactionDate: new Date('2018-05-05'),
   },
   {
     itemName: 'Bell',
@@ -224,7 +224,7 @@ const transactionSeed = [
     quantity: 3,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-06-08',
+    transactionDate: new Date('2018-06-08'),
   },
   {
     itemName: 'Brakes',
@@ -232,7 +232,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-07-02',
+    transactionDate: new Date('2018-07-02'),
   },
   {
     itemName: 'Pedals',
@@ -240,7 +240,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-08-06',
+    transactionDate: new Date('2018-08-06'),
   },
   {
     itemName: 'Saddle',
@@ -248,7 +248,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-09-13',
+    transactionDate: new Date('2018-09-13'),
   },
   {
     itemName: 'Handlebars',
@@ -256,7 +256,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-10-02',
+    transactionDate: new Date('2018-10-02'),
   },
   {
     itemName: 'Chains',
@@ -264,7 +264,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-11-05',
+    transactionDate: new Date('2018-11-05'),
   },
   {
     itemName: 'Bell',
@@ -272,7 +272,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Brakes',
@@ -280,7 +280,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-12-09',
+    transactionDate: new Date('2018-12-09'),
   },
   {
     itemName: 'Bell',
@@ -288,7 +288,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-01-05',
+    transactionDate: new Date('2018-01-05'),
   },
   {
     itemName: 'Handlebars',
@@ -296,7 +296,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Atlanta',
-    transactionDate: '2018-04-08',
+    transactionDate: new Date('2018-04-08'),
   },
   {
     itemName: 'Giant Contend',
@@ -304,7 +304,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-01-01',
+    transactionDate: new Date('2018-01-01'),
   },
   {
     itemName: 'Cannondale Synapse',
@@ -312,7 +312,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-02-05',
+    transactionDate: new Date('2018-02-05'),
   },
   {
     itemName: 'Trek 920',
@@ -320,7 +320,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-03-08',
+    transactionDate: new Date('2018-03-08'),
   },
   {
     itemName: 'Trek 920',
@@ -328,7 +328,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-04-15',
+    transactionDate: new Date('2018-04-15'),
   },
   {
     itemName: 'Giant Defy',
@@ -336,7 +336,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-05-01',
+    transactionDate: new Date('2018-05-01'),
   },
   {
     itemName: 'Trek 920',
@@ -344,7 +344,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-06-08',
+    transactionDate: new Date('2018-06-08'),
   },
   {
     itemName: 'Trek 920',
@@ -352,7 +352,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-07-02',
+    transactionDate: new Date('2018-07-02'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -360,7 +360,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-08-05',
+    transactionDate: new Date('2018-08-05'),
   },
   {
     itemName: 'Trek 920',
@@ -368,7 +368,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-09-08',
+    transactionDate: new Date('2018-09-08'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -376,7 +376,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Chicago',
-    transactionDate: '2018-12-01',
+    transactionDate: new Date('2018-12-01'),
   },
   {
     itemName: 'Gloves',
@@ -384,7 +384,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-01-05',
+    transactionDate: new Date('2018-01-05'),
   },
   {
     itemName: 'Shoes',
@@ -392,7 +392,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-01-10',
+    transactionDate: new Date('2018-01-10'),
   },
   {
     itemName: 'T-shirts',
@@ -400,7 +400,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-01-25',
+    transactionDate: new Date('2018-01-25'),
   },
   {
     itemName: 'Helmets',
@@ -408,7 +408,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-02-15',
+    transactionDate: new Date('2018-02-15'),
   },
   {
     itemName: 'Shorts',
@@ -416,7 +416,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-03-08',
+    transactionDate: new Date('2018-03-08'),
   },
   {
     itemName: 'Jerseys',
@@ -424,7 +424,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-03-08',
+    transactionDate: new Date('2018-03-08'),
   },
   {
     itemName: 'Gloves',
@@ -432,7 +432,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-03-25',
+    transactionDate: new Date('2018-03-25'),
   },
   {
     itemName: 'Shoes',
@@ -440,7 +440,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-03-28',
+    transactionDate: new Date('2018-03-28'),
   },
   {
     itemName: 'Shoes',
@@ -448,7 +448,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-04-20',
+    transactionDate: new Date('2018-04-20'),
   },
   {
     itemName: 'Helmets',
@@ -456,7 +456,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-05-05',
+    transactionDate: new Date('2018-05-05'),
   },
   {
     itemName: 'T-shirts',
@@ -464,7 +464,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-06-08',
+    transactionDate: new Date('2018-06-08'),
   },
   {
     itemName: 'Jerseys',
@@ -472,7 +472,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-07-02',
+    transactionDate: new Date('2018-07-02'),
   },
   {
     itemName: 'Jerseys',
@@ -480,7 +480,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-07-15',
+    transactionDate: new Date('2018-07-15'),
   },
   {
     itemName: 'Shoes',
@@ -488,7 +488,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-08-08',
+    transactionDate: new Date('2018-08-08'),
   },
   {
     itemName: 'Gloves',
@@ -496,7 +496,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-09-02',
+    transactionDate: new Date('2018-09-02'),
   },
   {
     itemName: 'Helmets',
@@ -504,7 +504,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-10-20',
+    transactionDate: new Date('2018-10-20'),
   },
   {
     itemName: 'Shorts',
@@ -512,7 +512,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-11-08',
+    transactionDate: new Date('2018-11-08'),
   },
   {
     itemName: 'Shorts',
@@ -520,7 +520,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-12-02',
+    transactionDate: new Date('2018-12-02'),
   },
   {
     itemName: 'T-shirts',
@@ -528,7 +528,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Chicago',
-    transactionDate: '2018-12-28',
+    transactionDate: new Date('2018-12-28'),
   },
   {
     itemName: 'Brakes',
@@ -536,7 +536,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-01-28',
+    transactionDate: new Date('2018-01-28'),
   },
   {
     itemName: 'Saddle',
@@ -544,7 +544,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-03-02',
+    transactionDate: new Date('2018-03-02'),
   },
   {
     itemName: 'Handlebars',
@@ -552,7 +552,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-08-05',
+    transactionDate: new Date('2018-08-05'),
   },
   {
     itemName: 'Bell',
@@ -560,7 +560,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Bell',
@@ -568,7 +568,7 @@ const transactionSeed = [
     quantity: 2,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Saddle',
@@ -576,7 +576,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-12-10',
+    transactionDate: new Date('2018-12-10'),
   },
   {
     itemName: 'Chains',
@@ -584,7 +584,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Chicago',
-    transactionDate: '2018-12-28',
+    transactionDate: new Date('2018-12-28'),
   },
   {
     itemName: 'Trek X-Caliber 8',
@@ -592,7 +592,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-01-02',
+    transactionDate: new Date('2018-01-02'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -600,7 +600,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-01-01',
+    transactionDate: new Date('2018-01-01'),
   },
   {
     itemName: 'Trek 920',
@@ -608,7 +608,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-01-16',
+    transactionDate: new Date('2018-01-16'),
   },
   {
     itemName: 'Trek 920',
@@ -616,7 +616,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-01-16',
+    transactionDate: new Date('2018-01-16'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -624,7 +624,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-03-17',
+    transactionDate: new Date('2018-03-17'),
   },
   {
     itemName: 'Trek 920',
@@ -632,7 +632,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-04-08',
+    transactionDate: new Date('2018-04-08'),
   },
   {
     itemName: 'Specialized ALLEZ',
@@ -640,7 +640,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-05-23',
+    transactionDate: new Date('2018-05-23'),
   },
   {
     itemName: 'Cannondale Synapse',
@@ -648,7 +648,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-06-05',
+    transactionDate: new Date('2018-06-05'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -656,7 +656,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-07-01',
+    transactionDate: new Date('2018-07-01'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -664,7 +664,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-08-02',
+    transactionDate: new Date('2018-08-02'),
   },
   {
     itemName: 'Trek 1120',
@@ -672,7 +672,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-09-13',
+    transactionDate: new Date('2018-09-13'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -680,7 +680,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Dallas',
-    transactionDate: '2018-12-01',
+    transactionDate: new Date('2018-12-01'),
   },
   {
     itemName: 'Gloves',
@@ -688,7 +688,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-02-14',
+    transactionDate: new Date('2018-02-14'),
   },
   {
     itemName: 'Shoes',
@@ -696,7 +696,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-05-05',
+    transactionDate: new Date('2018-05-05'),
   },
   {
     itemName: 'T-shirts',
@@ -704,7 +704,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-07-18',
+    transactionDate: new Date('2018-07-18'),
   },
   {
     itemName: 'Jerseys',
@@ -712,7 +712,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-07-22',
+    transactionDate: new Date('2018-07-22'),
   },
   {
     itemName: 'Helmets',
@@ -720,7 +720,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-09-05',
+    transactionDate: new Date('2018-09-05'),
   },
   {
     itemName: 'Shoes',
@@ -728,7 +728,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-10-08',
+    transactionDate: new Date('2018-10-08'),
   },
   {
     itemName: 'Helmets',
@@ -736,7 +736,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-11-15',
+    transactionDate: new Date('2018-11-15'),
   },
   {
     itemName: 'Shorts',
@@ -744,7 +744,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-12-05',
+    transactionDate: new Date('2018-12-05'),
   },
   {
     itemName: 'Gloves',
@@ -752,7 +752,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'Dallas',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Brakes',
@@ -760,7 +760,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-01-25',
+    transactionDate: new Date('2018-01-25'),
   },
   {
     itemName: 'Pedals',
@@ -768,7 +768,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-02-25',
+    transactionDate: new Date('2018-02-25'),
   },
   {
     itemName: 'Saddle',
@@ -776,7 +776,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-03-18',
+    transactionDate: new Date('2018-03-18'),
   },
   {
     itemName: 'Handlebars',
@@ -784,7 +784,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-03-22',
+    transactionDate: new Date('2018-03-22'),
   },
   {
     itemName: 'Chains',
@@ -792,7 +792,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-03-25',
+    transactionDate: new Date('2018-03-25'),
   },
   {
     itemName: 'Bell',
@@ -800,7 +800,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-04-08',
+    transactionDate: new Date('2018-04-08'),
   },
   {
     itemName: 'Handlebars',
@@ -808,7 +808,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-05-02',
+    transactionDate: new Date('2018-05-02'),
   },
   {
     itemName: 'Saddle',
@@ -816,7 +816,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-06-05',
+    transactionDate: new Date('2018-06-05'),
   },
   {
     itemName: 'Saddle',
@@ -824,7 +824,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-07-08',
+    transactionDate: new Date('2018-07-08'),
   },
   {
     itemName: 'Handlebars',
@@ -832,7 +832,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-08-02',
+    transactionDate: new Date('2018-08-02'),
   },
   {
     itemName: 'Brakes',
@@ -840,7 +840,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-09-05',
+    transactionDate: new Date('2018-09-05'),
   },
   {
     itemName: 'Bell',
@@ -848,7 +848,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-09-18',
+    transactionDate: new Date('2018-09-18'),
   },
   {
     itemName: 'Bell',
@@ -856,7 +856,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-11-22',
+    transactionDate: new Date('2018-11-22'),
   },
   {
     itemName: 'Bell',
@@ -864,7 +864,7 @@ const transactionSeed = [
     quantity: 2,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-12-05',
+    transactionDate: new Date('2018-12-05'),
   },
   {
     itemName: 'Bell',
@@ -872,7 +872,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'Dallas',
-    transactionDate: '2018-12-18',
+    transactionDate: new Date('2018-12-18'),
   },
   {
     itemName: 'Trek 920',
@@ -880,7 +880,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-01-01',
+    transactionDate: new Date('2018-01-01'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -888,7 +888,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-01-15',
+    transactionDate: new Date('2018-01-15'),
   },
   {
     itemName: 'Trek 920',
@@ -896,7 +896,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-02-08',
+    transactionDate: new Date('2018-02-08'),
   },
   {
     itemName: 'Trek 920',
@@ -904,7 +904,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-02-22',
+    transactionDate: new Date('2018-02-22'),
   },
   {
     itemName: 'Specialized ALLEX',
@@ -912,7 +912,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-03-17',
+    transactionDate: new Date('2018-03-17'),
   },
   {
     itemName: 'Trek 920',
@@ -920,7 +920,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-04-08',
+    transactionDate: new Date('2018-04-08'),
   },
   {
     itemName: 'Trek 920',
@@ -928,7 +928,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-04-15',
+    transactionDate: new Date('2018-04-15'),
   },
   {
     itemName: 'Cannondale CAADX',
@@ -936,7 +936,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-05-05',
+    transactionDate: new Date('2018-05-05'),
   },
   {
     itemName: 'Trek 920',
@@ -944,7 +944,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-05-12',
+    transactionDate: new Date('2018-05-12'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -952,7 +952,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-06-14',
+    transactionDate: new Date('2018-06-14'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -960,7 +960,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-07-02',
+    transactionDate: new Date('2018-07-02'),
   },
   {
     itemName: 'Trek 1120',
@@ -968,7 +968,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-08-08',
+    transactionDate: new Date('2018-08-08'),
   },
   {
     itemName: 'Trek 920',
@@ -976,7 +976,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-08-09',
+    transactionDate: new Date('2018-08-09'),
   },
   {
     itemName: 'Giant Contend',
@@ -984,7 +984,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-08-22',
+    transactionDate: new Date('2018-08-22'),
   },
   {
     itemName: 'Giant Defy',
@@ -992,7 +992,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-09-08',
+    transactionDate: new Date('2018-09-08'),
   },
   {
     itemName: 'Trek 1120',
@@ -1000,7 +1000,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-09-12',
+    transactionDate: new Date('2018-09-12'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -1008,7 +1008,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-10-05',
+    transactionDate: new Date('2018-10-05'),
   },
   {
     itemName: 'Trek 1120',
@@ -1016,7 +1016,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-10-31',
+    transactionDate: new Date('2018-10-31'),
   },
   {
     itemName: 'Trek 1120',
@@ -1024,7 +1024,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-11-22',
+    transactionDate: new Date('2018-11-22'),
   },
   {
     itemName: 'Specialized Dolce',
@@ -1032,7 +1032,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-12-06',
+    transactionDate: new Date('2018-12-06'),
   },
   {
     itemName: 'Trek 1120',
@@ -1040,7 +1040,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Gloves',
@@ -1048,7 +1048,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-01-02',
+    transactionDate: new Date('2018-01-02'),
   },
   {
     itemName: 'Gloves',
@@ -1056,7 +1056,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-01-05',
+    transactionDate: new Date('2018-01-05'),
   },
   {
     itemName: 'Gloves',
@@ -1064,7 +1064,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-01-08',
+    transactionDate: new Date('2018-01-08'),
   },
   {
     itemName: 'Shoes',
@@ -1072,7 +1072,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-02-18',
+    transactionDate: new Date('2018-02-18'),
   },
   {
     itemName: 'T-shirts',
@@ -1080,7 +1080,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-05-05',
+    transactionDate: new Date('2018-05-05'),
   },
   {
     itemName: 'T-shirts',
@@ -1088,7 +1088,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-05-08',
+    transactionDate: new Date('2018-05-08'),
   },
   {
     itemName: 'Jerseys',
@@ -1096,7 +1096,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-06-12',
+    transactionDate: new Date('2018-06-12'),
   },
   {
     itemName: 'Helmets',
@@ -1104,7 +1104,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Clothing',
     storeName: 'New York',
-    transactionDate: '2018-09-05',
+    transactionDate: new Date('2018-09-05'),
   },
   {
     itemName: 'Saddle',
@@ -1112,7 +1112,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-02-08',
+    transactionDate: new Date('2018-02-08'),
   },
   {
     itemName: 'Handlebars',
@@ -1120,7 +1120,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-04-12',
+    transactionDate: new Date('2018-04-12'),
   },
   {
     itemName: 'Chains',
@@ -1128,7 +1128,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-06-25',
+    transactionDate: new Date('2018-06-25'),
   },
   {
     itemName: 'Bell',
@@ -1136,7 +1136,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-08-08',
+    transactionDate: new Date('2018-08-08'),
   },
   {
     itemName: 'Bell',
@@ -1144,7 +1144,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-10-02',
+    transactionDate: new Date('2018-10-02'),
   },
   {
     itemName: 'Pedals',
@@ -1152,7 +1152,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-11-05',
+    transactionDate: new Date('2018-11-05'),
   },
   {
     itemName: 'Bell',
@@ -1160,7 +1160,7 @@ const transactionSeed = [
     quantity: 4,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-12-08',
+    transactionDate: new Date('2018-12-08'),
   },
   {
     itemName: 'Bell',
@@ -1168,7 +1168,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Parts',
     storeName: 'New York',
-    transactionDate: '2018-12-10',
+    transactionDate: new Date('2018-12-10'),
   },
   {
     itemName: 'Trek X-Caliber 8',
@@ -1176,7 +1176,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2017-01-08',
+    transactionDate: new Date('2017-01-08'),
   },
   {
     itemName: 'Trek X-Caliber 8',
@@ -1184,7 +1184,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2017-01-08',
+    transactionDate: new Date('2017-01-08'),
   },
   {
     itemName: 'Trek X-Caliber 8',
@@ -1192,7 +1192,7 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2017-01-08',
+    transactionDate: new Date('2017-01-08'),
   },
   {
     itemName: 'Trek X-Caliber 8',
@@ -1200,18 +1200,24 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'New York',
-    transactionDate: '2017-01-08',
+    transactionDate: new Date('2017-01-08'),
+  },
+  {
+    itemName: 'Trek X-Caliber 8',
+    price: 1199.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'New York',
+    transactionDate: new Date('2017-02-15'),
   },
 ];
 
 Transaction
   .remove({})
   .then(() => Transaction.collection.insertMany(transactionSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
+  .then(() => {
     process.exit(0);
   })
-  .catch((err) => {
-    console.error(err);
+  .catch(() => {
     process.exit(1);
   });

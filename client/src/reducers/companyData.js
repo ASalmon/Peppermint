@@ -3,6 +3,7 @@ import {
   GET_TOPSELLINGITEMSBYQUANTITY,
   GET_TOPPERFORMINGSTORES,
   GET_SALESDISTRIBUTIONBYSTORE,
+  GET_YEARLYPERFORMANCE,
 } from '../actions/types';
 
 const initialState = {
@@ -12,6 +13,10 @@ const initialState = {
   salesDistribution: {
     labels: [],
     series: [],
+  },
+  yearlyPerformance: {
+    xaxis: [],
+    lineSeries: [],
   },
 };
 
@@ -26,7 +31,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         topSellingItemsByQuantity: action.payload,
-      }
+      };
     case GET_TOPPERFORMINGSTORES:
       return {
         ...state,
@@ -36,6 +41,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         salesDistribution: action.payload,
+      };
+    case GET_YEARLYPERFORMANCE:
+      return {
+        ...state,
+        yearlyPerformance: action.payload,
       };
     default:
       return state;

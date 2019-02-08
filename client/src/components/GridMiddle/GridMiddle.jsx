@@ -21,6 +21,10 @@ const styles = () => ({
   },
 });
 
+const xaxis = {
+  categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+};
+
 const lineOptions = {
   options: {
     chart: {
@@ -37,9 +41,6 @@ const lineOptions = {
     },
     stroke: {
       width: [4, 0, 0],
-    },
-    xaxis: {
-      categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     },
     markers: {
       size: 6,
@@ -109,7 +110,7 @@ class GridMiddle extends Component {
               <CardHeader title="Company Sales Goal" subheader="Last 6 Months" />
               <CardContent>
                 <LineChart
-                  lineOptions={lineOptions.options}
+                  lineOptions={{}}
                   lineSeries={lineSeries}
                 />
               </CardContent>
