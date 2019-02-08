@@ -7,6 +7,16 @@ import {
   getYearlyPerformance,
 } from './query';
 
+const defaultHeaders = {
+  url: 'http://localhost:3000/graphql',
+  method: 'post',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: localStorage.getItem('token'),
+  },
+};
+
 export default {
   // Verify user exists in DB (username/password)
   login: userData => axios.post('/api/login/', userData),
@@ -16,12 +26,7 @@ export default {
 
   // GraphQL query for top selling items by price
   getTopSellingItemsByPrice: () => axios({
-    url: 'http://localhost:3000/graphql',
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    ...defaultHeaders,
     data: { query: getTopSellingItemsByPriceQuery },
   })
     .then((response) => {
@@ -40,12 +45,7 @@ export default {
 
   // GraphQL query for top selling items by quantity
   getTopSellingItemsByQuantity: () => axios({
-    url: 'http://localhost:3000/graphql',
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    ...defaultHeaders,
     data: { query: getTopSellingItemsByQuantityQuery },
   })
     .then((response) => {
@@ -64,12 +64,7 @@ export default {
 
   // GraphQL query for top performing stores
   getTopPerformingStores: () => axios({
-    url: 'http://localhost:3000/graphql',
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    ...defaultHeaders,
     data: { query: getTopPerformingStoresQuery },
   })
     .then((response) => {
@@ -87,12 +82,7 @@ export default {
     .catch(error => console.log(error)),
 
   getSalesDistributionByStore: () => axios({
-    url: 'http://localhost:3000/graphql',
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    ...defaultHeaders,
     data: { query: getTopPerformingStoresQuery },
   })
     .then((response) => {
@@ -110,12 +100,7 @@ export default {
     .catch(error => console.log(error)),
 
   getYearlyPerformance: () => axios({
-    url: 'http://localhost:3000/graphql',
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    ...defaultHeaders,
     data: { query: getYearlyPerformance },
   }).then((response) => {
     const yearlyData = response.data.data.performancebyDates;

@@ -109,6 +109,8 @@ class LoginBox extends Component {
           }
           console.log(res.data);
           // redirect to Home - Dashboard
+          console.log(res.data)
+          localStorage.setItem('token', res.data.token);
           window.location.href = '/dashboard';
         });
     }
