@@ -10,6 +10,7 @@ import Card from '@material-ui/core/Card';
 import PieChart from '../PieChart';
 import BarChart from '../BarChart';
 import getSalesDistributionByStore from '../../actions/getSalesDistributionByStore';
+import getGoalsData from '../../actions/getGoalsData';
 
 const styles = () => ({
   root: {
@@ -21,49 +22,46 @@ const styles = () => ({
   },
 });
 
-// const xaxis = {
-//   categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-// };
-
-const barOptions = {
-  chart: {
-    id: 'companyGoals',
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: '50%',
-      endingShape: 'arrow',
-    },
-  },
-  xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun'],
-  },
-  series: [
-    {
-      name: 'Goal',
-      type: 'column',
-      data: [32, 44, 45, 50, 52, 60],
-    },
-    {
-      name: 'Actual',
-      type: 'column',
-      data: [30, 40, 47, 50, 49, 55],
-    },
-  ],
-};
-
 class GridMiddle extends Component {
   componentDidMount() {
     const {
       getSalesDistributionByStore: _getSalesDistributionByStore,
+      getGoalsData: _getGoalsData,
     } = this.props;
 
     _getSalesDistributionByStore();
+    _getGoalsData();
   }
 
   render() {
-    const { classes, salesDistribution } = this.props;
+    const { classes, salesDistribution, goalsData } = this.props;
 
+    const barOptions = {
+      chart: {
+        id: 'companyGoals',
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: '50%',
+          endingShape: 'arrow',
+        },
+      },
+      xaxis: {
+        categories: ['1', '2', '3', '4'],
+      },
+      series: [
+        {
+          name: 'Goal',
+          type: 'column',
+          data: goalsData.goal,
+        },
+        {
+          name: 'Actual',
+          type: 'column',
+          data: goalsData.actual,
+        },
+      ],
+    };
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
@@ -96,7 +94,11 @@ class GridMiddle extends Component {
                 subheader="Last 6 Months"
               />
               <CardContent>
-                <BarChart barOptions={barOptions} />
+                {goalsData.goal && goalsData.actual ? (
+                  <BarChart barOptions={barOptions} />
+                ) : (
+                  undefined
+                )}
               </CardContent>
             </Card>
           </Grid>
@@ -114,6 +116,7 @@ GridMiddle.propTypes = {
     series: PropTypes.arrayOf(PropTypes.number),
   }),
   getSalesDistributionByStore: PropTypes.func.isRequired,
+  getGoalsData: PropTypes.func.isRequired,
 };
 
 GridMiddle.defaultProps = {
@@ -126,6 +129,7 @@ GridMiddle.defaultProps = {
 
 const mapStateToProps = state => ({
   salesDistribution: state.companyData.salesDistribution,
+  goalsData: state.companyData.goalsData,
 });
 
 export default compose(
@@ -136,6 +140,7 @@ export default compose(
     mapStateToProps,
     {
       getSalesDistributionByStore,
+      getGoalsData,
     },
   ),
 )(GridMiddle);

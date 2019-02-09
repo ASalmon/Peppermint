@@ -129,11 +129,11 @@ export default {
     return formatedData;
   }),
 
-  getGoalsData: () => () => axios({
+  getGoalsData: () => axios({
     ...defaultHeaders,
-    data: { query: getTopPerformingStoresQuery },
-  })
-    .then((response) => {
-      console.log(response);
-    }),
+    data: { query: getGoalsData },
+  }).then((response) => {
+    console.log(response.data.data.getCompanyGoalsData);
+    return response.data.data.getCompanyGoalsData;
+  }),
 };
