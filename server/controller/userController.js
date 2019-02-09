@@ -32,6 +32,7 @@ module.exports = {
                 (authErr, token) => {
                   res.send({
                     success: true,
+                    payload,
                     token: `Bearer ${token}`,
                   });
                 },

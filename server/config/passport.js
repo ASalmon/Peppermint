@@ -18,6 +18,8 @@ module.exports = (passport) => {
         }
         return done(null, false);
       })
-      .catch((err) => { throw err; });
+      .catch((err) => {
+        throw err;
+      });
   }));
 };
