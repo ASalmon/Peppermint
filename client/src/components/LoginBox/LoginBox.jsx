@@ -40,7 +40,6 @@ import './style.css';
 //   background: 'rgba(15, 15, 15, 0.01)',
 // };
 
-
 class LoginBox extends Component {
   constructor(props) {
     super(props);
@@ -63,20 +62,21 @@ class LoginBox extends Component {
   }
 
   showValidationErr(elm, msg) {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       errors: [
-        ...prevState.errors, {
+        ...prevState.errors,
+        {
           elm,
-          msg
-        }
-      ]
+          msg,
+        },
+      ],
     }));
   }
 
   clearValidationErr(elm) {
     this.setState((prevState) => {
-      let newArr = [];
-      for (let err of prevState.errors) {
+      const newArr = [];
+      for (const err of prevState.errors) {
         if (elm != err.elm) {
           newArr.push(err);
         }
@@ -102,15 +102,14 @@ class LoginBox extends Component {
         password: this.state.password,
       };
 
-      API.login(userData)
-        .then((res) => {
-          if (res.data.status === 'error') {
-            throw new Error(res.data.message);
-          }
-          console.log(res.data);
-          // redirect to Home - Dashboard
-          window.location.href = '/dashboard';
-        });
+      API.login(userData).then((res) => {
+        if (res.data.status === 'error') {
+          throw new Error(res.data.message);
+        }
+        console.log(res.data);
+        // redirect to Home - Dashboard
+        window.location.href = '/dashboard';
+      });
     }
   }
 
@@ -118,8 +117,7 @@ class LoginBox extends Component {
     let usernameErr = null;
     let passwordErr = null;
 
-
-    for (let err of this.state.errors) {
+    for (const err of this.state.errors) {
       if (err.elm === 'username') {
         usernameErr = err.msg;
       }
@@ -132,9 +130,7 @@ class LoginBox extends Component {
       // <div style={styleForInnerContainer}>
       <div className="inner-container">
         {/* <div style={styleForHeader}> */}
-        <div className="header">
-          Login
-        </div>
+        <div className="header">Login</div>
         {/* <div style={styleForBox}> */}
         <div className="box">
           {/* <div style={styleForInputGroup}> */}
@@ -146,16 +142,9 @@ class LoginBox extends Component {
               // style={styleForLoginInput}
               className="login-input"
               placeholder="Username"
-              onChange={this
-                .onUsernameChange
-                .bind(this)
-              }
+              onChange={this.onUsernameChange.bind(this)}
             />
-            <small className="danger-error">
-              {usernameErr
-                ? usernameErr
-                : ''}
-            </small>
+            <small className="danger-error">{usernameErr || ''}</small>
           </div>
 
           {/* <div style={styleForInputGroup}> */}
@@ -167,32 +156,22 @@ class LoginBox extends Component {
               // style={styleForLoginInput}
               className="login-input"
               placeholder="Password"
-              onChange={this
-                .onPasswordChange
-                .bind(this)}
+              onChange={this.onPasswordChange.bind(this)}
             />
-            <small className="danger-error">
-              {passwordErr
-                ? passwordErr
-                : ''}
-            </small>
+            <small className="danger-error">{passwordErr || ''}</small>
           </div>
 
           <button
             type="button"
             className="login-btn"
-            onClick={this
-              .submitLogin
-              .bind(this)}
+            onClick={this.submitLogin.bind(this)}
           >
-           Login
+            Login
           </button>
-
         </div>
       </div>
     );
   }
 }
-
 
 export default LoginBox;
