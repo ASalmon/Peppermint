@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const { Transaction } = require('./server/models');
+const { Transaction, Goals } = require('./server/models');
 
 mongoose
   .connect(
@@ -1212,9 +1212,70 @@ const transactionSeed = [
   },
 ];
 
+const GoalsSeed = [
+  {
+    date: new Date('2018-01-01'),
+    goal: 15000.00,
+  },
+  {
+    date: new Date('2018-02-01'),
+    goal: 10000.00,
+  },
+  {
+    date: new Date('2018-03-01'),
+    goal: 13000.00,
+  },
+  {
+    date: new Date('2018-04-01'),
+    goal: 9000.00,
+  },
+  {
+    date: new Date('2018-05-01'),
+    goal: 6000.00,
+  },
+  {
+    date: new Date('2018-06-01'),
+    goal: 10000.00,
+  },
+  {
+    date: new Date('2018-07-01'),
+    goal: 16000.00,
+  },
+  {
+    date: new Date('2018-08-01'),
+    goal: 5000.00,
+  },
+  {
+    date: new Date('2018-09-01'),
+    goal: 15000.00,
+  },
+  {
+    date: new Date('2018-10-01'),
+    goal: 11000.00,
+  },
+  {
+    date: new Date('2018-11-01'),
+    goal: 17000.00,
+  },
+  {
+    date: new Date('2018-12-01'),
+    goal: 20000.00,
+  },
+];
+
 Transaction
   .remove({})
   .then(() => Transaction.collection.insertMany(transactionSeed))
+  .then(() => {
+    process.exit(0);
+  })
+  .catch(() => {
+    process.exit(1);
+  });
+
+Goals
+  .remove({})
+  .then(() => Goals.collection.insertMany(GoalsSeed))
   .then(() => {
     process.exit(0);
   })

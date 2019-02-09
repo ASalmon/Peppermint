@@ -3,6 +3,7 @@ module.exports = `
   scalar TopSellingItems
   scalar TopPerformingStores
   scalar PerformanceByDates
+  scalar CompanyGoalsData
 
   type Transaction {
     id: ID
@@ -25,6 +26,7 @@ module.exports = `
     ): [TopSellingItems]
     topPerformingStores: TopPerformingStores
     performancebyDates(from: String!, to: String!): PerformanceByDates
+    getCompanyGoalsData(from: String!, to: String!): CompanyGoalsData
   }
 
   type Mutation {
