@@ -207,7 +207,6 @@ function LoginNew(props) {
 
   return (
     <div className={classes.root}>
-      {/* <div className={classes.topText}>Peppermint</div> */}
       <Grid className={classes.leftSide} container spacing={24}>
         <Grid item xs={12} md={6}>
           <div className={classes.centered}>
