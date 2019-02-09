@@ -176,7 +176,7 @@ module.exports = {
         goalsData.month.push(goals[i].month);
         goalsData.year = goals[i].year;
         goalsData.goal.push(goals[i].goal);
-        goalsData.actual.push(transactions[i].total);
+        goalsData.actual.push(transactions[i].total.toFixed(2));
       }
       return goalsData;
     },

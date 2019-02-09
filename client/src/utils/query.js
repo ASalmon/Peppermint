@@ -32,6 +32,6 @@ export const getYearlyPerformance = `
 
 export const getGoalsData = `
   {
-    getCompanyGoalsData(from:"${sixMonthsAgo}, "to:${now}")
+    getCompanyGoalsData(from:"${sixMonthsAgo}", to:"${now}")
   }
 `;

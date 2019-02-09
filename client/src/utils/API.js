@@ -129,9 +129,9 @@ export default {
     return formatedData;
   }),
 
-  getGoalsData: () => () => axios({
+  getGoalsData: () => axios({
     ...defaultHeaders,
-    data: { query: getTopPerformingStoresQuery },
+    data: { query: getGoalsData },
   })
     .then((response) => {
       console.log(response);
