@@ -132,8 +132,8 @@ export default {
   getGoalsData: () => axios({
     ...defaultHeaders,
     data: { query: getGoalsData },
-  })
-    .then((response) => {
-      console.log(response);
-    }),
+  }).then((response) => {
+    console.log(response.data.data.getCompanyGoalsData);
+    return response.data.data.getCompanyGoalsData;
+  }),
 };

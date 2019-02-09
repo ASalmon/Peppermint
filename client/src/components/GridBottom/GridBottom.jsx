@@ -16,8 +16,25 @@ const styles = () => ({
     flexGrow: 1,
   },
 });
-const xaxis = {
-  categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+
+const barOptions = {
+  chart: {
+    id: 'companyGoals',
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true,
+    },
+  },
+  xaxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun'],
+  },
+  series: [
+    {
+      name: 'series-1',
+      data: [30, 40, 45, 50, 49, 60],
+    },
+  ],
 };
 
 class GridBottom extends Component {
@@ -66,7 +83,7 @@ class GridBottom extends Component {
                 className={classes.cardheader}
               />
               <CardContent>
-                <BarChart />
+                <BarChart barOptions={barOptions} />
               </CardContent>
             </Card>
           </Grid>
