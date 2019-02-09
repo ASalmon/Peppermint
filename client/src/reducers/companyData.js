@@ -53,7 +53,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         goalsData: action.payload,
-      }
+      };
     default:
       return state;
   }
