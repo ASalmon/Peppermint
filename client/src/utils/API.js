@@ -5,6 +5,7 @@ import {
   getTopSellingItemsByQuantityQuery,
   getTopPerformingStoresQuery,
   getYearlyPerformance,
+  getGoalsData,
 } from './query';
 
 const defaultHeaders = {
@@ -127,4 +128,12 @@ export default {
     formatedData.lineSeries[0].name = year;
     return formatedData;
   }),
+
+  getGoalsData: () => () => axios({
+    ...defaultHeaders,
+    data: { query: getTopPerformingStoresQuery },
+  })
+    .then((response) => {
+      console.log(response);
+    }),
 };

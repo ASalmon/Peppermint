@@ -4,6 +4,7 @@ import {
   GET_TOPPERFORMINGSTORES,
   GET_SALESDISTRIBUTIONBYSTORE,
   GET_YEARLYPERFORMANCE,
+  GET_GOALSDATA,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     xaxis: [],
     lineSeries: [],
   },
+  goalsData: {},
 };
 
 export default function (state = initialState, action) {
@@ -47,6 +49,11 @@ export default function (state = initialState, action) {
         ...state,
         yearlyPerformance: action.payload,
       };
+    case GET_GOALSDATA:
+      return {
+        ...state,
+        goalsData: action.payload,
+      }
     default:
       return state;
   }

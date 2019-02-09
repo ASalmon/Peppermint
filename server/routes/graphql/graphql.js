@@ -11,6 +11,7 @@ router.route('/')
     ),
     graphqlHTTP({
       schema,
+      graphiql: true,
     }),
   );
 
