@@ -133,7 +133,6 @@ export default {
     ...defaultHeaders,
     data: { query: getGoalsData },
   }).then((response) => {
-    console.log(response.data.data.getCompanyGoalsData);
     return response.data.data.getCompanyGoalsData;
   }),
 };
