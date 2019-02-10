@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Grid from '@material-ui/core/Grid';
 import Peppermint from '../../peppermint.jpg';
+import bikeCartoon from '../../bikeCartoon.jpg';
 import API from '../../utils/API';
 
 const styles = {
@@ -70,10 +71,7 @@ const styles = {
   leftSide: {
     marginBottom: 10,
     backgroundColor: '#008ffb',
-    background: 'linear-gradient(45deg,#008ffb 30%, #ffffff 90%)',
-    // backgroundImage: 'url(../../bicycle1839005.jpg)',
-    // backgroundRepeat: 'no-repeat',
-    // opacity: 0.8,
+    // background: 'linear-gradient(45deg,#008ffb 30%, #ffffff 90%)',
     height: '93vh',
     color: '#ffffff',
     textAlign: 'center',
@@ -91,14 +89,6 @@ const styles = {
     fontWeight: 'bold',
     fontFamily: 'Proza Libre, sansSerif',
     position: 'relative',
-    // textShadow: '2px 2px #000000',
-    // fontFamily: 'Nunito Sans, sansSerif',
-    // fontFamily: 'Gentium Basic, serif',
-    // fontFamily: 'Josefin Sans, sansSerif',
-    // fontFamily: 'Nunito Sans, sansSerif',
-    // fontFamily: 'Overpass, sansSerif',
-    // fontFamily: 'Prosto One, cursive',
-    // fontFamily: 'Reem Kufi, sansSerif',
   },
   rightSide: {
     backgroundColor: '#ffffff',
@@ -167,6 +157,7 @@ const styles = {
     backgroundColor: '#008ffb',
     border: '1px solid #008ffb',
     cursor: 'pointer',
+    outline: 'none',
   },
   rowFive: {
     textAlign: 'left',
@@ -188,6 +179,7 @@ const styles = {
     backgroundColor: '#fff',
     border: '1px solid #008ffb',
     cursor: 'pointer',
+    outline: 'none',
   },
   footerArea: {
     marginBottom: 10,
@@ -267,6 +259,7 @@ class Login extends Component {
                 <Settings className={classes.icon} />
                 <span className={classes.leftText}>Customize to Fit Your Needs.</span>
               </div>
+              <img className={classes.bikeCartoon} src={bikeCartoon} alt="bike" />
             </div>
           </Grid>
           <Grid className={classes.rightSide} item xs={12} md={6}>
