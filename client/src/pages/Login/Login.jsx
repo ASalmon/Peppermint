@@ -1,14 +1,18 @@
 import {
-  DirectionsBike,
-  Equalizer,
-  Settings,
-  Event,
+  DirectionsBike, Equalizer, Settings, Event,
 } from '@material-ui/icons';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Peppermint from '../../peppermint.jpg';
 import bikeCartoon from '../../bikeCartoon.jpg';
 import API from '../../utils/API';
@@ -101,7 +105,7 @@ const styles = {
     display: 'block',
     alignItems: 'left',
     width: '50%',
-    marginLeft: '33%',
+    margin: '0 auto',
   },
   rowTwo: {
     marginTop: 200,
@@ -159,6 +163,12 @@ const styles = {
     cursor: 'pointer',
     outline: 'none',
   },
+  dialogContextText: {
+    marginBottom: '20px',
+  },
+  registerFields: {
+    marginBottom: '20px',
+  },
   rowFive: {
     textAlign: 'left',
   },
@@ -205,6 +215,7 @@ class Login extends Component {
     userName: '',
     password: '',
     error: '',
+    open: false,
   };
 
   handleUserInput = (event) => {
@@ -212,14 +223,11 @@ class Login extends Component {
     this.setState({
       [name]: value,
     });
-  }
+  };
 
   handleTopLoginBtn = (event) => {
     event.preventDefault();
-    const {
-      userName,
-      password,
-    } = this.state;
+    const { userName, password } = this.state;
 
     if (!userName) {
       this.setState({
@@ -238,10 +246,19 @@ class Login extends Component {
         window.location.href = '/dashboard';
       });
     }
-  }
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   render() {
     const { classes } = this.props;
+    const { error, open } = this.state;
     return (
       <div className={classes.root}>
         <Grid className={classes.leftSide} container spacing={24}>
@@ -249,15 +266,21 @@ class Login extends Component {
             <div className={classes.centered}>
               <div className={classes.spacer}>
                 <Equalizer className={classes.icon} />
-                <span className={classes.leftText}>Quickly Interpret Sales Data.</span>
+                <span className={classes.leftText}>
+                  Quickly Interpret Sales Data.
+                </span>
               </div>
               <div className={classes.spacer}>
                 <Event className={classes.icon} />
-                <span className={classes.leftText}>View Upcoming Sales Events.</span>
+                <span className={classes.leftText}>
+                  View Upcoming Sales Events.
+                </span>
               </div>
               <div className={classes.spacer}>
                 <Settings className={classes.icon} />
-                <span className={classes.leftText}>Customize to Fit Your Needs.</span>
+                <span className={classes.leftText}>
+                  Customize to Fit Your Needs.
+                </span>
               </div>
               <img className={classes.bikeCartoon} src={bikeCartoon} alt="bike" />
             </div>
@@ -267,10 +290,7 @@ class Login extends Component {
               <input
                 type="text"
                 name="userName"
-                className={classNames(
-                  classes.input,
-                  classes.userName,
-                )}
+                className={classNames(classes.input, classes.userName)}
                 autoComplete="off"
                 placeholder="Username"
                 onChange={this.handleUserInput}
@@ -278,10 +298,7 @@ class Login extends Component {
               <input
                 type="password"
                 name="password"
-                className={classNames(
-                  classes.input,
-                  classes.password,
-                )}
+                className={classNames(classes.input, classes.password)}
                 placeholder="Password"
                 onChange={this.handleUserInput}
               />
@@ -294,43 +311,87 @@ class Login extends Component {
               >
                 Log in
               </button>
-              {
-                this.state.error ? (
-                  <p
-                    className={classes.errorText}
-                  >
-                    {
-                      this.state.error
-                    }
-                  </p>
-                ) : null
-              }
+              {error ? <p className={classes.errorText}>{error}</p> : null}
             </section>
             <section className={classes.sectionTwo}>
               <div className={classes.rowTwo}>
                 <DirectionsBike
-                  className={classNames(
-                    classes.icon,
-                    classes.bike,
-                  )}
+                  className={classNames(classes.icon, classes.bike)}
                   color="disabled"
                 />
               </div>
               <div className={classes.rowThree}>
-                <div className={classes.boldText}>
-                Handlebars Express
-                </div>
-                <div className={classes.smallText}>
-                Join Peppermint today.
-                </div>
+                <div className={classes.boldText}>Handlebars Express</div>
+                <div className={classes.smallText}>Join Peppermint today.</div>
               </div>
               <div className={classes.rowFour}>
-                <button className={classes.signupBtn} type="submit" variant="filled" color="primary">
+                <button
+                  className={classes.signupBtn}
+                  type="submit"
+                  variant="filled"
+                  color="primary"
+                  onClick={this.handleClickOpen}
+                >
                   Sign up
                 </button>
+                <Dialog
+                  open={open}
+                  onClose={this.handleClose}
+                  aria-labelledby="form-dialog-title"
+                >
+                  <DialogTitle id="form-dialog-title">Register</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText className={classes.dialogContextText}>
+                      Welcome to Handlebars Express. To get started, please
+                      enter your user name, email, and password.
+                    </DialogContentText>
+                    <TextField
+                      autoFocus
+                      id="username"
+                      label="User Name"
+                      type="text"
+                      fullWidth
+                      className={classes.registerFields}
+                    />
+                    <TextField
+                      id="email"
+                      label="Email Address"
+                      type="email"
+                      fullWidth
+                      className={classes.registerFields}
+                    />
+                    <TextField
+                      id="password"
+                      label="Enter Password"
+                      type="password"
+                      fullWidth
+                      className={classes.registerFields}
+                    />
+                    <TextField
+                      id="password1"
+                      label="Re-enter Password"
+                      type="password"
+                      fullWidth
+                      className={classes.registerFields}
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={this.handleClose} color="primary">
+                      Cancel
+                    </Button>
+                    <Button onClick={this.handleClose} color="primary">
+                      Register
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </div>
               <div className={classes.rowFive}>
-                <button className={classes.loginBtn2} type="submit" variant="outlined" color="primary">
+                <button
+                  className={classes.loginBtn2}
+                  type="submit"
+                  variant="outlined"
+                  color="primary"
+                >
                   Log in
                 </button>
               </div>
@@ -355,6 +416,5 @@ Login.propTypes = {
 Login.defaultProps = {
   classes: {},
 };
-
 
 export default withStyles(styles)(Login);

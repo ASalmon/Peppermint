@@ -14,6 +14,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Gravatar from 'react-gravatar';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import mainListItems from './listItems';
 
 const drawerWidth = 240;
@@ -53,6 +56,9 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  menu: {
+    color: '#fff',
+  },
   menuButton: {
     marginLeft: 12,
     marginRight: 36,
@@ -88,6 +94,7 @@ const styles = theme => ({
 class NavBar extends React.Component {
   state = {
     open: false,
+    anchorEl: null,
   };
 
   handleDrawerOpen = () => {
@@ -98,9 +105,17 @@ class NavBar extends React.Component {
     this.setState({ open: false });
   };
 
+  handleClick = (event) => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, anchorEl } = this.state;
 
     return (
       <React.Fragment>
@@ -131,6 +146,23 @@ class NavBar extends React.Component {
             >
               Handlebars Express
             </Typography>
+            <Button
+              aria-owns={anchorEl ? 'simple-menu' : undefined}
+              aria-haspopup="true"
+              onClick={this.handleClick}
+              className={classes.menu}
+            >
+              user@handlebars.com
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={this.handleClose}
+            >
+              <MenuItem onClick={this.handleClose}>My account</MenuItem>
+              <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+            </Menu>
             <Gravatar
               email=""
               size={40}

@@ -8,8 +8,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import PieChart from '../PieChart';
-import LineChart from '../LineChart';
+import BarChart from '../BarChart';
 import getSalesDistributionByStore from '../../actions/getSalesDistributionByStore';
+import getGoalsData from '../../actions/getGoalsData';
 
 const styles = () => ({
   root: {
@@ -21,69 +22,46 @@ const styles = () => ({
   },
 });
 
-const xaxis = {
-  categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-};
-
-const lineOptions = {
-  options: {
-    chart: {
-      id: 'basic-bar',
-      toolbar: {
-        show: false,
-      },
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: '50%',
-        endingShape: 'arrow',
-      },
-    },
-    stroke: {
-      width: [4, 0, 0],
-    },
-    markers: {
-      size: 6,
-      strokeWidth: 3,
-      fillOpacity: 0,
-      strokeOpacity: 0,
-      hover: {
-        size: 8,
-      },
-    },
-    yaxis: {
-      tickAmount: 5,
-      min: 0,
-      max: 100,
-    },
-  },
-};
-const lineSeries = [
-  {
-    name: 'Goal',
-    type: 'column',
-    data: [23, 12, 54, 61, 32, 56, 81, 19],
-  },
-  {
-    name: 'Actual',
-    type: 'column',
-    data: [25, 13, 55, 58, 30, 54, 89, 24],
-  },
-];
-
 class GridMiddle extends Component {
   componentDidMount() {
     const {
       getSalesDistributionByStore: _getSalesDistributionByStore,
+      getGoalsData: _getGoalsData,
     } = this.props;
 
     _getSalesDistributionByStore();
+    _getGoalsData();
   }
 
   render() {
+    const { classes, salesDistribution, goalsData } = this.props;
 
-    const { classes, salesDistribution } = this.props;
-
+    const barOptions = {
+      chart: {
+        id: 'companyGoals',
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: '50%',
+          endingShape: 'arrow',
+        },
+      },
+      xaxis: {
+        categories: ['1', '2', '3', '4'],
+      },
+      series: [
+        {
+          name: 'Goal',
+          type: 'column',
+          data: goalsData.goal,
+        },
+        {
+          name: 'Actual',
+          type: 'column',
+          data: goalsData.actual,
+        },
+      ],
+    };
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
@@ -94,25 +72,33 @@ class GridMiddle extends Component {
                 subheader="Last 6 Months"
               />
               <CardContent>
-                { salesDistribution
-                  && salesDistribution.series
-                  && salesDistribution.labels
-                  && salesDistribution.series.length
-                  && salesDistribution.labels.length
-                  ? <PieChart className={classes.center} pieData={salesDistribution} />
-                  : undefined
-                }
+                {salesDistribution
+                && salesDistribution.series
+                && salesDistribution.labels
+                && salesDistribution.series.length
+                && salesDistribution.labels.length ? (
+                  <PieChart
+                    className={classes.center}
+                    pieData={salesDistribution}
+                  />
+                  ) : (
+                    undefined
+                  )}
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={7}>
             <Card className={classes.card}>
-              <CardHeader title="Company Sales Goal" subheader="Last 6 Months" />
+              <CardHeader
+                title="Company Sales Goal"
+                subheader="Last 6 Months"
+              />
               <CardContent>
-                <LineChart
-                  lineOptions={{}}
-                  lineSeries={lineSeries}
-                />
+                {goalsData.goal && goalsData.actual ? (
+                  <BarChart barOptions={barOptions} />
+                ) : (
+                  undefined
+                )}
               </CardContent>
             </Card>
           </Grid>
@@ -130,6 +116,7 @@ GridMiddle.propTypes = {
     series: PropTypes.arrayOf(PropTypes.number),
   }),
   getSalesDistributionByStore: PropTypes.func.isRequired,
+  getGoalsData: PropTypes.func.isRequired,
 };
 
 GridMiddle.defaultProps = {
@@ -142,14 +129,18 @@ GridMiddle.defaultProps = {
 
 const mapStateToProps = state => ({
   salesDistribution: state.companyData.salesDistribution,
+  goalsData: state.companyData.goalsData,
 });
-
 
 export default compose(
   withStyles(styles, {
     name: 'GridMiddle',
   }),
-  connect(mapStateToProps, {
-    getSalesDistributionByStore,
-  }),
+  connect(
+    mapStateToProps,
+    {
+      getSalesDistributionByStore,
+      getGoalsData,
+    },
+  ),
 )(GridMiddle);
