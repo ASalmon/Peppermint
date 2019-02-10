@@ -75,9 +75,6 @@ const styles = {
     marginBottom: 10,
     backgroundColor: '#008ffb',
     background: 'linear-gradient(45deg,#008ffb 30%, #ffffff 90%)',
-    // backgroundImage: 'url(../../bicycle1839005.jpg)',
-    // backgroundRepeat: 'no-repeat',
-    // opacity: 0.8,
     height: '93vh',
     color: '#ffffff',
     textAlign: 'center',
@@ -95,14 +92,6 @@ const styles = {
     fontWeight: 'bold',
     fontFamily: 'Proza Libre, sansSerif',
     position: 'relative',
-    // textShadow: '2px 2px #000000',
-    // fontFamily: 'Nunito Sans, sansSerif',
-    // fontFamily: 'Gentium Basic, serif',
-    // fontFamily: 'Josefin Sans, sansSerif',
-    // fontFamily: 'Nunito Sans, sansSerif',
-    // fontFamily: 'Overpass, sansSerif',
-    // fontFamily: 'Prosto One, cursive',
-    // fontFamily: 'Reem Kufi, sansSerif',
   },
   rightSide: {
     backgroundColor: '#ffffff',
@@ -220,9 +209,11 @@ const styles = {
 
 class Login extends Component {
   state = {
-    userName: '',
+    username: '',
     password: '',
-    error: '',
+    password2: '',
+    email: '',
+    errors: {},
     open: false,
   };
 
@@ -235,25 +226,22 @@ class Login extends Component {
 
   handleTopLoginBtn = (event) => {
     event.preventDefault();
-    const { userName, password } = this.state;
-
-    if (!userName) {
-      this.setState({
-        error: 'Username field can not be blank',
-      });
-    } else if (!password) {
-      this.setState({
-        error: 'password field can not be blank',
-      });
-    } else {
-      API.login({
-        username: userName,
-        password,
-      }).then((response) => {
+    const { username, password } = this.state;
+    API.login({
+      username,
+      password,
+    })
+      .then((response) => {
         localStorage.setItem('token', response.data.token);
         window.location.href = '/dashboard';
+      })
+      .catch((errors) => {
+        this.setState({
+          errors: {
+            // ...errors,
+          },
+        });
       });
-    }
   };
 
   handleClickOpen = () => {
@@ -262,6 +250,30 @@ class Login extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+  };
+
+  handleRegister = (event) => {
+    event.preventDefault();
+    const {
+      username,
+      email,
+      password,
+      password2,
+    } = this.state;
+
+    API.register({
+      username,
+      email,
+      password,
+      password2,
+    })
+      .catch((errors) => {
+        this.setState({
+          errors: {
+            // ...errors,
+          },
+        });
+      });
   };
 
   render() {
@@ -296,7 +308,7 @@ class Login extends Component {
             <section className={classes.rowOne}>
               <input
                 type="text"
-                name="userName"
+                name="username"
                 className={classNames(classes.input, classes.userName)}
                 autoComplete="off"
                 placeholder="Username"
@@ -355,38 +367,56 @@ class Login extends Component {
                     <TextField
                       autoFocus
                       id="username"
+                      name="username"
                       label="User Name"
                       type="text"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
                     <TextField
                       id="email"
+                      name="email"
                       label="Email Address"
                       type="email"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
                     <TextField
                       id="password"
+                      name="password"
                       label="Enter Password"
                       type="password"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
                     <TextField
-                      id="password1"
+                      id="password2"
+                      name="password2"
                       label="Re-enter Password"
                       type="password"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {
+                      this.state.error ? (
+                        <p
+                          className={classes.errorText}
+                        >
+                          {this.state.error}
+                        </p>
+                      )
+                        : null
+                    }
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={this.handleRegister} color="primary">
                       Register
                     </Button>
                   </DialogActions>
