@@ -3,16 +3,25 @@ const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
+const validateLoginInput = require('../validation/login');
+const validateRegisterInput = require('../validation/register');
 
 module.exports = {
   login: (req, res) => {
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
     const { username, password } = req.body;
     // Find user by username
     User.findOne({ username })
       .then((user) => {
         // Check if user exists
         if (!user) {
-          res.status(404).json({ username: 'User not found' });
+          errors.message = 'Invalid login information provided';
+          return res.status(400).json(errors);
         }
         // Check password
         bcrypt.compare(password, user.password)
@@ -32,19 +41,25 @@ module.exports = {
                 (authErr, token) => {
                   res.send({
                     success: true,
-                    payload,
                     token: `Bearer ${token}`,
                   });
                 },
               );
             } else {
-              res.status(400).json({ password: 'Password incorrect' });
+              errors.message = 'Invalid login information provided';
+              return res.status(400).json(errors);
             }
           });
       })
       .catch(error => res.status(503).json({ error }));
   },
   register: (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
     const { username, password, email } = req.body;
     // Check if username already exist
     User.findOne({ username })
@@ -73,7 +88,8 @@ module.exports = {
             });
           });
         } else {
-          res.status(400).json({ username: 'username already exists' });
+          errors.message = 'Username already exists';
+          return res.status(400).json(errors);
         }
       });
   },

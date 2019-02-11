@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import LineChart from '../LineChart';
 import BarChart from '../BarChart';
-import getYearlyPerformance from '../../actions/getYearlyPerformance';
+import { getYearlyPerformance } from '../../actions/companyActions';
 
 const styles = () => ({
   root: {
@@ -96,7 +96,7 @@ class GridBottom extends Component {
 GridBottom.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   yearlyPerformancexAxis: PropTypes.shape(PropTypes.array),
-  yearlyPerformanceLineSeries: PropTypes.shape(PropTypes.object),
+  yearlyPerformanceLineSeries: PropTypes.shape(PropTypes.array),
   getYearlyPerformance: PropTypes.func.isRequired,
 };
 

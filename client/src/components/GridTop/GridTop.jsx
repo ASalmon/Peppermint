@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Top5Table from '../Top5Table';
-import getTopSellingItemsByPrice from '../../actions/getTopSellingitemsByPrice';
-import getTopPerformingStores from '../../actions/getTopPerformingStores';
-import getTopSellingItemsByQuantity from '../../actions/getTopSellingItemsByQuantity';
+import {
+  getTopSellingItemsByPrice,
+  getTopPerformingStores,
+  getTopSellingItemsByQuantity,
+} from '../../actions/companyActions';
 
 const styles = () => ({
   root: {

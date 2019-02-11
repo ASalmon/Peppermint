@@ -2,6 +2,8 @@ import {
   DirectionsBike, Equalizer, Settings, Event,
 } from '@material-ui/icons';
 import React, { Component } from 'react';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -18,7 +20,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Peppermint from '../../peppermint.jpg';
 import bikeCartoon from '../../bikeCartoon.jpg';
-import API from '../../utils/API';
+import { loginUser, registerUser } from '../../actions/authActions';
 
 const styles = {
   centered: {
@@ -217,11 +219,26 @@ const styles = {
 
 class Login extends Component {
   state = {
-    userName: '',
+    username: '',
     password: '',
-    error: '',
+    password2: '',
+    email: '',
     open: false,
+    errors: {},
   };
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
 
   handleUserInput = (event) => {
     const { name, value } = event.target;
@@ -232,25 +249,16 @@ class Login extends Component {
 
   handleTopLoginBtn = (event) => {
     event.preventDefault();
-    const { userName, password } = this.state;
+    const { username, password } = this.state;
+    const { history } = this.props;
 
-    if (!userName) {
-      this.setState({
-        error: 'Username field cannot be blank',
-      });
-    } else if (!password) {
-      this.setState({
-        error: 'Password field cannot be blank',
-      });
-    } else {
-      API.login({
-        username: userName,
-        password,
-      }).then((response) => {
-        localStorage.setItem('token', response.data.token);
-        window.location.href = '/dashboard';
-      });
-    }
+    const userData = {
+      username,
+      password,
+    };
+
+    const { loginUser: _loginUser } = this.props;
+    _loginUser(userData, history);
   };
 
   handleClickOpen = () => {
@@ -259,6 +267,26 @@ class Login extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+  };
+
+  handleRegister = (event) => {
+    event.preventDefault();
+    const {
+      username,
+      email,
+      password,
+      password2,
+    } = this.state;
+
+    const newUser = {
+      username,
+      email,
+      password,
+      password2,
+    };
+
+
+    this.props.registerUser(newUser, this.props.history);
   };
 
   render() {
@@ -365,38 +393,56 @@ class Login extends Component {
                     <TextField
                       autoFocus
                       id="username"
+                      name="username"
                       label="User Name"
                       type="text"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
                     <TextField
                       id="email"
+                      name="email"
                       label="Email Address"
                       type="email"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
                     <TextField
                       id="password"
+                      name="password"
                       label="Enter Password"
                       type="password"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
                     <TextField
-                      id="password1"
+                      id="password2"
+                      name="password2"
                       label="Re-enter Password"
                       type="password"
                       fullWidth
+                      onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {
+                      this.state.error ? (
+                        <p
+                          className={classes.errorText}
+                        >
+                          {this.state.error}
+                        </p>
+                      )
+                        : null
+                    }
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={this.handleRegister} color="primary">
                       Register
                     </Button>
                   </DialogActions>
@@ -428,10 +474,32 @@ class Login extends Component {
 
 Login.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
+  loginUser: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.shape(PropTypes.object),
+  history: PropTypes.shape(PropTypes.array),
 };
 
 Login.defaultProps = {
   classes: {},
+  auth: {},
+  history: [],
 };
 
-export default withStyles(styles)(Login);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default compose(
+  withStyles(styles, {
+    name: 'Login',
+  }),
+  connect(
+    mapStateToProps,
+    {
+      loginUser,
+      registerUser,
+    },
+  ),
+)(Login);
