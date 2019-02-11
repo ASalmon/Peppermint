@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import NavBar from '../../components/NavBar';
 import GridMiddle from '../../components/GridMiddle';
@@ -19,18 +22,50 @@ const styles = theme => ({
 });
 
 const Dashboard = (props) => {
-  const { classes } = props;
+  const {
+    classes,
+    isAuthenticated,
+  } = props;
+
   return (
     <div className={classes.root}>
-      <NavBar />
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <GridTop />
-        <GridMiddle />
-        <GridBottom />
-      </main>
+      {
+        isAuthenticated ? (
+          <Fragment>
+            <NavBar />
+            <main className={classes.content}>
+              <div className={classes.appBarSpacer} />
+              <GridTop />
+              <GridMiddle />
+              <GridBottom />
+            </main>
+          </Fragment>
+        ) : window.location.href = '/'
+      }
     </div>
   );
 };
 
-export default withStyles(styles)(Dashboard);
+Dashboard.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string),
+  isAuthenticated: PropTypes.bool,
+};
+
+Dashboard.defaultProps = {
+  classes: {},
+  isAuthenticated: false,
+};
+
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.authentication.isAuthenticated,
+});
+
+export default compose(
+  withStyles(styles, {
+    name: 'Dashboard',
+  }),
+  connect(
+    mapStateToProps,
+  ),
+)(Dashboard);

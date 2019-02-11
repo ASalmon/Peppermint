@@ -78,8 +78,8 @@ const LineChart = (props) => {
 };
 
 LineChart.propTypes = {
-  series: PropTypes.shape(PropTypes.object),
-  xaxis: PropTypes.shape(PropTypes.object),
+  series: PropTypes.shape(PropTypes.array),
+  xaxis: PropTypes.shape(PropTypes.array),
 };
 
 LineChart.defaultProps = {

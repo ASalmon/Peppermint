@@ -9,8 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import PieChart from '../PieChart';
 import BarChart from '../BarChart';
-import getSalesDistributionByStore from '../../actions/getSalesDistributionByStore';
-import getGoalsData from '../../actions/getGoalsData';
+import {
+  getSalesDistributionByStore,
+  getGoalsData,
+} from '../../actions/companyActions';
 
 const styles = () => ({
   root: {
@@ -110,13 +112,13 @@ class GridMiddle extends Component {
 
 GridMiddle.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
-  // Look up documentation on shapes
   salesDistribution: PropTypes.shape({
     labels: PropTypes.arrayOf(PropTypes.string),
     series: PropTypes.arrayOf(PropTypes.number),
   }),
   getSalesDistributionByStore: PropTypes.func.isRequired,
   getGoalsData: PropTypes.func.isRequired,
+  goalsData: PropTypes.objectOf(PropTypes.shape),
 };
 
 GridMiddle.defaultProps = {
@@ -125,6 +127,7 @@ GridMiddle.defaultProps = {
     labels: [],
     series: [],
   },
+  goalsData: [],
 };
 
 const mapStateToProps = state => ({

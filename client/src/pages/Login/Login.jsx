@@ -2,6 +2,8 @@ import {
   DirectionsBike, Equalizer, Settings, Event,
 } from '@material-ui/icons';
 import React, { Component } from 'react';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,7 +17,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Peppermint from '../../peppermint.jpg';
 import bikeCartoon from '../../bikeCartoon.jpg';
-import API from '../../utils/API';
+import { loginUser, registerUser } from '../../actions/authActions';
 
 const styles = {
   centered: {
@@ -216,9 +218,22 @@ class Login extends Component {
     password: '',
     password2: '',
     email: '',
-    errors: {},
     open: false,
+    errors: {},
   };
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
 
   handleUserInput = (event) => {
     const { name, value } = event.target;
@@ -230,21 +245,15 @@ class Login extends Component {
   handleTopLoginBtn = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    API.login({
+    const { history } = this.props;
+
+    const userData = {
       username,
       password,
-    })
-      .then((response) => {
-        localStorage.setItem('token', response.data.token);
-        window.location.href = '/dashboard';
-      })
-      .catch((errors) => {
-        this.setState({
-          errors: {
-            // ...errors,
-          },
-        });
-      });
+    };
+
+    const { loginUser: _loginUser } = this.props;
+    _loginUser(userData, history);
   };
 
   handleClickOpen = () => {
@@ -264,19 +273,15 @@ class Login extends Component {
       password2,
     } = this.state;
 
-    API.register({
+    const newUser = {
       username,
       email,
       password,
       password2,
-    })
-      .catch((errors) => {
-        this.setState({
-          errors: {
-            // ...errors,
-          },
-        });
-      });
+    };
+
+
+    this.props.registerUser(newUser, this.props.history);
   };
 
   render() {
@@ -452,10 +457,32 @@ class Login extends Component {
 
 Login.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
+  loginUser: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.shape(PropTypes.object),
+  history: PropTypes.shape(PropTypes.array),
 };
 
 Login.defaultProps = {
   classes: {},
+  auth: {},
+  history: [],
 };
 
-export default withStyles(styles)(Login);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default compose(
+  withStyles(styles, {
+    name: 'Login',
+  }),
+  connect(
+    mapStateToProps,
+    {
+      loginUser,
+      registerUser,
+    },
+  ),
+)(Login);
