@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -35,6 +38,7 @@ const styles = {
     fontFamily: 'Oxygen, sansSerif',
     fontSize: 15,
     fontWeight: 'bold',
+    marginTop: 15,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
@@ -45,29 +49,31 @@ const styles = {
     outline: 'none',
     cursor: 'pointer',
   },
+  form: {
+    boxSizing: 'borderbox',
+    display: 'inline',
+  },
   input: {
     boxSizing: 'border-box',
     display: 'inline',
     lineHeight: 2.2,
     width: 215,
-    marginRight: 10,
+    marginRight: 20,
     fontFamily: 'Oxygen, sansSerif',
-    padding: 5,
+    paddingLeft: 5,
+  },
+  inputLabel: {
+    marginLeft: 4,
   },
   userName: {
     fontFamily: 'Oxygen, sansSerif',
-    placeholder: 'Username',
-    label: 'Username:',
-    required: true,
     type: 'text',
     border: '1px solid lightgray',
     color: 'black',
+    lineHeight: 1,
   },
   password: {
     fontFamily: 'Oxygen, sansSerif',
-    placeholder: 'Password',
-    label: 'Password',
-    required: true,
     type: 'text',
     border: '1px solid lightgray',
     color: 'black',
@@ -75,7 +81,6 @@ const styles = {
   leftSide: {
     marginBottom: 10,
     backgroundColor: '#008ffb',
-    // background: 'linear-gradient(45deg,#008ffb 30%, #ffffff 90%)',
     height: '93vh',
     color: '#ffffff',
     textAlign: 'center',
@@ -231,11 +236,11 @@ class Login extends Component {
 
     if (!userName) {
       this.setState({
-        error: 'Username field can not be blank',
+        error: 'Username field cannot be blank',
       });
     } else if (!password) {
       this.setState({
-        error: 'password field can not be blank',
+        error: 'Password field cannot be blank',
       });
     } else {
       API.login({
@@ -287,31 +292,43 @@ class Login extends Component {
           </Grid>
           <Grid className={classes.rightSide} item xs={12} md={6}>
             <section className={classes.rowOne}>
-              <input
-                type="text"
-                name="userName"
-                className={classNames(classes.input, classes.userName)}
-                autoComplete="off"
-                placeholder="Username"
-                onChange={this.handleUserInput}
-              />
-              <input
-                type="password"
-                name="password"
-                className={classNames(classes.input, classes.password)}
-                placeholder="Password"
-                onChange={this.handleUserInput}
-              />
-              <button
-                type="submit"
-                variant="outlined"
-                color="#008ffb"
-                className={classes.loginBtn}
-                onClick={this.handleTopLoginBtn}
-              >
-                Log in
-              </button>
-              {error ? <p className={classes.errorText}>{error}</p> : null}
+              <form className={classes.form}>
+                <FormControl required>
+                  <InputLabel className={classes.inputLabel} htmlFor="username">Username</InputLabel>
+                  <Input
+                    id="username"
+                    name="userName"
+                    type="text"
+                    className={classNames(classes.input, classes.userName)}
+                    autoComplete="off"
+                    placeholder=" Username"
+                    onChange={this.handleUserInput}
+                    autoFocus
+                  />
+                </FormControl>
+                <FormControl required>
+                  <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className={classNames(classes.input, classes.password)}
+                    placeholder=" Password"
+                    onChange={this.handleUserInput}
+                    autoComplete="current-password"
+                  />
+                </FormControl>
+                <button
+                  type="submit"
+                  variant="outlined"
+                  color="#008ffb"
+                  className={classes.loginBtn}
+                  onClick={this.handleTopLoginBtn}
+                >
+                  Log in
+                </button>
+                {error ? <p className={classes.errorText}>{error}</p> : null}
+              </form>
             </section>
             <section className={classes.sectionTwo}>
               <div className={classes.rowTwo}>
