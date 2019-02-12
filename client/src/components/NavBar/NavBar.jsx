@@ -200,7 +200,7 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
-  user: PropTypes.shape(PropTypes.object),
+  user: PropTypes.objectOf(PropTypes.shape),
 };
 
 NavBar.defaultProps = {

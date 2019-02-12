@@ -1,11 +1,25 @@
-import { GET_ERRORS } from '../actions/types';
+import {
+  GET_LOGINERRORS,
+  GET_REGISTRATIONERRORS,
+} from '../actions/types';
 
-const initialState = {};
+const initialState = {
+  login: {},
+  registration: {},
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_ERRORS:
-      return action.payload;
+    case GET_LOGINERRORS:
+      return {
+        ...state,
+        login: action.payload,
+      };
+    case GET_REGISTRATIONERRORS:
+      return {
+        ...state,
+        registration: action.payload,
+      };
     default:
       return state;
   }

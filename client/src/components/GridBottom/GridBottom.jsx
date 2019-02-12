@@ -95,14 +95,14 @@ class GridBottom extends Component {
 
 GridBottom.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
-  yearlyPerformancexAxis: PropTypes.shape(PropTypes.array),
-  yearlyPerformanceLineSeries: PropTypes.shape(PropTypes.array),
+  yearlyPerformancexAxis: PropTypes.arrayOf(PropTypes.object),
+  yearlyPerformanceLineSeries: PropTypes.objectOf(PropTypes.shape),
   getYearlyPerformance: PropTypes.func.isRequired,
 };
 
 GridBottom.defaultProps = {
   classes: {},
-  yearlyPerformancexAxis: [],
+  yearlyPerformancexAxis: {},
   yearlyPerformanceLineSeries: [],
 };
 

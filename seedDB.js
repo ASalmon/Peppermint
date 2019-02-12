@@ -1326,8 +1326,7 @@ Transaction
     process.exit(0);
   })
   .catch((error) => {
-    console.log(error)
-    process.exit(1);
+    throw error;
   });
 
 Goals
@@ -1337,6 +1336,5 @@ Goals
     process.exit(0);
   })
   .catch((error) => {
-    console.log(error)
-    process.exit(1);
+    throw error;
   });

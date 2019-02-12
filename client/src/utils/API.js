@@ -19,12 +19,6 @@ const defaultHeaders = {
 };
 
 export default {
-  // Verify user exists in DB (username/password)
-  login: userData => axios.post('/api/login/', userData),
-
-  // Save (register) user to the database (username, password, email)
-  register: userData => axios.post('/api/register', userData),
-
   // GraphQL query for top selling items by price
   getTopSellingItemsByPrice: () => axios({
     ...defaultHeaders,
@@ -42,7 +36,7 @@ export default {
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
+    .catch((error) => { throw error; }),
 
   // GraphQL query for top selling items by quantity
   getTopSellingItemsByQuantity: () => axios({
@@ -61,7 +55,7 @@ export default {
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
+    .catch((error) => { throw error; }),
 
   // GraphQL query for top performing stores
   getTopPerformingStores: () => axios({
@@ -80,8 +74,8 @@ export default {
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
-
+    .catch((error) => { throw error; }),
+  // GraphQL query for Sales Distribution by Store
   getSalesDistributionByStore: () => axios({
     ...defaultHeaders,
     data: { query: getTopPerformingStoresQuery },
@@ -98,8 +92,8 @@ export default {
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
-
+    .catch((error) => { throw error; }),
+  // QrephQL query for Yearly Performance data
   getYearlyPerformance: () => axios({
     ...defaultHeaders,
     data: { query: getYearlyPerformance },
@@ -128,7 +122,7 @@ export default {
     formatedData.lineSeries[0].name = year;
     return formatedData;
   }),
-
+  // GraphQL query for Company Goals Data
   getGoalsData: () => axios({
     ...defaultHeaders,
     data: { query: getGoalsData },
