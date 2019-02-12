@@ -8,6 +8,9 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,6 +21,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Peppermint from '../../peppermint.jpg';
 import bikeCartoon from '../../bikeCartoon.jpg';
 import { loginUser, registerUser } from '../../actions/authActions';
+// import isEmpty from '../../validation/is-empty';
 
 const styles = {
   centered: {
@@ -37,6 +41,7 @@ const styles = {
     fontFamily: 'Oxygen, sansSerif',
     fontSize: 15,
     fontWeight: 'bold',
+    marginTop: 15,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
@@ -47,29 +52,31 @@ const styles = {
     outline: 'none',
     cursor: 'pointer',
   },
+  form: {
+    boxSizing: 'borderbox',
+    display: 'inline',
+  },
   input: {
     boxSizing: 'border-box',
     display: 'inline',
     lineHeight: 2.2,
     width: 215,
-    marginRight: 10,
+    marginRight: 20,
     fontFamily: 'Oxygen, sansSerif',
-    padding: 5,
+    paddingLeft: 5,
+  },
+  inputLabel: {
+    marginLeft: 4,
   },
   userName: {
     fontFamily: 'Oxygen, sansSerif',
-    placeholder: 'Username',
-    label: 'Username:',
-    required: true,
     type: 'text',
     border: '1px solid lightgray',
     color: 'black',
+    lineHeight: 1,
   },
   password: {
     fontFamily: 'Oxygen, sansSerif',
-    placeholder: 'Password',
-    label: 'Password',
-    required: true,
     type: 'text',
     border: '1px solid lightgray',
     color: 'black',
@@ -77,7 +84,6 @@ const styles = {
   leftSide: {
     marginBottom: 10,
     backgroundColor: '#008ffb',
-    // background: 'linear-gradient(45deg,#008ffb 30%, #ffffff 90%)',
     height: '93vh',
     color: '#ffffff',
     textAlign: 'center',
@@ -209,6 +215,10 @@ const styles = {
   },
   errorText: {
     color: 'red',
+    fontFamily: 'Oxygen, sansSerif',
+    fontSize: 12,
+    textAlign: 'left',
+    marginTop: 5,
   },
 };
 
@@ -286,7 +296,7 @@ class Login extends Component {
 
   render() {
     const { classes } = this.props;
-    const { error, open } = this.state;
+    const { errors, open } = this.state;
     return (
       <div className={classes.root}>
         <Grid className={classes.leftSide} container spacing={24}>
@@ -315,31 +325,49 @@ class Login extends Component {
           </Grid>
           <Grid className={classes.rightSide} item xs={12} md={6}>
             <section className={classes.rowOne}>
-              <input
-                type="text"
-                name="username"
-                className={classNames(classes.input, classes.userName)}
-                autoComplete="off"
-                placeholder="Username"
-                onChange={this.handleUserInput}
-              />
-              <input
-                type="password"
-                name="password"
-                className={classNames(classes.input, classes.password)}
-                placeholder="Password"
-                onChange={this.handleUserInput}
-              />
-              <button
-                type="submit"
-                variant="outlined"
-                color="#008ffb"
-                className={classes.loginBtn}
-                onClick={this.handleTopLoginBtn}
-              >
-                Log in
-              </button>
-              {error ? <p className={classes.errorText}>{error}</p> : null}
+              <form className={classes.form}>
+                <FormControl required>
+                  <InputLabel className={classes.inputLabel} htmlFor="username">Username</InputLabel>
+                  <Input
+                    id="username"
+                    name="username"
+                    type="text"
+                    className={classNames(classes.input, classes.userName)}
+                    autoComplete="off"
+                    placeholder=" Username"
+                    onChange={this.handleUserInput}
+                    autoFocus
+                    error={errors.username ? errors.username : undefined}
+                  />
+                  {errors.username
+                    ? <p className={classes.errorText}>{errors.username}</p> : undefined}
+                </FormControl>
+                <FormControl required>
+                  <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className={classNames(classes.input, classes.password)}
+                    placeholder=" Password"
+                    onChange={this.handleUserInput}
+                    autoComplete="current-password"
+                    error={errors.password ? errors.password : undefined}
+                  />
+                  {errors.password
+                    ? <p className={classes.errorText}>{errors.password}</p> : undefined}
+                </FormControl>
+                <button
+                  type="submit"
+                  variant="outlined"
+                  color="#008ffb"
+                  className={classes.loginBtn}
+                  onClick={this.handleTopLoginBtn}
+                >
+                  Log in
+                </button>
+                {errors ? 'error' : undefined}
+              </form>
             </section>
             <section className={classes.sectionTwo}>
               <div className={classes.rowTwo}>
@@ -350,7 +378,7 @@ class Login extends Component {
               </div>
               <div className={classes.rowThree}>
                 <div className={classes.boldText}>Handlebars Express</div>
-                <div className={classes.smallText}>Join Peppermint today.</div>
+                <div className={classes.smallText}>Join Handlebars Express today.</div>
               </div>
               <div className={classes.rowFour}>
                 <button
@@ -383,6 +411,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.username
+                      ? <p className={classes.errorText}>{errors.username}</p> : undefined}
                     <TextField
                       id="email"
                       name="email"
@@ -392,6 +422,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.email
+                      ? <p className={classes.errorText}>{errors.email}</p> : undefined}
                     <TextField
                       id="password"
                       name="password"
@@ -401,6 +433,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.password
+                      ? <span className={classes.errorText}>{errors.password}</span> : undefined}
                     <TextField
                       id="password2"
                       name="password2"
@@ -410,6 +444,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.password2
+                      ? <span className={classes.errorText}>{errors.password2}</span> : undefined}
                     {
                       this.state.error ? (
                         <p
@@ -432,14 +468,14 @@ class Login extends Component {
                 </Dialog>
               </div>
               <div className={classes.rowFive}>
-                <button
+                {/* <button
                   className={classes.loginBtn2}
                   type="submit"
                   variant="outlined"
                   color="primary"
                 >
                   Log in
-                </button>
+                </button> */}
               </div>
             </section>
           </Grid>
