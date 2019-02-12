@@ -31,7 +31,7 @@ module.exports = {
               const payload = {
                 id: user.id,
                 username: user.username,
-                avatar: user.avatar,
+                email: user.email,
               };
               // Create JWT token
               jwt.sign(

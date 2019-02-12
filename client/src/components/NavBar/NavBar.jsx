@@ -17,7 +17,10 @@ import Gravatar from 'react-gravatar';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import mainListItems from './listItems';
+
 
 const drawerWidth = 240;
 
@@ -114,7 +117,7 @@ class NavBar extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, user } = this.props;
     const { open, anchorEl } = this.state;
 
     return (
@@ -152,7 +155,7 @@ class NavBar extends React.Component {
               onClick={this.handleClick}
               className={classes.menu}
             >
-              user@handlebars.com
+              {user.username ? user.username : 'Anonymous'}
             </Button>
             <Menu
               id="simple-menu"
@@ -164,7 +167,7 @@ class NavBar extends React.Component {
               <MenuItem onClick={this.handleClose}>Logout</MenuItem>
             </Menu>
             <Gravatar
-              email=""
+              email={user.email ? user.email : ''}
               size={40}
               rating="pg"
               default="mp"
@@ -197,10 +200,25 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
+  user: PropTypes.shape(PropTypes.object),
 };
 
 NavBar.defaultProps = {
   classes: {},
+  user: {},
 };
 
-export default withStyles(styles)(NavBar);
+const mapStateToProps = state => ({
+  user: state.authentication.user,
+});
+
+export default compose(
+  withStyles(styles, {
+    name: 'NavBar',
+  }),
+  connect(
+    mapStateToProps,
+    {
+    },
+  ),
+)(NavBar);
