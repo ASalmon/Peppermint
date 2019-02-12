@@ -339,7 +339,8 @@ class Login extends Component {
                     autoFocus
                     error={errors.username ? errors.username : undefined}
                   />
-                  {errors.username ? <p className={classes.errorText}>{errors.username}</p> : undefined}
+                  {errors.username
+                    ? <p className={classes.errorText}>{errors.username}</p> : undefined}
                 </FormControl>
                 <FormControl required>
                   <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
@@ -353,7 +354,8 @@ class Login extends Component {
                     autoComplete="current-password"
                     error={errors.password ? errors.password : undefined}
                   />
-                  {errors.password ? <p className={classes.errorText}>{errors.password}</p> : undefined}
+                  {errors.password
+                    ? <p className={classes.errorText}>{errors.password}</p> : undefined}
                 </FormControl>
                 <button
                   type="submit"
@@ -376,7 +378,7 @@ class Login extends Component {
               </div>
               <div className={classes.rowThree}>
                 <div className={classes.boldText}>Handlebars Express</div>
-                <div className={classes.smallText}>Join Peppermint today.</div>
+                <div className={classes.smallText}>Join Handlebars Express today.</div>
               </div>
               <div className={classes.rowFour}>
                 <button
