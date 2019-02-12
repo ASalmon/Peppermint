@@ -21,6 +21,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Peppermint from '../../peppermint.jpg';
 import bikeCartoon from '../../bikeCartoon.jpg';
 import { loginUser, registerUser } from '../../actions/authActions';
+// import isEmpty from '../../validation/is-empty';
 
 const styles = {
   centered: {
@@ -214,6 +215,10 @@ const styles = {
   },
   errorText: {
     color: 'red',
+    fontFamily: 'Oxygen, sansSerif',
+    fontSize: 12,
+    textAlign: 'left',
+    marginTop: 5,
   },
 };
 
@@ -291,7 +296,7 @@ class Login extends Component {
 
   render() {
     const { classes } = this.props;
-    const { error, open } = this.state;
+    const { errors, open } = this.state;
     return (
       <div className={classes.root}>
         <Grid className={classes.leftSide} container spacing={24}>
@@ -325,14 +330,16 @@ class Login extends Component {
                   <InputLabel className={classes.inputLabel} htmlFor="username">Username</InputLabel>
                   <Input
                     id="username"
-                    name="userName"
+                    name="username"
                     type="text"
                     className={classNames(classes.input, classes.userName)}
                     autoComplete="off"
                     placeholder=" Username"
                     onChange={this.handleUserInput}
                     autoFocus
+                    error={errors.username ? errors.username : undefined}
                   />
+                  {errors.username ? <p className={classes.errorText}>{errors.username}</p> : undefined}
                 </FormControl>
                 <FormControl required>
                   <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
@@ -344,7 +351,9 @@ class Login extends Component {
                     placeholder=" Password"
                     onChange={this.handleUserInput}
                     autoComplete="current-password"
+                    error={errors.password ? errors.password : undefined}
                   />
+                  {errors.password ? <p className={classes.errorText}>{errors.password}</p> : undefined}
                 </FormControl>
                 <button
                   type="submit"
@@ -355,7 +364,7 @@ class Login extends Component {
                 >
                   Log in
                 </button>
-                {error ? <p className={classes.errorText}>{error}</p> : null}
+                {errors ? 'error' : undefined}
               </form>
             </section>
             <section className={classes.sectionTwo}>
@@ -400,6 +409,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.username
+                      ? <p className={classes.errorText}>{errors.username}</p> : undefined}
                     <TextField
                       id="email"
                       name="email"
@@ -409,6 +420,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.email
+                      ? <p className={classes.errorText}>{errors.email}</p> : undefined}
                     <TextField
                       id="password"
                       name="password"
@@ -418,6 +431,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.password
+                      ? <span className={classes.errorText}>{errors.password}</span> : undefined}
                     <TextField
                       id="password2"
                       name="password2"
@@ -427,6 +442,8 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {errors.password2
+                      ? <span className={classes.errorText}>{errors.password2}</span> : undefined}
                     {
                       this.state.error ? (
                         <p
@@ -449,14 +466,14 @@ class Login extends Component {
                 </Dialog>
               </div>
               <div className={classes.rowFive}>
-                <button
+                {/* <button
                   className={classes.loginBtn2}
                   type="submit"
                   variant="outlined"
                   color="primary"
                 >
                   Log in
-                </button>
+                </button> */}
               </div>
             </section>
           </Grid>
