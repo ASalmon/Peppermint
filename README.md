@@ -16,7 +16,7 @@ Run Application: [Launch Peppermint ](https://peppermint-us.herokuapp.com/)
   * Top Items by Quantity
   * Sales Distribution by Store
   * Company Sales Goals
-  * Yearly Performance by Month
+  * Yearly Sales Performance by Month
   * Sales Projection (next 6 months)
 
 
@@ -87,7 +87,7 @@ Run Application: [Launch Peppermint ](https://peppermint-us.herokuapp.com/)
 
 * If login is authenticated, you should see the Dashboard - Company View
 
-  ![Dashboard](./screenshots/peppermintDashboard.jpg)
+  ![Dashboard](./screenshots/peppermintDashboard.png)
 
 
 **Resource Contributors**
