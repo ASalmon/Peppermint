@@ -25,24 +25,19 @@ const styles = theme => ({
 const Dashboard = (props) => {
   const {
     classes,
-    isAuthenticated,
   } = props;
 
   return (
     <div className={classes.root}>
-      {
-        isAuthenticated ? (
-          <Fragment>
-            <NavBar />
-            <main className={classes.content}>
-              <div className={classes.appBarSpacer} />
-              <GridTop />
-              <GridMiddle />
-              <GridBottom />
-            </main>
-          </Fragment>
-        ) : window.location.href = '/'
-      }
+      <Fragment>
+        <NavBar />
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <GridTop />
+          <GridMiddle />
+          <GridBottom />
+        </main>
+      </Fragment>
     </div>
   );
 };
