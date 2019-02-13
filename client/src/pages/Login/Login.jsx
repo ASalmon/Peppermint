@@ -231,7 +231,6 @@ class Login extends Component {
     password2: '',
     email: '',
     open: false,
-    errors: {},
   };
 
   handleUserInput = (event) => {
@@ -288,8 +287,8 @@ class Login extends Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { errors, open } = this.state;
+    const { classes, errors } = this.props;
+    const { open } = this.state;
     return (
       <div className={classes.root}>
         <Grid className={classes.leftSide} container spacing={24}>
@@ -512,11 +511,13 @@ Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.shape),
+  errors: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
 };
 
 Login.defaultProps = {
   classes: {},
   history: [],
+  errors: {},
 };
 
 const mapStateToProps = state => ({
