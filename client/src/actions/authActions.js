@@ -42,4 +42,5 @@ export const loginUser = (userData, history) => (dispatch) => {
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('token');
   dispatch(setCurrentUser({}));
+  window.location.href = '/';
 };
