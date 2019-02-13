@@ -94,22 +94,24 @@ class GridBottom extends Component {
 
 GridBottom.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
-  yearlyPerformancexAxis: PropTypes.arrayOf(PropTypes.object),
-  yearlyPerformanceLineSeries: PropTypes.objectOf(PropTypes.shape),
+  yearlyPerformancexAxis: PropTypes.shape({
+    categories: PropTypes.array.isRequired,
+  }),
+  yearlyPerformanceLineSeries: PropTypes.arrayOf(PropTypes.object),
   getYearlyPerformance: PropTypes.func.isRequired,
 };
 
 GridBottom.defaultProps = {
   classes: {},
-  yearlyPerformancexAxis: {},
+  yearlyPerformancexAxis: [],
   yearlyPerformanceLineSeries: [],
 };
 
 const mapStateToProps = (state) => {
-  console.log('hi');
+  const { xaxis, lineSeries } = state.companyData.yearlyPerformance;
   return {
-    yearlyPerformancexAxis: state.companyData.yearlyPerformance.xaxis,
-    yearlyPerformanceLineSeries: state.companyData.yearlyPerformance.lineSeries,
+    yearlyPerformancexAxis: xaxis,
+    yearlyPerformanceLineSeries: lineSeries,
   };
 };
 

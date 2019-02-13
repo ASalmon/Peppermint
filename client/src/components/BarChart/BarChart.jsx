@@ -19,7 +19,28 @@ const BarChart = (props) => {
 };
 
 BarChart.propTypes = {
-  barOptions: PropTypes.shape(PropTypes.object),
+  barOptions: PropTypes.shape({
+    chart: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+    plotOptions: PropTypes.shape({
+      bar: PropTypes.shape({
+        columnWidth: PropTypes.string,
+        endingShape: PropTypes.string,
+      }),
+    }),
+    xaxis: PropTypes.shape({
+      categories: PropTypes.arrayOf(PropTypes.string),
+    }),
+    series: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      type: PropTypes.string,
+      data: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.number),
+        PropTypes.arrayOf(PropTypes.string),
+      ]),
+    })),
+  }),
 };
 
 BarChart.defaultProps = {
