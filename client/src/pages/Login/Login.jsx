@@ -511,7 +511,7 @@ Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.shape),
-  errors: PropTypes.objectOf(Proptype.objectOf(PropTypes.string)),
+  errors: PropTypes.objectOf(PropType.objectOf(PropTypes.string)),
 };
 
 Login.defaultProps = {
