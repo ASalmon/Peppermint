@@ -284,6 +284,7 @@ class Login extends Component {
     } = this.props;
 
     _registerUser(newUser, history);
+    this.handleClose();
   };
 
   render() {
