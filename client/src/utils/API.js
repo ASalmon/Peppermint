@@ -8,7 +8,7 @@ import {
   getGoalsData,
 } from './query';
 
-const defaultHeaders = {
+const defaultHeaders = () => ({
   url: 'http://localhost:3000/graphql',
   method: 'post',
   headers: {
@@ -16,12 +16,12 @@ const defaultHeaders = {
     'Content-Type': 'application/json',
     Authorization: localStorage.getItem('token'),
   },
-};
+});
 
 export default {
   // GraphQL query for top selling items by price
   getTopSellingItemsByPrice: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopSellingItemsByPriceQuery },
   })
     .then((response) => {
@@ -40,7 +40,7 @@ export default {
 
   // GraphQL query for top selling items by quantity
   getTopSellingItemsByQuantity: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopSellingItemsByQuantityQuery },
   })
     .then((response) => {
@@ -59,7 +59,7 @@ export default {
 
   // GraphQL query for top performing stores
   getTopPerformingStores: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopPerformingStoresQuery },
   })
     .then((response) => {
@@ -77,7 +77,7 @@ export default {
     .catch((error) => { throw error; }),
   // GraphQL query for Sales Distribution by Store
   getSalesDistributionByStore: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopPerformingStoresQuery },
   })
     .then((response) => {
@@ -95,7 +95,7 @@ export default {
     .catch((error) => { throw error; }),
   // QrephQL query for Yearly Performance data
   getYearlyPerformance: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getYearlyPerformance },
   }).then((response) => {
     const yearlyData = response.data.data.performancebyDates;
@@ -124,7 +124,7 @@ export default {
   }),
   // GraphQL query for Company Goals Data
   getGoalsData: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getGoalsData },
   }).then(response => response.data.data.getCompanyGoalsData),
 };

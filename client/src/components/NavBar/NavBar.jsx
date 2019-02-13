@@ -20,6 +20,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import mainListItems from './listItems';
+import { logoutUser } from '../../actions/authActions';
 
 
 const drawerWidth = 240;
@@ -116,6 +117,11 @@ class NavBar extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  handleLogout = () => {
+    const { logoutUser: _logoutUser } = this.props;
+    _logoutUser();
+  };
+
   render() {
     const { classes, user } = this.props;
     const { open, anchorEl } = this.state;
@@ -163,8 +169,7 @@ class NavBar extends React.Component {
               open={Boolean(anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}>My account</MenuItem>
-              <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+              <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
             </Menu>
             <Gravatar
               email={user.email ? user.email : ''}
@@ -201,6 +206,7 @@ class NavBar extends React.Component {
 NavBar.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   user: PropTypes.objectOf(PropTypes.shape),
+  logoutUser: PropTypes.func.isRequired,
 };
 
 NavBar.defaultProps = {
@@ -219,6 +225,7 @@ export default compose(
   connect(
     mapStateToProps,
     {
+      logoutUser,
     },
   ),
 )(NavBar);

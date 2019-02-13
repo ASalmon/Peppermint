@@ -6,9 +6,13 @@ const sixMonthsAgo = moment()
   .subtract(6, 'months')
   .format('YYYY-MM-DD');
 
-const yearAgo = moment()
+const yearAgoBeginning = moment()
   .subtract(1, 'year')
   .format('YYYY-01-01');
+
+const yearAgoEnd = moment()
+  .subtract(1, 'year')
+  .format('YYYY-12-31');
 
 export const getTopSellingItemsByPriceQuery = `
   {
@@ -30,7 +34,7 @@ export const getTopPerformingStoresQuery = `
 
 export const getYearlyPerformance = `
   {
-    performancebyDates(from:"${yearAgo}", to:"${now}")
+    performancebyDates(from:"${yearAgoBeginning}", to:"${yearAgoEnd}")
   }
 `;
 
