@@ -20,7 +20,7 @@ module.exports = {
       .then((user) => {
         // Check if user exists
         if (!user) {
-          errors.message = 'Invalid login information provided';
+          errors.username = 'Invalid login information provided';
           return res.status(400).json(errors);
         }
         // Check password
@@ -31,13 +31,13 @@ module.exports = {
               const payload = {
                 id: user.id,
                 username: user.username,
-                avatar: user.avatar,
+                email: user.email,
               };
               // Create JWT token
               jwt.sign(
                 payload,
                 process.env.secret,
-                { expiresIn: 18000 },
+                { expiresIn: 3600 },
                 (authErr, token) => {
                   res.send({
                     success: true,
@@ -46,7 +46,7 @@ module.exports = {
                 },
               );
             } else {
-              errors.message = 'Invalid login information provided';
+              errors.username = 'Invalid login information provided';
               return res.status(400).json(errors);
             }
           });
@@ -88,7 +88,7 @@ module.exports = {
             });
           });
         } else {
-          errors.message = 'Username already exists';
+          errors.username = 'Username already exists';
           return res.status(400).json(errors);
         }
       });

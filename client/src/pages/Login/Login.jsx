@@ -1,5 +1,8 @@
 import {
-  DirectionsBike, Equalizer, Settings, Event,
+  DirectionsBike,
+  Equalizer,
+  Settings,
+  Event,
 } from '@material-ui/icons';
 import React, { Component } from 'react';
 import { compose } from 'recompose';
@@ -21,7 +24,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Peppermint from '../../peppermint.jpg';
 import bikeCartoon from '../../bikeCartoon.jpg';
 import { loginUser, registerUser } from '../../actions/authActions';
-// import isEmpty from '../../validation/is-empty';
 
 const styles = {
   centered: {
@@ -229,21 +231,7 @@ class Login extends Component {
     password2: '',
     email: '',
     open: false,
-    errors: {},
   };
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-
 
   handleUserInput = (event) => {
     const { name, value } = event.target;
@@ -290,13 +278,18 @@ class Login extends Component {
       password2,
     };
 
+    const {
+      registerUser: _registerUser,
+      history,
+    } = this.props;
 
-    this.props.registerUser(newUser, this.props.history);
+    _registerUser(newUser, history);
+    this.handleClose();
   };
 
   render() {
-    const { classes } = this.props;
-    const { errors, open } = this.state;
+    const { classes, errors } = this.props;
+    const { open } = this.state;
     return (
       <div className={classes.root}>
         <Grid className={classes.leftSide} container spacing={24}>
@@ -337,10 +330,20 @@ class Login extends Component {
                     placeholder=" Username"
                     onChange={this.handleUserInput}
                     autoFocus
-                    error={errors.username ? errors.username : undefined}
+                    error={
+                      !!(errors
+                      && errors.login
+                      && errors.login.username)
+                    }
                   />
-                  {errors.username
-                    ? <p className={classes.errorText}>{errors.username}</p> : undefined}
+                  {
+                    errors
+                    && errors.login
+                    && errors.login.username
+                      ? (
+                        <p className={classes.errorText}>{errors.login.username}</p>
+                      ) : undefined
+                  }
                 </FormControl>
                 <FormControl required>
                   <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
@@ -352,10 +355,20 @@ class Login extends Component {
                     placeholder=" Password"
                     onChange={this.handleUserInput}
                     autoComplete="current-password"
-                    error={errors.password ? errors.password : undefined}
+                    error={
+                      !!(errors
+                      && errors.login
+                      && errors.login.password)
+                    }
                   />
-                  {errors.password
-                    ? <p className={classes.errorText}>{errors.password}</p> : undefined}
+                  {
+                    errors
+                    && errors.login
+                    && errors.login.password
+                      ? (
+                        <p className={classes.errorText}>{errors.login.password}</p>
+                      ) : undefined
+                  }
                 </FormControl>
                 <button
                   type="submit"
@@ -366,7 +379,6 @@ class Login extends Component {
                 >
                   Log in
                 </button>
-                {errors ? 'error' : undefined}
               </form>
             </section>
             <section className={classes.sectionTwo}>
@@ -411,8 +423,14 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
-                    {errors.username
-                      ? <p className={classes.errorText}>{errors.username}</p> : undefined}
+                    {
+                      errors
+                      && errors.registration
+                      && errors.registration.username
+                        ? (
+                          <p className={classes.errorText}>{errors.registration.username}</p>
+                        ) : undefined
+                    }
                     <TextField
                       id="email"
                       name="email"
@@ -422,8 +440,14 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
-                    {errors.email
-                      ? <p className={classes.errorText}>{errors.email}</p> : undefined}
+                    {
+                      errors
+                      && errors.registration
+                      && errors.registration.email
+                        ? (
+                          <p className={classes.errorText}>{errors.registration.email}</p>
+                        ) : undefined
+                    }
                     <TextField
                       id="password"
                       name="password"
@@ -433,8 +457,14 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
-                    {errors.password
-                      ? <span className={classes.errorText}>{errors.password}</span> : undefined}
+                    {
+                      errors
+                      && errors.registration
+                      && errors.registration.password
+                        ? (
+                          <span className={classes.errorText}>{errors.registration.password}</span>
+                        ) : undefined
+                    }
                     <TextField
                       id="password2"
                       name="password2"
@@ -444,17 +474,13 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
-                    {errors.password2
-                      ? <span className={classes.errorText}>{errors.password2}</span> : undefined}
                     {
-                      this.state.error ? (
-                        <p
-                          className={classes.errorText}
-                        >
-                          {this.state.error}
-                        </p>
-                      )
-                        : null
+                      errors
+                      && errors.registration
+                      && errors.registration.password2
+                        ? (
+                          <span className={classes.errorText}>{errors.registration.password2}</span>
+                        ) : undefined
                     }
                   </DialogContent>
                   <DialogActions>
@@ -466,16 +492,6 @@ class Login extends Component {
                     </Button>
                   </DialogActions>
                 </Dialog>
-              </div>
-              <div className={classes.rowFive}>
-                {/* <button
-                  className={classes.loginBtn2}
-                  type="submit"
-                  variant="outlined"
-                  color="primary"
-                >
-                  Log in
-                </button> */}
               </div>
             </section>
           </Grid>
@@ -495,14 +511,17 @@ Login.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   loginUser: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.shape(PropTypes.object),
-  history: PropTypes.shape(PropTypes.array),
+  history: PropTypes.objectOf(PropTypes.shape),
+  errors: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
 };
 
 Login.defaultProps = {
   classes: {},
-  auth: {},
   history: [],
+  errors: {
+    login: {},
+    registration: {},
+  },
 };
 
 const mapStateToProps = state => ({

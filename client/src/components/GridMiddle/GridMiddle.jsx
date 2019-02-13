@@ -14,6 +14,7 @@ import {
   getGoalsData,
 } from '../../actions/companyActions';
 
+
 const styles = () => ({
   root: {
     flexGrow: 1,
@@ -49,7 +50,7 @@ class GridMiddle extends Component {
         },
       },
       xaxis: {
-        categories: ['1', '2', '3', '4'],
+        categories: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
       },
       series: [
         {
@@ -127,7 +128,7 @@ GridMiddle.defaultProps = {
     labels: [],
     series: [],
   },
-  goalsData: [],
+  goalsData: {},
 };
 
 const mapStateToProps = state => ({

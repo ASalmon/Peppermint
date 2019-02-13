@@ -2,73 +2,28 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import PropTypes from 'prop-types';
 
-let Options = {
+const defaultOptions = {
   chart: {
     type: 'line',
-    stacked: false,
   },
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    width: [4, 4],
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: '20%',
+  grid: {
+    row: {
+      colors: ['#f3f3f3', 'transparent'],
+      opacity: 0.5,
     },
-  },
-  yaxis: [
-    {
-      axisTicks: {
-        show: true,
-      },
-      axisBorder: {
-        show: true,
-        color: '#247BA0',
-      },
-      labels: {
-        style: {},
-      },
-      title: {
-        text: 'Series A',
-      },
-    },
-    {
-      opposite: true,
-      axisTicks: {
-        show: true,
-      },
-      axisBorder: {
-        show: true,
-        color: '#247BA0',
-      },
-    },
-  ],
-  tooltip: {
-    shared: false,
-    intersect: true,
-    x: {
-      show: false,
-    },
-  },
-  legend: {
-    horizontalAlign: 'left',
-    offsetX: 40,
   },
 };
 
 const LineChart = (props) => {
   const { series, xaxis } = props;
 
-  Options = {
-    ...Options,
+  const options = Object.assign({}, defaultOptions, {
     xaxis,
-  };
+  });
 
   return (
     <Chart
-      options={Options}
+      options={options}
       series={series}
       type="line"
       width="100%"
@@ -78,8 +33,10 @@ const LineChart = (props) => {
 };
 
 LineChart.propTypes = {
-  series: PropTypes.shape(PropTypes.array),
-  xaxis: PropTypes.shape(PropTypes.array),
+  xaxis: PropTypes.shape({
+    categories: PropTypes.array.isRequired,
+  }),
+  series: PropTypes.arrayOf(PropTypes.object),
 };
 
 LineChart.defaultProps = {

@@ -2,7 +2,8 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
 import {
-  GET_ERRORS,
+  GET_LOGINERRORS,
+  GET_REGISTRATIONERRORS,
   SET_CURRENT_USER,
 } from './types';
 
@@ -11,17 +12,16 @@ export const registerUser = (userData, history) => (dispatch) => {
     .post('/api/register', userData)
     .then(() => history.push('/'))
     .catch(err => dispatch({
-      type: GET_ERRORS,
+      type: GET_REGISTRATIONERRORS,
       payload: err.response.data,
     }));
 };
 
-export const setCurrentUser = (decoded) => {
-  return {
-    type: SET_CURRENT_USER,
-    payload: decoded,
-  };
-};
+export const setCurrentUser = decoded => ({
+  type: SET_CURRENT_USER,
+  payload: decoded,
+});
+
 
 export const loginUser = (userData, history) => (dispatch) => {
   axios
@@ -34,7 +34,7 @@ export const loginUser = (userData, history) => (dispatch) => {
       history.push('/dashboard');
     })
     .catch(err => dispatch({
-      type: GET_ERRORS,
+      type: GET_LOGINERRORS,
       payload: err.response.data,
     }));
 };
@@ -42,4 +42,5 @@ export const loginUser = (userData, history) => (dispatch) => {
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('token');
   dispatch(setCurrentUser({}));
+  window.location.href = '/';
 };

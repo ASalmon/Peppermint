@@ -18,21 +18,18 @@ const styles = () => ({
 });
 
 const barOptions = {
-  chart: {
-    id: 'companyGoals',
-  },
   plotOptions: {
     bar: {
       horizontal: true,
     },
   },
   xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun'],
+    categories: ['Mar', 'Apr', 'May', 'Jun', 'Jul'],
   },
   series: [
     {
-      name: 'series-1',
-      data: [30, 40, 45, 50, 49, 60],
+      name: 'projections',
+      data: [5570, 5340, 5109, 5744, 6130, 5907],
     },
   ],
 };
@@ -50,35 +47,37 @@ class GridBottom extends Component {
       yearlyPerformanceLineSeries,
     } = this.props;
 
+    const showCardContent = Boolean(yearlyPerformancexAxis
+      && yearlyPerformanceLineSeries
+      && yearlyPerformancexAxis.categories
+      && yearlyPerformancexAxis.categories.length);
+
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12} md={6}>
             <Card className={classes.card}>
               <CardHeader
-                title="Yearly Performance"
-                subheader="By Month"
+                title="Yearly Sales Performance"
+                subheader="By Year"
                 className={classes.cardheader}
               />
               <CardContent>
-                {yearlyPerformancexAxis
-                && yearlyPerformanceLineSeries
-                && yearlyPerformancexAxis.categories
-                && yearlyPerformancexAxis.categories.length ? (
+                {showCardContent ? (
                   <LineChart
                     xaxis={yearlyPerformancexAxis}
                     series={yearlyPerformanceLineSeries}
                   />
-                  ) : (
-                    undefined
-                  )}
+                ) : (
+                  <p>Chart is loading...</p>
+                )}
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
             <Card className={classes.card}>
               <CardHeader
-                title="Projection"
+                title="Sales Projection"
                 subheader="Next 6 Months"
                 className={classes.cardheader}
               />
@@ -95,8 +94,10 @@ class GridBottom extends Component {
 
 GridBottom.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
-  yearlyPerformancexAxis: PropTypes.shape(PropTypes.array),
-  yearlyPerformanceLineSeries: PropTypes.shape(PropTypes.array),
+  yearlyPerformancexAxis: PropTypes.shape({
+    categories: PropTypes.array.isRequired,
+  }),
+  yearlyPerformanceLineSeries: PropTypes.arrayOf(PropTypes.object),
   getYearlyPerformance: PropTypes.func.isRequired,
 };
 
@@ -106,10 +107,13 @@ GridBottom.defaultProps = {
   yearlyPerformanceLineSeries: [],
 };
 
-const mapStateToProps = state => ({
-  yearlyPerformancexAxis: state.companyData.yearlyPerformance.xaxis,
-  yearlyPerformanceLineSeries: state.companyData.yearlyPerformance.lineSeries,
-});
+const mapStateToProps = (state) => {
+  const { xaxis, lineSeries } = state.companyData.yearlyPerformance;
+  return {
+    yearlyPerformancexAxis: xaxis,
+    yearlyPerformanceLineSeries: lineSeries,
+  };
+};
 
 export default compose(
   withStyles(styles, {

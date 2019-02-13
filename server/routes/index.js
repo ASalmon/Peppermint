@@ -12,7 +12,7 @@ router.use('/graphql', graphqlRoute);
 // HTML Route
 if (process.env.NODE_ENV === 'production') {
   router.use((req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'));
   });
 }
 

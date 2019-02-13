@@ -8,26 +8,26 @@ import {
   getGoalsData,
 } from './query';
 
-const defaultHeaders = {
-  url: 'http://localhost:3000/graphql',
+const defaultHeaders = () => ({
+  url: '/graphql',
   method: 'post',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: localStorage.getItem('token'),
   },
-};
+});
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+});
 
 export default {
-  // Verify user exists in DB (username/password)
-  login: userData => axios.post('/api/login/', userData),
-
-  // Save (register) user to the database (username, password, email)
-  register: userData => axios.post('/api/register', userData),
-
   // GraphQL query for top selling items by price
   getTopSellingItemsByPrice: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopSellingItemsByPriceQuery },
   })
     .then((response) => {
@@ -38,15 +38,16 @@ export default {
         item.id = i;
         item.name = items[i]._id;
         item.value = items[i].totalPrice.toFixed(2);
+        item.value = formatter.format(item.value);
         formatedData.push(item);
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
+    .catch((error) => { throw error; }),
 
   // GraphQL query for top selling items by quantity
   getTopSellingItemsByQuantity: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopSellingItemsByQuantityQuery },
   })
     .then((response) => {
@@ -61,11 +62,11 @@ export default {
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
+    .catch((error) => { throw error; }),
 
   // GraphQL query for top performing stores
   getTopPerformingStores: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopPerformingStoresQuery },
   })
     .then((response) => {
@@ -76,14 +77,15 @@ export default {
         store.id = i;
         store.name = stores[i]._id;
         store.value = stores[i].totalAmount.toFixed(2);
+        store.value = formatter.format(store.value);
         formatedData.push(store);
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
-
+    .catch((error) => { throw error; }),
+  // GraphQL query for Sales Distribution by Store
   getSalesDistributionByStore: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getTopPerformingStoresQuery },
   })
     .then((response) => {
@@ -98,15 +100,15 @@ export default {
       }
       return formatedData;
     })
-    .catch(error => console.log(error)),
-
+    .catch((error) => { throw error; }),
+  // QrephQL query for Yearly Performance data
   getYearlyPerformance: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getYearlyPerformance },
   }).then((response) => {
     const yearlyData = response.data.data.performancebyDates;
     const { year } = yearlyData[0].date;
-    const formatedData = {
+    const formatted = {
       xaxis: {
         categories: [],
       },
@@ -122,15 +124,33 @@ export default {
       const monthStr = moment()
         .month(month - 1)
         .format('MMM');
-      formatedData.xaxis.categories.push(monthStr);
-      formatedData.lineSeries[0].data.push(item.total);
+      formatted.xaxis.categories.push(monthStr);
+      formatted.lineSeries[0].data.push(item.total);
     });
-    formatedData.lineSeries[0].name = year;
-    return formatedData;
+    formatted.lineSeries[0].name = year;
+    return formatted;
   }),
-
+  // GraphQL query for Company Goals Data
   getGoalsData: () => axios({
-    ...defaultHeaders,
+    ...defaultHeaders(),
     data: { query: getGoalsData },
-  }).then(response => response.data.data.getCompanyGoalsData),
+  }).then((response) => {
+    const goalsData = response.data.data.getCompanyGoalsData;
+
+    const formattedData = {
+      month: [],
+      year: goalsData.year,
+      goal: goalsData.goal,
+      actual: goalsData.actual,
+    };
+
+    goalsData.month.forEach((item) => {
+      const monthStr = moment()
+        .month(item - 1)
+        .format('MMM');
+      formattedData.month.push(monthStr);
+    });
+
+    return formattedData;
+  }),
 };
