@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   entry: ['babel-polyfill', './client/src/index.jsx'],
   output: {
-    path: path.join(__dirname, 'client/dist'),
+    path: path.join(__dirname, 'client/build'),
     filename: 'bundle.js',
   },
   module: {

@@ -9,7 +9,7 @@ import {
 } from './query';
 
 const defaultHeaders = () => ({
-  url: 'http://localhost:3000/graphql',
+  url: '/graphql',
   method: 'post',
   headers: {
     Accept: 'application/json',
