@@ -5,7 +5,7 @@ Use case: small Bicycle Company (Handlebars Express)
  using Peppermint sales dashboard
  to represent their company sales data
 
-Run Application: [Launch Peppermint ](https://herokuapp.com/)
+Run Application: [Launch Peppermint ](https://peppermint-us.herokuapp.com/)
 
 **Team Members:** Alton Salmon, Kevin Luu, Vicki Hope
 
@@ -16,7 +16,7 @@ Run Application: [Launch Peppermint ](https://herokuapp.com/)
   * Top Items by Quantity
   * Sales Distribution by Store
   * Company Sales Goals
-  * Yearly Performance by Month
+  * Yearly Sales Performance by Month
   * Sales Projection (next 6 months)
 
 
@@ -81,13 +81,13 @@ Run Application: [Launch Peppermint ](https://herokuapp.com/)
 
   ![Sign up](./screenshots/peppermintSignup.png)
 
-* Log in with user profile
+* Log in with username and password
 
   ![Log in](./screenshots/peppermintLogin.png)
 
 * If login is authenticated, you should see the Dashboard - Company View
 
-  ![Dashboard](./screenshots/peppermintDashboard.jpg)
+  ![Dashboard](./screenshots/peppermintDashboard.png)
 
 
 **Resource Contributors**
