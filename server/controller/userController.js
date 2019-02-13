@@ -31,13 +31,13 @@ module.exports = {
               const payload = {
                 id: user.id,
                 username: user.username,
-                avatar: user.avatar,
+                email: user.email,
               };
               // Create JWT token
               jwt.sign(
                 payload,
                 process.env.secret,
-                { expiresIn: 18000 },
+                { expiresIn: 3600 },
                 (authErr, token) => {
                   res.send({
                     success: true,

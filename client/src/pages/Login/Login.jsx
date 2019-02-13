@@ -1,5 +1,8 @@
 import {
-  DirectionsBike, Equalizer, Settings, Event,
+  DirectionsBike,
+  Equalizer,
+  Settings,
+  Event,
 } from '@material-ui/icons';
 import React, { Component } from 'react';
 import { compose } from 'recompose';
@@ -8,6 +11,9 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -37,6 +43,7 @@ const styles = {
     fontFamily: 'Oxygen, sansSerif',
     fontSize: 15,
     fontWeight: 'bold',
+    marginTop: 15,
     paddingTop: 8,
     paddingBottom: 8,
     paddingLeft: 15,
@@ -47,29 +54,31 @@ const styles = {
     outline: 'none',
     cursor: 'pointer',
   },
+  form: {
+    boxSizing: 'borderbox',
+    display: 'inline',
+  },
   input: {
     boxSizing: 'border-box',
     display: 'inline',
     lineHeight: 2.2,
     width: 215,
-    marginRight: 10,
+    marginRight: 20,
     fontFamily: 'Oxygen, sansSerif',
-    padding: 5,
+    paddingLeft: 5,
+  },
+  inputLabel: {
+    marginLeft: 4,
   },
   userName: {
     fontFamily: 'Oxygen, sansSerif',
-    placeholder: 'Username',
-    label: 'Username:',
-    required: true,
     type: 'text',
     border: '1px solid lightgray',
     color: 'black',
+    lineHeight: 1,
   },
   password: {
     fontFamily: 'Oxygen, sansSerif',
-    placeholder: 'Password',
-    label: 'Password',
-    required: true,
     type: 'text',
     border: '1px solid lightgray',
     color: 'black',
@@ -77,7 +86,6 @@ const styles = {
   leftSide: {
     marginBottom: 10,
     backgroundColor: '#008ffb',
-    // background: 'linear-gradient(45deg,#008ffb 30%, #ffffff 90%)',
     height: '93vh',
     color: '#ffffff',
     textAlign: 'center',
@@ -209,6 +217,10 @@ const styles = {
   },
   errorText: {
     color: 'red',
+    fontFamily: 'Oxygen, sansSerif',
+    fontSize: 12,
+    textAlign: 'left',
+    marginTop: 5,
   },
 };
 
@@ -219,21 +231,7 @@ class Login extends Component {
     password2: '',
     email: '',
     open: false,
-    errors: {},
   };
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-
 
   handleUserInput = (event) => {
     const { name, value } = event.target;
@@ -280,13 +278,17 @@ class Login extends Component {
       password2,
     };
 
+    const {
+      registerUser: _registerUser,
+      history,
+    } = this.props;
 
-    this.props.registerUser(newUser, this.props.history);
+    _registerUser(newUser, history);
   };
 
   render() {
-    const { classes } = this.props;
-    const { error, open } = this.state;
+    const { classes, errors } = this.props;
+    const { open } = this.state;
     return (
       <div className={classes.root}>
         <Grid className={classes.leftSide} container spacing={24}>
@@ -315,31 +317,68 @@ class Login extends Component {
           </Grid>
           <Grid className={classes.rightSide} item xs={12} md={6}>
             <section className={classes.rowOne}>
-              <input
-                type="text"
-                name="username"
-                className={classNames(classes.input, classes.userName)}
-                autoComplete="off"
-                placeholder="Username"
-                onChange={this.handleUserInput}
-              />
-              <input
-                type="password"
-                name="password"
-                className={classNames(classes.input, classes.password)}
-                placeholder="Password"
-                onChange={this.handleUserInput}
-              />
-              <button
-                type="submit"
-                variant="outlined"
-                color="#008ffb"
-                className={classes.loginBtn}
-                onClick={this.handleTopLoginBtn}
-              >
-                Log in
-              </button>
-              {error ? <p className={classes.errorText}>{error}</p> : null}
+              <form className={classes.form}>
+                <FormControl required>
+                  <InputLabel className={classes.inputLabel} htmlFor="username">Username</InputLabel>
+                  <Input
+                    id="username"
+                    name="username"
+                    type="text"
+                    className={classNames(classes.input, classes.userName)}
+                    autoComplete="off"
+                    placeholder=" Username"
+                    onChange={this.handleUserInput}
+                    autoFocus
+                    error={
+                      errors
+                      && errors.login
+                      && errors.login.username ? errors.login.username : undefined
+                    }
+                  />
+                  {
+                    errors
+                    && errors.login
+                    && errors.login.username
+                      ? (
+                        <p className={classes.errorText}>{errors.login.username}</p>
+                      ) : undefined
+                  }
+                </FormControl>
+                <FormControl required>
+                  <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className={classNames(classes.input, classes.password)}
+                    placeholder=" Password"
+                    onChange={this.handleUserInput}
+                    autoComplete="current-password"
+                    error={
+                      errors
+                      && errors.login
+                      && errors.login.password ? errors.login.password : undefined
+                    }
+                  />
+                  {
+                    errors
+                    && errors.login
+                    && errors.login.password
+                      ? (
+                        <p className={classes.errorText}>{errors.login.password}</p>
+                      ) : undefined
+                  }
+                </FormControl>
+                <button
+                  type="submit"
+                  variant="outlined"
+                  color="#008ffb"
+                  className={classes.loginBtn}
+                  onClick={this.handleTopLoginBtn}
+                >
+                  Log in
+                </button>
+              </form>
             </section>
             <section className={classes.sectionTwo}>
               <div className={classes.rowTwo}>
@@ -350,7 +389,7 @@ class Login extends Component {
               </div>
               <div className={classes.rowThree}>
                 <div className={classes.boldText}>Handlebars Express</div>
-                <div className={classes.smallText}>Join Peppermint today.</div>
+                <div className={classes.smallText}>Join Handlebars Express today.</div>
               </div>
               <div className={classes.rowFour}>
                 <button
@@ -383,6 +422,14 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {
+                      errors
+                      && errors.registration
+                      && errors.registration.username
+                        ? (
+                          <p className={classes.errorText}>{errors.registration.username}</p>
+                        ) : undefined
+                    }
                     <TextField
                       id="email"
                       name="email"
@@ -392,6 +439,14 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {
+                      errors
+                      && errors.registration
+                      && errors.registration.email
+                        ? (
+                          <p className={classes.errorText}>{errors.registration.email}</p>
+                        ) : undefined
+                    }
                     <TextField
                       id="password"
                       name="password"
@@ -401,6 +456,14 @@ class Login extends Component {
                       onChange={this.handleUserInput}
                       className={classes.registerFields}
                     />
+                    {
+                      errors
+                      && errors.registration
+                      && errors.registration.password
+                        ? (
+                          <span className={classes.errorText}>{errors.registration.password}</span>
+                        ) : undefined
+                    }
                     <TextField
                       id="password2"
                       name="password2"
@@ -411,14 +474,12 @@ class Login extends Component {
                       className={classes.registerFields}
                     />
                     {
-                      this.state.error ? (
-                        <p
-                          className={classes.errorText}
-                        >
-                          {this.state.error}
-                        </p>
-                      )
-                        : null
+                      errors
+                      && errors.registration
+                      && errors.registration.password2
+                        ? (
+                          <span className={classes.errorText}>{errors.registration.password2}</span>
+                        ) : undefined
                     }
                   </DialogContent>
                   <DialogActions>
@@ -430,16 +491,6 @@ class Login extends Component {
                     </Button>
                   </DialogActions>
                 </Dialog>
-              </div>
-              <div className={classes.rowFive}>
-                <button
-                  className={classes.loginBtn2}
-                  type="submit"
-                  variant="outlined"
-                  color="primary"
-                >
-                  Log in
-                </button>
               </div>
             </section>
           </Grid>
@@ -459,14 +510,14 @@ Login.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
   loginUser: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.shape(PropTypes.object),
-  history: PropTypes.shape(PropTypes.array),
+  history: PropTypes.objectOf(PropTypes.shape),
+  errors: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
 };
 
 Login.defaultProps = {
   classes: {},
-  auth: {},
   history: [],
+  errors: {},
 };
 
 const mapStateToProps = state => ({

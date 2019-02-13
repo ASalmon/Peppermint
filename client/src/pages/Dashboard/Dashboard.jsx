@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import NavBar from '../../components/NavBar';
 import GridMiddle from '../../components/GridMiddle';
 import GridTop from '../../components/GridTop';
 import GridBottom from '../../components/GridBottom';
+
 
 const styles = theme => ({
   root: {
@@ -49,4 +52,13 @@ Dashboard.defaultProps = {
   isAuthenticated: false,
 };
 
-export default withStyles(styles, { name: 'Dashboard' })(Dashboard);
+const mapStateToProps = state => ({
+  isAuthenticated: state.authentication.isAuthenticated,
+});
+
+export default compose(
+  withStyles(styles, {
+    name: 'Dashboard',
+  }),
+  connect(mapStateToProps),
+)(Dashboard);

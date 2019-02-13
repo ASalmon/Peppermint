@@ -16,7 +16,55 @@ const transactionSeed = [
     quantity: 1,
     departmentName: 'Bikes',
     storeName: 'Atlanta',
-    transactionDate: new Date('2018-01-02'),
+    transactionDate: new Date('2019-01-20'),
+  },
+  {
+    itemName: 'Trek 920',
+    price: 2099.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'Atlanta',
+    transactionDate: new Date('2019-02-03'),
+  },
+  {
+    itemName: 'Trek 920',
+    price: 2099.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'Atlanta',
+    transactionDate: new Date('2019-01-03'),
+  },
+  {
+    itemName: 'Trek 920',
+    price: 2099.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'Atlanta',
+    transactionDate: new Date('2019-02-10'),
+  },
+  {
+    itemName: 'Trek 920',
+    price: 2099.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'Atlanta',
+    transactionDate: new Date('2019-02-05'),
+  },
+  {
+    itemName: 'Trek 920',
+    price: 2099.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'Atlanta',
+    transactionDate: new Date('2019-01-05'),
+  },
+  {
+    itemName: 'Trek 920',
+    price: 2099.99,
+    quantity: 1,
+    departmentName: 'Bikes',
+    storeName: 'Atlanta',
+    transactionDate: new Date('2019-01-02'),
   },
   {
     itemName: 'Trek 1120',
@@ -1214,6 +1262,14 @@ const transactionSeed = [
 
 const GoalsSeed = [
   {
+    date: new Date('2019-02-01'),
+    goal: 3000.00,
+  },
+  {
+    date: new Date('2019-01-01'),
+    goal: 5000.00,
+  },
+  {
     date: new Date('2018-01-01'),
     goal: 15000.00,
   },
@@ -1269,8 +1325,8 @@ Transaction
   .then(() => {
     process.exit(0);
   })
-  .catch(() => {
-    process.exit(1);
+  .catch((error) => {
+    throw error;
   });
 
 Goals
@@ -1279,6 +1335,6 @@ Goals
   .then(() => {
     process.exit(0);
   })
-  .catch(() => {
-    process.exit(1);
+  .catch((error) => {
+    throw error;
   });

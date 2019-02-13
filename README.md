@@ -1,19 +1,19 @@
 # Peppermint
 
-### A Sales Dashboard
-example demonstrates how a small Bicycle Company (Handlebars Express) might implement Peppermint sales dashboard
+### A MERN stack sales dashboard application
+Use case: small Bicycle Company (Handlebars Express)
+ using Peppermint sales dashboard
+ to represent their company sales data
 
 Run Application: [Launch Peppermint ](https://herokuapp.com/)
 
 **Team Members:** Alton Salmon, Kevin Luu, Vicki Hope
 
 **Features**
-* Create/manage user-profiles
-* Login authentication
 * Company Dashboard View
-  * Top 4 Stores by Sales
-  * Top 4 Items by Sales
-  * Top 4 Items by Quantity
+  * Top Stores by Sales
+  * Top Items by Sales
+  * Top Items by Quantity
   * Sales Distribution by Store
   * Company Sales Goals
   * Yearly Performance by Month
@@ -22,69 +22,82 @@ Run Application: [Launch Peppermint ](https://herokuapp.com/)
 
 **Technologies Used**
 * JavaScript
+* MERN stack
+  * MongoDB
+  * Express
+  * React
+  * Node
+* ApexCharts
 * Axios
-* Mongoose
-* Express.js
-* React.js
-* Node.js
-* ApexCharts.js
-* graphQL
+* bcrypt
+* CORS
+* GraphQL
+* Material-UI
+* Moment
 * Passport-jwt
 * Redux
-* Material-UI
-* Model View Controller (MVC) design pattern
 
 
 **Problems to Solve**
 * Display complex company sales data for analysis
-* Authenticate user and endpoints
+* Secure user data and endpoints
 * Securely and reliably store data, with scalability in mind
-* Access to shared database
-* Quickly provide up-to-date company sales statistics
-* Allow for separation of concerns to improve maintainability and expandability of code
+* Provide up-to-date company sales statistics
 * Deploy full-stack project for others to use
 
 **Solutions**
 * Use ApexCharts to visualize sales data
 * Implement passport-jwt for user/endpoint authentication
-* Use MongoDB/Mongoose database for data storage
-* Configure mLab for shared access to database
-* Use of graphQL queries to access database data
-* Follow Model View Controller (MVC) design pattern
+* Use MongoDB for data storage
+* Use of GraphQL queries to retrieve data
 * Deploy project using Heroku
 
 **Setup to run application on your system**
-* Node.js, mongoDB, and Mongoose must be installed on your system
-* You must know YOUR mLab username and password
-* You will store YOUR mLab username and password in your local .env file
+* Node.js, MongoDB, and Mongoose must be installed on your system
+* You will store YOUR MONGODB_URI in your local .env file
 * You must know your JWT secret and store it in your local .env file
     ```
-    MONGODB_URI=mongodb://usernamehere:passwordhere@ds161485.mlab.com:61485/peppermint
+    MONGODB_URI=mongodb
     secret=yoursecretkeyhere
     ```
 * Clone the Peppermint repo into a dirctory on your system
-* From command line, while in that directory key: npm install
+* From command line, while in that directory key:
+    ```
+    npm install
+    ```
 * From that same directory, populate the database
     ```
     node seedDB.js
     ```
 * To start server, key:
- ```
- npm run start:dev
-  ```
-* in browser, navigate to "http://localhost:3001", you should see the Peppermint Home Login Screen
+    ```
+    npm run start:dev
+    ```
+* In browser, navigate to "http://localhost:3001", you should see the Peppermint Home Login Screen
+
+  ![Peppermint Home](./screenshots/peppermintHome.png)
 
 * Click sign up button to create a user profile
-* Login with user profile to view the sales dashboard
+
+  ![Sign up](./screenshots/peppermintSignup.png)
+
+* Log in with user profile
+
+  ![Log in](./screenshots/peppermintLogin.png)
+
+* If login is authenticated, you should see the Dashboard - Company View
+
+  ![Dashboard](./screenshots/peppermintDashboard.jpg)
+
 
 **Resource Contributors**
-* Home page background image: [Pixabay](https://pixabay.com/en/)
+* Home page image: [Red Bicycle](https://pngtree.com/freepng/red-cartoon-bike_283117.html)
 
 **Future Enhancement Ideas**
-* Add password encryption
-* Add two-factor authentication
-* Update UI based on enhancements/branding
-* Support additional database views (Store, Item)
-* Improve responsive design
-* Create version suitable for smaller devices
+* Add two-factor authentication to improve security
+* Support for custom views (Store, Item, etc.)
+* Support for custom widgets/charts
+* Support for real-time notifications
+
+
 
