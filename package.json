@@ -11,7 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-server": "webpack-dev-server --hot --mode development --watch",
     "debug": "nodemon --inspect=9229 ./server/index.js",
-    "build": "webpack"
+    "build": "webpack",
+    "heroku-postbuild": "npm run build"
+
   },
   "author": "Alton Salmon",
   "license": "MIT",
