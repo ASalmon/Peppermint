@@ -87,7 +87,7 @@ Run Application: [Launch Peppermint ](https://peppermint-us.herokuapp.com/)
 
 * If login is authenticated, you should see the Dashboard - Company View
 
-  ![Dashboard](./screenshots/peppermintDashboard.png)
+  ![Dashboard](./screenshots/peppermintDash.png)
 
 
 **Resource Contributors**
