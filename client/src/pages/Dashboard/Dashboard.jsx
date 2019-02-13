@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-import { compose } from 'recompose';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import NavBar from '../../components/NavBar';
@@ -24,24 +22,19 @@ const styles = theme => ({
 const Dashboard = (props) => {
   const {
     classes,
-    isAuthenticated,
   } = props;
 
   return (
     <div className={classes.root}>
-      {
-        isAuthenticated ? (
-          <Fragment>
-            <NavBar />
-            <main className={classes.content}>
-              <div className={classes.appBarSpacer} />
-              <GridTop />
-              <GridMiddle />
-              <GridBottom />
-            </main>
-          </Fragment>
-        ) : window.location.href = '/'
-      }
+      <Fragment>
+        <NavBar />
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <GridTop />
+          <GridMiddle />
+          <GridBottom />
+        </main>
+      </Fragment>
     </div>
   );
 };
@@ -56,16 +49,4 @@ Dashboard.defaultProps = {
   isAuthenticated: false,
 };
 
-
-const mapStateToProps = state => ({
-  isAuthenticated: state.authentication.isAuthenticated,
-});
-
-export default compose(
-  withStyles(styles, {
-    name: 'Dashboard',
-  }),
-  connect(
-    mapStateToProps,
-  ),
-)(Dashboard);
+export default withStyles(styles, { name: 'Dashboard' })(Dashboard);

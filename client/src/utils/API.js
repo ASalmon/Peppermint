@@ -18,6 +18,12 @@ const defaultHeaders = {
   },
 };
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+});
+
 export default {
   // Verify user exists in DB (username/password)
   login: userData => axios.post('/api/login/', userData),
@@ -38,6 +44,7 @@ export default {
         item.id = i;
         item.name = items[i]._id;
         item.value = items[i].totalPrice.toFixed(2);
+        item.value = formatter.format(item.value);
         formatedData.push(item);
       }
       return formatedData;
@@ -76,6 +83,7 @@ export default {
         store.id = i;
         store.name = stores[i]._id;
         store.value = stores[i].totalAmount.toFixed(2);
+        store.value = formatter.format(store.value);
         formatedData.push(store);
       }
       return formatedData;
@@ -106,7 +114,7 @@ export default {
   }).then((response) => {
     const yearlyData = response.data.data.performancebyDates;
     const { year } = yearlyData[0].date;
-    const formatedData = {
+    const formatted = {
       xaxis: {
         categories: [],
       },
@@ -122,15 +130,33 @@ export default {
       const monthStr = moment()
         .month(month - 1)
         .format('MMM');
-      formatedData.xaxis.categories.push(monthStr);
-      formatedData.lineSeries[0].data.push(item.total);
+      formatted.xaxis.categories.push(monthStr);
+      formatted.lineSeries[0].data.push(item.total);
     });
-    formatedData.lineSeries[0].name = year;
-    return formatedData;
+    formatted.lineSeries[0].name = year;
+    return formatted;
   }),
 
   getGoalsData: () => axios({
     ...defaultHeaders,
     data: { query: getGoalsData },
-  }).then(response => response.data.data.getCompanyGoalsData),
+  }).then((response) => {
+    const goalsData = response.data.data.getCompanyGoalsData;
+
+    const formattedData = {
+      month: [],
+      year: goalsData.year,
+      goal: goalsData.goal,
+      actual: goalsData.actual,
+    };
+
+    goalsData.month.forEach((item) => {
+      const monthStr = moment()
+        .month(item - 1)
+        .format('MMM');
+      formattedData.month.push(monthStr);
+    });
+
+    return formattedData;
+  }),
 };
