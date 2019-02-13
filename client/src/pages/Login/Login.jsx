@@ -330,9 +330,9 @@ class Login extends Component {
                     onChange={this.handleUserInput}
                     autoFocus
                     error={
-                      errors
+                      !!(errors
                       && errors.login
-                      && errors.login.username ? errors.login.username : undefined
+                      && errors.login.username)
                     }
                   />
                   {
@@ -355,9 +355,9 @@ class Login extends Component {
                     onChange={this.handleUserInput}
                     autoComplete="current-password"
                     error={
-                      errors
+                      !!(errors
                       && errors.login
-                      && errors.login.password ? errors.login.password : undefined
+                      && errors.login.password)
                     }
                   />
                   {
